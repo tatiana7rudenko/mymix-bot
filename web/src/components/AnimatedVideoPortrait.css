@@ -1,0 +1,312 @@
+/* ============================================================
+   AnimatedVideoPortrait — круглый видеопортрет в правом
+   верхнем углу. Анимируются только transform и opacity.
+   ============================================================ */
+
+.avp {
+  --avp-size: var(--avp-size-desktop, 260px);
+  position: absolute;
+  top: max(28px, calc(env(safe-area-inset-top, 0px) + 20px));
+  right: max(36px, calc(env(safe-area-inset-right, 0px) + 24px));
+  width: var(--avp-size);
+  height: var(--avp-size);
+  z-index: 20;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 1024px) {
+  .avp {
+    --avp-size: var(--avp-size-tablet, 200px);
+    right: max(28px, calc(env(safe-area-inset-right, 0px) + 20px));
+  }
+}
+
+@media (max-width: 640px) {
+  .avp {
+    --avp-size: var(--avp-size-mobile, 140px);
+    top: max(18px, calc(env(safe-area-inset-top, 0px) + 12px));
+    right: max(18px, calc(env(safe-area-inset-right, 0px) + 12px));
+  }
+}
+
+.avp__float {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* --- рамка: тонкий градиентный обод + воздушный зазор --- */
+
+.avp__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 2px;
+  background: var(--avp-ring);
+  box-shadow:
+    0 1px 2px rgba(31, 24, 18, 0.08),
+    0 10px 28px rgba(31, 24, 18, 0.12),
+    0 30px 70px -18px rgba(31, 24, 18, 0.22);
+  transition: box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.avp__frame:hover {
+  box-shadow:
+    0 1px 2px rgba(31, 24, 18, 0.08),
+    0 14px 34px rgba(31, 24, 18, 0.16),
+    0 38px 90px -18px rgba(31, 24, 18, 0.3);
+}
+
+.avp__gap {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 3px;
+  background: var(--avp-gap-color, rgba(250, 248, 244, 0.92));
+}
+
+.avp__circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: #e9ded2;
+  /* Safari: заставляет уважать border-radius при анимации transform */
+  transform: translateZ(0);
+}
+
+.avp__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avp__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(120% 90% at 50% 20%, #f0e3d2 0%, #c9977b 60%, #8e6b5a 100%);
+}
+
+/* --- мягкое свечение с очень медленной пульсацией --- */
+
+.avp__glow {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--avp-glow-color) 0%,
+    transparent 68%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+  animation: avp-glow-pulse 7s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+  will-change: opacity;
+}
+
+.avp__float:hover .avp__glow {
+  opacity: 0.85;
+  animation-play-state: paused;
+}
+
+@keyframes avp-glow-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.68; }
+}
+
+/* --- кнопка звука: видна при наведении и фокусе --- */
+
+.avp__sound {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%) translateY(4px);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(28, 22, 18, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.avp__circle:hover .avp__sound,
+.avp__sound:focus-visible,
+.avp__sound[aria-pressed="true"] {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.avp__sound:hover {
+  background: rgba(28, 22, 18, 0.62);
+}
+
+.avp__sound:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .avp__sound {
+    width: 30px;
+    height: 30px;
+    opacity: 1; /* на тач-устройствах hover нет — кнопка видна всегда */
+    transform: translateX(-50%);
+  }
+}
+
+/* --- декоративная сцена вокруг круга --- */
+
+.avp__scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.avp__blob {
+  position: absolute;
+  inset: -55% -70% -70% -55%;
+  background: radial-gradient(
+    ellipse 60% 55% at 62% 38%,
+    rgba(215, 178, 142, 0.22) 0%,
+    rgba(201, 141, 123, 0.1) 45%,
+    transparent 72%
+  );
+  border-radius: 50%;
+}
+
+.avp__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 107, 94, 0.22);
+  will-change: transform;
+}
+
+.avp__orbit--near {
+  width: 128%;
+  height: 128%;
+  margin: -64% 0 0 -64%;
+  animation: avp-orbit-spin 46s linear infinite;
+}
+
+.avp__orbit--far {
+  width: 160%;
+  height: 160%;
+  margin: -80% 0 0 -80%;
+  border-color: rgba(157, 107, 94, 0.12);
+  animation: avp-orbit-spin 70s linear infinite reverse;
+}
+
+.avp__orbit-dot {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: rgba(201, 141, 123, 0.75);
+}
+
+.avp__orbit-dot--small {
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  top: -2px;
+  background: rgba(157, 107, 94, 0.55);
+}
+
+@keyframes avp-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.avp__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(201, 141, 123, 0.5);
+  will-change: transform;
+  animation: avp-particle-float 9s ease-in-out infinite;
+}
+
+.avp__particle--a {
+  width: 5px;
+  height: 5px;
+  top: -12%;
+  left: 14%;
+}
+
+.avp__particle--b {
+  width: 4px;
+  height: 4px;
+  bottom: -6%;
+  left: -14%;
+  background: rgba(157, 107, 94, 0.4);
+  animation-duration: 11s;
+  animation-delay: 1.4s;
+}
+
+.avp__particle--c {
+  width: 3px;
+  height: 3px;
+  top: 30%;
+  right: -18%;
+  background: rgba(215, 178, 142, 0.65);
+  animation-duration: 13s;
+  animation-delay: 0.6s;
+}
+
+@keyframes avp-particle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* линия, связывающая портрет с основным контентом */
+.avp__thread {
+  position: absolute;
+  top: 82%;
+  right: 88%;
+  width: 34%;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    rgba(157, 107, 94, 0.35),
+    transparent
+  );
+  transform: rotate(24deg);
+  transform-origin: right center;
+}
+
+@media (max-width: 640px) {
+  .avp__thread,
+  .avp__orbit--far {
+    display: none; /* меньше шума на малых экранах */
+  }
+}
+
+/* --- prefers-reduced-motion: без вращений, пульсаций и парения --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .avp__glow,
+  .avp__orbit--near,
+  .avp__orbit--far,
+  .avp__particle {
+    animation: none;
+  }
+}
