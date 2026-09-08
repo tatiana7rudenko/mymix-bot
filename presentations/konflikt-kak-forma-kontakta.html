@@ -206,6 +206,15 @@ em{font-style:normal;color:var(--accent)}
 
 @keyframes flow{0%{offset-distance:0%;opacity:0}12%{opacity:1}80%{opacity:1}100%{offset-distance:100%;opacity:0}}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+/* ── иконки и схемы ── */
+.ico{flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.rule .ico{width:1.15cqw;height:1.15cqw;color:var(--accent)}
+.card>.ico{width:2cqw;height:2cqw;color:var(--ch,var(--accent))}
+.headrow{display:grid;grid-template-columns:1fr auto;gap:2cqw;align-items:center}
+.hdillu{width:22cqw;max-width:100%;display:block}
+.strip{margin-top:.9cqw;display:block;width:100%}
+.scrollx{width:100%}
+
 /* ── телефон и узкие экраны: лента вместо слайдов ── */
 @media(max-aspect-ratio:4/3){
   html,body{height:auto;overflow:auto;background:var(--bg)}
@@ -269,6 +278,15 @@ em{font-style:normal;color:var(--accent)}
   .facnote{margin-top:14px;padding:12px 14px;font-size:14px;max-width:none;border-radius:12px}
   .facnote b{font-size:10px;margin-bottom:5px}
   .cap{font-size:13px;margin-top:8px}
+  .rule .ico{width:16px;height:16px}
+  .card>.ico{width:28px;height:28px}
+  .headrow{grid-template-columns:1fr;gap:14px}
+  .hdillu{width:100%;max-width:300px}
+  .strip{margin-top:14px}
+  .scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .scrollx>svg{min-width:820px}
+  .scrollx:after{content:'листается вбок →';position:sticky;left:0;display:block;width:180px;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:6px}
   .illu{margin-top:14px}
   .time{display:inline-flex;font-size:10px;padding:3px 8px}
 }
@@ -342,8 +360,32 @@ em{font-style:normal;color:var(--accent)}
     <!-- 2 · открытие -->
     <section class="slide" data-part="A">
       <p class="eyebrow"><span class="dot"></span> открытие</p>
-      <p class="quote">«Сегодня мы не учимся избегать конфликтов. Мы тренируемся <em>оставаться</em> в них — не исчезая самим и не продавливая другого».</p>
-      <div class="facnote fac"><b>сказать вслух</b>Прочитайте медленно и сделайте паузу. Эта фраза задаёт рамку всей встречи: сегодня никому не нужно побеждать.</div>
+      <div class="split" style="--sc:1.08fr .92fr">
+        <div>
+          <p class="quote">«Сегодня мы не учимся избегать конфликтов. Мы тренируемся <em>оставаться</em> в них — не исчезая самим и не продавливая другого».</p>
+          <div class="facnote fac"><b>сказать вслух</b>Прочитайте медленно и сделайте паузу. Эта фраза задаёт рамку всей встречи: сегодня никому не нужно побеждать.</div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 440 320" role="img" aria-label="Двое под натяжением, связь не рвётся">
+            <defs><radialGradient id="gT" cx="50%" cy="50%"><stop offset="0" stop-color="#e8a33a" stop-opacity=".2"/><stop offset="1" stop-color="#e8a33a" stop-opacity="0"/></radialGradient></defs>
+            <ellipse cx="220" cy="168" rx="185" ry="112" fill="url(#gT)"/>
+            <g fill="none" stroke-width="2.6" stroke-linecap="round">
+              <circle cx="120" cy="130" r="26" stroke="#8fb8e0"/>
+              <path d="M78 262C78 208 96 180 120 180S162 208 162 262" stroke="#8fb8e0"/>
+              <circle cx="320" cy="130" r="26" stroke="#a78bfa"/>
+              <path d="M278 262C278 208 296 180 320 180S362 208 362 262" stroke="#a78bfa"/>
+            </g>
+            <path d="M150 162C192 196 248 196 290 162" fill="none" stroke="#e8a33a" stroke-width="3.2" stroke-linecap="round"/>
+            <g stroke="#9c94ac" stroke-width="2.2" fill="none" stroke-linecap="round">
+              <path d="M96 68H40M40 68l10-8M40 68l10 8"/>
+              <path d="M344 68h56M400 68l-10-8M400 68l-10 8"/>
+            </g>
+            <text x="72" y="44" text-anchor="middle" fill="#9c94ac" font-size="15">тянет исчезнуть</text>
+            <text x="368" y="44" text-anchor="middle" fill="#9c94ac" font-size="15">тянет надавить</text>
+            <text x="220" y="308" text-anchor="middle" fill="#e8a33a" font-size="15.5">натяжение — это ещё не разрыв</text>
+          </svg>
+        </div>
+      </div>
     </section>
 
     <!-- 3 · вопрос -->
@@ -362,7 +404,28 @@ em{font-style:normal;color:var(--accent)}
           <p>Это навык, а не результат. Его можно тренировать, как любой другой — сначала неуклюже, потом всё точнее.</p>
         </div>
       </div>
-      <p class="note">Первый вопрос почти всегда заканчивается одинаково: вы либо промолчали, либо продавили. Со вторым можно выйти из разговора живой — даже если договориться не получилось.</p>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 168" role="img" aria-label="Кем становится другой человек при каждом вопросе">
+        <path d="M500 14v140" stroke="rgba(242,239,247,.14)" stroke-width="1.5"/>
+        <text x="40" y="22" fill="#d75f6b" font-size="15.5" font-weight="600">с первым вопросом другой становится</text>
+        <text x="540" y="22" fill="#4ec98a" font-size="15.5" font-weight="600">со вторым он остаётся</text>
+        <g fill="none" stroke="#d75f6b" stroke-width="2.4" stroke-linecap="round" opacity=".8">
+          <circle cx="92" cy="80" r="17"/><path d="M64 130C64 104 76 90 92 90S120 104 120 130"/>
+        </g>
+        <g stroke="#9c94ac" stroke-width="2.2" fill="none" stroke-linecap="round"><path d="M146 96h54M200 96l-9-7M200 96l-9 7"/></g>
+        <rect x="222" y="52" width="70" height="80" rx="8" fill="rgba(215,95,107,.16)" stroke="#d75f6b" stroke-width="2.2"/>
+        <g stroke="rgba(215,95,107,.5)" stroke-width="2"><path d="M232 68h50M232 84h50M232 100h50M232 116h50"/></g>
+        <text x="257" y="156" text-anchor="middle" fill="#9c94ac" font-size="14.5">препятствие</text>
+        <text x="352" y="96" fill="#9c94ac" font-size="14.5">разговор становится</text>
+        <text x="352" y="116" fill="#9c94ac" font-size="14.5">соревнованием</text>
+        <g fill="none" stroke-width="2.4" stroke-linecap="round">
+          <circle cx="600" cy="80" r="17" stroke="#8fb8e0"/><path d="M572 130C572 104 584 90 600 90S628 104 628 130" stroke="#8fb8e0"/>
+          <circle cx="720" cy="80" r="17" stroke="#a78bfa"/><path d="M692 130C692 104 704 90 720 90S748 104 748 130" stroke="#a78bfa"/>
+        </g>
+        <path d="M622 74h76" stroke="#4ec98a" stroke-width="2.4" stroke-dasharray="5 6"/>
+        <text x="660" y="156" text-anchor="middle" fill="#9c94ac" font-size="14.5">двое, у каждого своё «важно»</text>
+        <text x="790" y="96" fill="#9c94ac" font-size="14.5">разговор остаётся</text>
+        <text x="790" y="116" fill="#9c94ac" font-size="14.5">разговором</text>
+      </svg></div>
     </section>
 
     <!-- 4 · что унесёте -->
@@ -370,10 +433,10 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> зачем это вам</p>
       <h2>Что вы унесёте <em>через час</em></h2>
       <div class="grid4">
-        <div class="card"><div class="h">01 · тело</div><p>Умение поймать импульс раньше, чем он вылетел репликой. Между «меня задело» и «я сказала» есть несколько секунд — мы будем их искать.</p></div>
-        <div class="card" style="--ch:var(--warm)"><div class="h">02 · различение</div><p>Три формы, которыми становится одна и та же энергия, и способ за три вопроса понять, в какой из них вы сейчас находитесь.</p></div>
-        <div class="card" style="--ch:var(--work)"><div class="h">03 · речь</div><p>Готовые фразы: назвать своё, услышать чужое, отказать, предложить, договориться о следующем шаге. Их можно взять и произнести вслух как есть.</p></div>
-        <div class="card" style="--ch:var(--violet)"><div class="h">04 · свой случай</div><p>Один ваш конфликт, разобранный до конкретной фразы и до ответа на вопрос «а что я сделаю, если мне откажут».</p></div>
+        <div class="card"><svg class="ico" viewBox="0 0 24 24"><path d="M2 12h4.5l2.2-5 3.6 10 2.4-5H22"/></svg><div class="h">01 · тело</div><p>Умение поймать импульс раньше, чем он вылетел репликой. Между «меня задело» и «я сказала» есть несколько секунд — мы будем их искать.</p></div>
+        <div class="card" style="--ch:var(--warm)"><svg class="ico" viewBox="0 0 24 24"><path d="M2 12h5"/><path d="M7 12l5-7h10"/><path d="M7 12h15"/><path d="M7 12l5 7h10"/></svg><div class="h">02 · различение</div><p>Три формы, которыми становится одна и та же энергия, и способ за три вопроса понять, в какой из них вы сейчас находитесь.</p></div>
+        <div class="card" style="--ch:var(--work)"><svg class="ico" viewBox="0 0 24 24"><path d="M3 4h18v12H9l-6 5z"/><path d="M7 9h10M7 12.5h6"/></svg><div class="h">03 · речь</div><p>Готовые фразы: назвать своё, услышать чужое, отказать, предложить, договориться о следующем шаге. Их можно взять и произнести вслух как есть.</p></div>
+        <div class="card" style="--ch:var(--violet)"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><div class="h">04 · свой случай</div><p>Один ваш конфликт, разобранный до конкретной фразы и до ответа на вопрос «а что я сделаю, если мне откажут».</p></div>
       </div>
       <p class="note">Мы берём небольшие ситуации: на маленьком навык ставится быстрее, а потом переносится на крупное. <b>Если вы читаете это одна, без группы</b> — ваши слайды с 8 по 23 и шпаргалка в конце, остальное я использую на живых встречах.</p>
     </section>
@@ -383,11 +446,11 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> перед стартом</p>
       <h2>Пять договорённостей <em>на эту встречу</em></h2>
       <div class="rules">
-        <span class="rule"><i></i>Можно сказать «пас»</span>
-        <span class="rule"><i></i>Берём ситуацию небольшой напряжённости</span>
-        <span class="rule"><i></i>Советы — только по запросу</span>
-        <span class="rule"><i></i>Что здесь звучит — здесь и остаётся</span>
-        <span class="rule"><i></i>Без травматичных и опасных историй</span>
+        <span class="rule"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h9"/><path d="M10 8l4 4-4 4"/><path d="M19 5v14"/></svg>Можно сказать «пас»</span>
+        <span class="rule"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><rect x="8.5" y="9.5" width="7" height="5" rx="1.5"/></svg>Берём ситуацию небольшой напряжённости</span>
+        <span class="rule"><svg class="ico" viewBox="0 0 24 24"><path d="M3 4h18v12H9l-6 5z"/><path d="M10 8.6a2 2 0 1 1 2.6 1.9c-.5.2-.6.5-.6 1v.5"/><path d="M12 14.4h.01"/></svg>Советы — только по запросу</span>
+        <span class="rule"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Что здесь звучит — здесь и остаётся</span>
+        <span class="rule"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 7.6-7 9.5-4-1.9-7-5.1-7-9.5V6z"/><path d="M9.5 12.5h5"/></svg>Без травматичных и опасных историй</span>
       </div>
       <p class="note">Это не формальности. Из них складывается та степень безопасности, при которой можно быть честным — и та честность, ради которой стоит приходить.</p>
       <div class="facnote fac"><b>проверка</b>Попросите видимый кивок на каждый пункт. Если кто-то замялся на конфиденциальности — проговорите это сейчас, а не потом.</div>
@@ -398,6 +461,27 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> разминка · в парах <span class="time">8 мин</span></p>
       <h2>Вспомните <em>небольшое</em> недавнее разногласие</h2>
       <p class="lede">По четыре минуты каждому. Не самый крупный конфликт вашей жизни — обычный, из этой недели: кто моет посуду, кто отвечает клиенту, почему опять перенесли встречу.</p>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 150" role="img" aria-label="Порядок работы в паре">
+        <g fill="none" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="110" cy="58" r="18" stroke="#8fb8e0"/><path d="M80 110C80 82 93 66 110 66S140 82 140 110" stroke="#8fb8e0"/>
+          <circle cx="330" cy="58" r="18" stroke="#4ec98a"/><path d="M300 110C300 82 313 66 330 66S360 82 360 110" stroke="#4ec98a"/>
+          <circle cx="650" cy="58" r="18" stroke="#4ec98a"/><path d="M620 110C620 82 633 66 650 66S680 82 680 110" stroke="#4ec98a"/>
+          <circle cx="870" cy="58" r="18" stroke="#8fb8e0"/><path d="M840 110C840 82 853 66 870 66S900 82 900 110" stroke="#8fb8e0"/>
+        </g>
+        <g stroke="#8fb8e0" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M172 66h96M268 66l-9-7M268 66l-9 7"/></g>
+        <g stroke="#4ec98a" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M712 66h96M808 66l-9-7M808 66l-9 7"/></g>
+        <text x="220" y="50" text-anchor="middle" fill="#9c94ac" font-size="14.5">4 мин</text>
+        <text x="760" y="50" text-anchor="middle" fill="#9c94ac" font-size="14.5">4 мин</text>
+        <text x="110" y="140" text-anchor="middle" fill="#8fb8e0" font-size="15">рассказывает</text>
+        <text x="330" y="140" text-anchor="middle" fill="#4ec98a" font-size="15">слушает и не чинит</text>
+        <text x="650" y="140" text-anchor="middle" fill="#4ec98a" font-size="15">рассказывает</text>
+        <text x="870" y="140" text-anchor="middle" fill="#8fb8e0" font-size="15">слушает и не чинит</text>
+        <g stroke="#e8a33a" stroke-width="2.4" fill="none" stroke-linecap="round">
+          <path d="M458 54h64M522 54l-9-7M522 54l-9 7"/>
+          <path d="M522 82h-64M458 82l9-7M458 82l9 7"/>
+        </g>
+        <text x="490" y="140" text-anchor="middle" fill="#e8a33a" font-size="15">меняетесь</text>
+      </svg></div>
       <div class="grid2">
         <div class="card"><div class="h">расскажите партнёру</div>
           <ul><li>Чего хотели вы?</li><li>Чего хотел другой человек?</li><li>Что вы сделали?</li><li>Что было для вас самым трудным?</li></ul></div>
@@ -417,6 +501,18 @@ em{font-style:normal;color:var(--accent)}
         <span class="wchip">шучу</span><span class="wchip">беру паузу</span><span class="wchip">договариваюсь</span>
         <span class="wchip">настаиваю</span><span class="wchip">извиняюсь</span>
       </div>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 158" role="img" aria-label="Привычная реакция приходит раньше выбранного действия">
+        <path d="M56 22v122" stroke="rgba(242,239,247,.25)" stroke-width="2"/>
+        <text x="56" y="14" text-anchor="middle" fill="#9c94ac" font-size="13.5">что-то задело</text>
+        <path d="M56 56h228" stroke="#d75f6b" stroke-width="3.2"/>
+        <g stroke="#d75f6b" stroke-width="3.2" fill="none" stroke-linecap="round"><path d="M288 56l-11-8M288 56l-11 8"/></g>
+        <text x="304" y="50" fill="#d75f6b" font-size="17" font-weight="700">привычная реакция</text>
+        <text x="304" y="72" fill="#9c94ac" font-size="14.5">доли секунды — вы уже ответили</text>
+        <path d="M56 120h604" stroke="#4ec98a" stroke-width="3.2"/>
+        <g stroke="#4ec98a" stroke-width="3.2" fill="none" stroke-linecap="round"><path d="M664 120l-11-8M664 120l-11 8"/></g>
+        <text x="680" y="114" fill="#4ec98a" font-size="17" font-weight="700">выбранное действие</text>
+        <text x="680" y="136" fill="#9c94ac" font-size="14.5">ему нужно несколько секунд</text>
+      </svg></div>
       <p class="note">Первую реакцию никто не выбирает. Это привычка, которая когда-то была полезной и спасала — и срабатывает она быстрее любого решения. Поэтому её бесполезно ругать. Её можно только заметить и добавить рядом другую.</p>
       <div class="facnote fac"><b>как вести</b>Соберите четыре-пять ответов и выпишите на доску. Слова со слайда добавляйте только если группа их не назвала. Ничего не оценивайте: все эти реакции понадобятся в следующем блоке.</div>
     </section>
@@ -481,7 +577,7 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> теория 2 · агрессия <span class="time">4 мин</span></p>
       <h2>Агрессия здесь — это <em>мобилизация</em>, а не насилие</h2>
       <p class="lede">Энергия, которая поднимается, когда хочется приблизиться, остановить, защитить, изменить, отказаться или закончить. Без неё невозможно ни попросить, ни отказать.</p>
-      <svg class="illu" viewBox="0 0 1000 262" style="margin-top:.5cqw" role="img" aria-label="Цепочка: различие, активация, импульс, действие, последствие">
+      <div class="scrollx"><svg class="illu" viewBox="0 0 1000 262" style="margin-top:.5cqw" role="img" aria-label="Цепочка: различие, активация, импульс, действие, последствие">
         <rect x="505" y="34" width="185" height="172" rx="10" fill="rgba(232,163,58,.10)" stroke="rgba(232,163,58,.45)" stroke-dasharray="6 6"/>
         <text x="597" y="24" text-anchor="middle" fill="#e8a33a" font-size="14" font-weight="700">несколько секунд · здесь ещё возможен выбор</text>
         <path d="M30 180 L120 180 C190 180 200 152 300 148 C400 144 420 116 505 110 C590 104 610 80 690 76 L970 66"
@@ -506,7 +602,7 @@ em{font-style:normal;color:var(--accent)}
           <text x="880" y="226" fill="#4ec98a" font-size="16" font-weight="700">последствие</text>
           <text x="880" y="248" fill="#9c94ac" font-size="13.5">что стало с контактом</text>
         </g>
-      </svg>
+      </svg></div>
       <p class="bigline">Появится импульс или нет — не наш выбор. Его форма — наш.</p>
     </section>
 
@@ -521,7 +617,7 @@ em{font-style:normal;color:var(--accent)}
           <div class="facnote fac"><b>микропрактика · 1 мин</b>Попросите вспомнить последний неприятный разговор и заметить, что откликается в теле прямо сейчас. Соберите два-три ответа вслух — дальше группа слушает теорию уже из ощущения, а не из головы.</div>
         </div>
         <div>
-          <svg class="illu" viewBox="0 0 850 372" role="img" aria-label="Карта телесных маркеров мобилизации">
+          <div class="scrollx"><svg class="illu" viewBox="0 0 850 372" role="img" aria-label="Карта телесных маркеров мобилизации">
             <g fill="none" stroke="rgba(242,239,247,.32)" stroke-width="2.6" stroke-linecap="round">
               <circle cx="400" cy="64" r="36"/>
               <path d="M364 116c-24 9-40 28-40 56v82h152v-82c0-28-16-47-40-56"/>
@@ -547,7 +643,7 @@ em{font-style:normal;color:var(--accent)}
               <text x="586" y="224">кулак или холодные руки</text>
             </g>
             <text x="400" y="362" text-anchor="middle" fill="#9c94ac" font-size="15">у каждого свой набор — важно знать свои два-три</text>
-          </svg>
+          </svg></div>
         </div>
       </div>
     </section>
@@ -602,7 +698,7 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> метафора · один ток</p>
       <h2>Один ток — <em>разные приборы</em></h2>
       <p class="lede">Импульс похож на электричество: сам по себе он не хороший и не плохой. Всё решает то, во что он включён.</p>
-      <svg class="illu" viewBox="0 0 1000 300" style="margin-top:.5cqw" role="img" aria-label="Схема: импульс распределяется в три контура">
+      <div class="scrollx"><svg class="illu" viewBox="0 0 1000 300" style="margin-top:.5cqw" role="img" aria-label="Схема: импульс распределяется в три контура">
         <g>
           <rect x="20" y="118" width="118" height="62" rx="12" fill="rgba(232,163,58,.14)" stroke="#e8a33a" stroke-width="2"/>
           <text x="79" y="145" text-anchor="middle" fill="#e8a33a" font-size="17" font-weight="700">импульс</text>
@@ -633,15 +729,31 @@ em{font-style:normal;color:var(--accent)}
           <circle r="5"><animateMotion path="M210 149h60" dur="2.6s" begin=".55s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin=".55s" repeatCount="indefinite"/></circle>
           <circle r="5"><animateMotion path="M210 149v96h60" dur="2.6s" begin="1.1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="1.1s" repeatCount="indefinite"/></circle>
         </g>
-      </svg>
+      </svg></div>
       <div class="facnote fac"><b>ключевая мысль</b>Люди приходят с идеей «во мне слишком много агрессии, надо убавить». Метафора возвращает другое: убавлять нечего, вопрос в подключении. Это снимает вину и делает разговор про навык.</div>
     </section>
 
     <!-- 14 · бессилие -->
     <section class="slide" data-part="D">
       <p class="eyebrow"><span class="dot"></span> разбор формы · 1 из 3</p>
-      <div class="tagline" style="--zc:var(--cold)">Бессилие</div>
-      <h2 style="font-size:1.7cqw">Желание снимается <em>раньше</em>, чем в нём успели отказать</h2>
+      <div class="headrow">
+        <div>
+          <div class="tagline" style="--zc:var(--cold)">Бессилие</div>
+          <h2 style="font-size:1.7cqw">Желание снимается <em>раньше</em>, чем в нём успели отказать</h2>
+        </div>
+        <svg class="hdillu" viewBox="0 0 300 158" role="img" aria-label="Ток уходит в землю, лампа не горит">
+          <circle cx="42" cy="26" r="8" fill="#d75f6b"/>
+          <path d="M42 26v50" stroke="#d75f6b" stroke-width="3"/>
+          <circle cx="42" cy="46" r="5" fill="#d75f6b" opacity=".6"/>
+          <circle cx="42" cy="60" r="3.6" fill="#d75f6b" opacity=".33"/>
+          <circle cx="42" cy="72" r="2.4" fill="#d75f6b" opacity=".15"/>
+          <g stroke="rgba(215,95,107,.6)" stroke-width="3" stroke-linecap="round"><path d="M14 86h56M24 98h36M34 110h16"/></g>
+          <path d="M52 26h156" stroke="rgba(215,95,107,.3)" stroke-width="2.5" stroke-dasharray="6 8"/>
+          <circle cx="234" cy="26" r="24" fill="none" stroke="rgba(242,239,247,.2)" stroke-width="3"/>
+          <text x="234" y="74" text-anchor="middle" fill="#9c94ac" font-size="15">не горит</text>
+          <text x="42" y="142" text-anchor="middle" fill="#d75f6b" font-size="15">в землю</text>
+        </svg>
+      </div>
       <div class="deep">
         <div class="dbox" style="--zc:var(--cold);--zt:rgba(215,95,107,.09)">
           <div class="h">как выглядит</div>
@@ -666,8 +778,19 @@ em{font-style:normal;color:var(--accent)}
     <!-- 15 · насилие -->
     <section class="slide" data-part="D">
       <p class="eyebrow"><span class="dot"></span> разбор формы · 2 из 3</p>
-      <div class="tagline" style="--zc:var(--hot)">Насилие</div>
-      <h2 style="font-size:1.7cqw">Желание проходит — <em>через</em> другого человека</h2>
+      <div class="headrow">
+        <div>
+          <div class="tagline" style="--zc:var(--hot)">Насилие</div>
+          <h2 style="font-size:1.7cqw">Желание проходит — <em>через</em> другого человека</h2>
+        </div>
+        <svg class="hdillu" viewBox="0 0 300 158" role="img" aria-label="Короткое замыкание">
+          <path d="M40 34h64l32 36" stroke="#ec5230" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <path d="M40 106h64l32-36" stroke="#ec5230" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <circle cx="142" cy="70" r="7" fill="#ec5230"/>
+          <g stroke="#ec5230" stroke-width="3" stroke-linecap="round"><path d="M156 70h26M150 48l18 11M150 92l18-11M178 32l7 18M178 108l7-18"/></g>
+          <text x="150" y="142" text-anchor="middle" fill="#ec5230" font-size="15">ток прошёл сквозь</text>
+        </svg>
+      </div>
       <div class="deep">
         <div class="dbox" style="--zc:var(--hot);--zt:rgba(236,82,48,.09)">
           <div class="h">как выглядит</div>
@@ -692,8 +815,19 @@ em{font-style:normal;color:var(--accent)}
     <!-- 16 · усилие -->
     <section class="slide" data-part="E">
       <p class="eyebrow"><span class="dot"></span> разбор формы · 3 из 3</p>
-      <div class="tagline" style="--zc:var(--work)">Усилие</div>
-      <h2 style="font-size:1.7cqw">Желание названо, и <em>«нет» переживаемо</em></h2>
+      <div class="headrow">
+        <div>
+          <div class="tagline" style="--zc:var(--work)">Усилие</div>
+          <h2 style="font-size:1.7cqw">Желание названо, и <em>«нет» переживаемо</em></h2>
+        </div>
+        <svg class="hdillu" viewBox="0 0 300 158" role="img" aria-label="Лампа горит между двумя полюсами">
+          <path d="M42 70h44M166 70h44" stroke="#4ec98a" stroke-width="3"/>
+          <circle cx="126" cy="70" r="32" fill="rgba(78,201,138,.2)" stroke="#4ec98a" stroke-width="3"/>
+          <g stroke="#4ec98a" stroke-width="2.6" stroke-linecap="round" opacity=".85"><path d="M126 20v12M126 108v12M90 34l9 9M153 106l-9-9M90 106l9-9M153 34l-9 9"/></g>
+          <circle cx="42" cy="70" r="7" fill="#4ec98a"/><circle cx="210" cy="70" r="7" fill="#4ec98a"/>
+          <text x="126" y="142" text-anchor="middle" fill="#4ec98a" font-size="15">светит обоим</text>
+        </svg>
+      </div>
       <div class="deep">
         <div class="dbox" style="--zc:var(--work);--zt:rgba(78,201,138,.09)">
           <div class="h">как выглядит</div>
@@ -729,21 +863,44 @@ em{font-style:normal;color:var(--accent)}
           </div>
         </div>
         <div>
-          <svg class="illu" viewBox="0 0 440 330" role="img" aria-label="Ответы на три вопроса и формы">
-            <g font-size="15">
-              <rect x="20" y="20" width="400" height="76" rx="12" fill="rgba(78,201,138,.10)" stroke="rgba(78,201,138,.5)"/>
-              <text x="42" y="52" fill="#4ec98a" font-size="18" font-weight="700">три «да» — усилие</text>
-              <text x="42" y="76" fill="#9c94ac">я сказала своё, и у тебя есть выбор</text>
-
-              <rect x="20" y="112" width="400" height="76" rx="12" fill="rgba(215,95,107,.10)" stroke="rgba(215,95,107,.5)"/>
-              <text x="42" y="144" fill="#d75f6b" font-size="18" font-weight="700">«нет» на первый — бессилие</text>
-              <text x="42" y="168" fill="#9c94ac">меня в разговоре нет, догадывайся сам</text>
-
-              <rect x="20" y="204" width="400" height="76" rx="12" fill="rgba(236,82,48,.10)" stroke="rgba(236,82,48,.5)"/>
-              <text x="42" y="236" fill="#ec5230" font-size="18" font-weight="700">«нет» на второй — насилие</text>
-              <text x="42" y="260" fill="#9c94ac">отказ обойдётся тебе слишком дорого</text>
+          <svg class="illu" viewBox="0 0 470 400" role="img" aria-label="Блок-схема: ответы на три вопроса">
+            <path d="M46 44v292" stroke="rgba(242,239,247,.22)" stroke-width="2"/>
+            <g stroke="rgba(242,239,247,.22)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M46 336l-7-9M46 336l7-9"/></g>
+            <g fill="none" stroke-width="2.4">
+              <path d="M64 44h44" stroke="#d75f6b"/><path d="M108 44l-9-7M108 44l-9 7" stroke="#d75f6b"/>
+              <path d="M64 152h44" stroke="#ec5230"/><path d="M108 152l-9-7M108 152l-9 7" stroke="#ec5230"/>
+              <path d="M64 260h44" stroke="#a78bfa"/><path d="M108 260l-9-7M108 260l-9 7" stroke="#a78bfa"/>
             </g>
-            <text x="220" y="312" text-anchor="middle" fill="#9c94ac" font-size="13.5">«нет» на третий — вы просите, но не решили, что делать с отказом</text>
+            <g>
+              <rect x="114" y="18" width="348" height="52" rx="10" fill="rgba(215,95,107,.12)" stroke="rgba(215,95,107,.5)"/>
+              <text x="132" y="42" fill="#d75f6b" font-size="16" font-weight="700">бессилие</text>
+              <text x="132" y="61" fill="#9c94ac" font-size="15">меня в разговоре нет, догадывайся сам</text>
+              <rect x="114" y="126" width="348" height="52" rx="10" fill="rgba(236,82,48,.12)" stroke="rgba(236,82,48,.5)"/>
+              <text x="132" y="150" fill="#ec5230" font-size="16" font-weight="700">насилие</text>
+              <text x="132" y="169" fill="#9c94ac" font-size="15">отказ обойдётся тебе слишком дорого</text>
+              <rect x="114" y="234" width="348" height="52" rx="10" fill="rgba(167,139,250,.12)" stroke="rgba(167,139,250,.5)"/>
+              <text x="132" y="258" fill="#a78bfa" font-size="16" font-weight="700">пока не решено</text>
+              <text x="132" y="277" fill="#9c94ac" font-size="15">просите, не зная, что делать с отказом</text>
+              <rect x="20" y="340" width="442" height="56" rx="10" fill="rgba(78,201,138,.14)" stroke="rgba(78,201,138,.6)"/>
+              <text x="40" y="366" fill="#4ec98a" font-size="17" font-weight="700">усилие</text>
+              <text x="40" y="386" fill="#9c94ac" font-size="15">три «да» подряд — вы здесь, и другой здесь</text>
+            </g>
+            <g>
+              <circle cx="46" cy="44" r="18" fill="#191a17" stroke="rgba(242,239,247,.35)" stroke-width="2"/>
+              <text x="46" y="50" text-anchor="middle" fill="#f2eff7" font-size="17" font-weight="700">1</text>
+              <circle cx="46" cy="152" r="18" fill="#191a17" stroke="rgba(242,239,247,.35)" stroke-width="2"/>
+              <text x="46" y="158" text-anchor="middle" fill="#f2eff7" font-size="17" font-weight="700">2</text>
+              <circle cx="46" cy="260" r="18" fill="#191a17" stroke="rgba(242,239,247,.35)" stroke-width="2"/>
+              <text x="46" y="266" text-anchor="middle" fill="#f2eff7" font-size="17" font-weight="700">3</text>
+            </g>
+            <g font-size="13" font-weight="700">
+              <text x="86" y="34" text-anchor="middle" fill="#d75f6b">нет</text>
+              <text x="86" y="142" text-anchor="middle" fill="#ec5230">нет</text>
+              <text x="86" y="250" text-anchor="middle" fill="#a78bfa">нет</text>
+              <text x="62" y="104" fill="#4ec98a">да</text>
+              <text x="62" y="212" fill="#4ec98a">да</text>
+              <text x="62" y="318" fill="#4ec98a">да</text>
+            </g>
           </svg>
         </div>
       </div>
@@ -800,6 +957,18 @@ em{font-style:normal;color:var(--accent)}
           <p style="font-family:var(--display);font-weight:800;font-size:1.2cqw;color:var(--ink);line-height:1.3">«Получилось ли у меня не исчезнуть — и не сделать так, чтобы исчез другой?»</p>
           <p>Ответ «частично» — нормальный результат. Навык растёт из частично, а не из идеально.</p></div>
       </div>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 86" role="img" aria-label="Семь ходов по порядку">
+        <path d="M60 30h840" stroke="rgba(78,201,138,.3)" stroke-width="2"/>
+        <g font-size="13.5" text-anchor="middle">
+          <circle cx="60" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="60" y="35" fill="#4ec98a" font-weight="700">1</text><text x="60" y="66" fill="#9c94ac">назвать своё</text>
+          <circle cx="200" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="200" y="35" fill="#4ec98a" font-weight="700">2</text><text x="200" y="66" fill="#9c94ac">не оправдываться</text>
+          <circle cx="340" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="340" y="35" fill="#4ec98a" font-weight="700">3</text><text x="340" y="66" fill="#9c94ac">услышать</text>
+          <circle cx="480" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="480" y="35" fill="#4ec98a" font-weight="700">4</text><text x="480" y="66" fill="#9c94ac">спросить</text>
+          <circle cx="620" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="620" y="35" fill="#4ec98a" font-weight="700">5</text><text x="620" y="66" fill="#9c94ac">предложить</text>
+          <circle cx="760" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="760" y="35" fill="#4ec98a" font-weight="700">6</text><text x="760" y="66" fill="#9c94ac">оставить «нет»</text>
+          <circle cx="900" cy="30" r="14" fill="rgba(78,201,138,.18)" stroke="#4ec98a" stroke-width="2"/><text x="900" y="35" fill="#4ec98a" font-weight="700">7</text><text x="900" y="66" fill="#9c94ac">мой шаг</text>
+        </g>
+      </svg></div>
       <div class="facnote fac"><b>важно проговорить</b>Семь ходов — это меню: в живом разговоре успеваешь сделать один-два, и этого хватает. Скажите это вслух, иначе группа начнёт ставить себе двойки.</div>
     </section>
 
@@ -879,6 +1048,33 @@ em{font-style:normal;color:var(--accent)}
         <div class="card"><div class="h">три вопроса после отказа</div>
           <ul><li>«Тебе не подходит вся идея или какая-то часть?»</li><li>«А что было бы для тебя нормально?»</li><li>«Могу я вернуться к этому позже?»</li></ul></div>
       </div>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 176" role="img" aria-label="Тупики и живые ходы после отказа">
+        <rect x="14" y="58" width="96" height="58" rx="14" fill="rgba(232,163,58,.14)" stroke="#e8a33a" stroke-width="2.2"/>
+        <text x="62" y="95" text-anchor="middle" fill="#e8a33a" font-size="21" font-weight="800">«нет»</text>
+        <path d="M110 76C150 76 160 40 196 40" fill="none" stroke="rgba(215,95,107,.55)" stroke-width="2.2"/>
+        <path d="M110 98C150 98 160 134 196 134" fill="none" stroke="rgba(78,201,138,.55)" stroke-width="2.2"/>
+        <g>
+          <rect x="200" y="16" width="248" height="46" rx="10" fill="rgba(215,95,107,.10)" stroke="rgba(215,95,107,.45)"/>
+          <g stroke="#d75f6b" stroke-width="2.2" stroke-linecap="round"><path d="M218 33l12 12M230 33l-12 12"/></g>
+          <text x="242" y="45" fill="#9c94ac" font-size="14.5">переубеждать по кругу</text>
+          <rect x="466" y="16" width="304" height="46" rx="10" fill="rgba(215,95,107,.10)" stroke="rgba(215,95,107,.45)"/>
+          <g stroke="#d75f6b" stroke-width="2.2" stroke-linecap="round"><path d="M484 33l12 12M496 33l-12 12"/></g>
+          <text x="508" y="45" fill="#9c94ac" font-size="14.5">наказать холодом и молчанием</text>
+          <text x="794" y="45" fill="#d75f6b" font-size="14.5" font-weight="600">тупики</text>
+        </g>
+        <g>
+          <rect x="200" y="110" width="222" height="46" rx="10" fill="rgba(78,201,138,.10)" stroke="rgba(78,201,138,.5)"/>
+          <text x="216" y="139" fill="#f2eff7" font-size="14.5">уточнить, чему «нет»</text>
+          <rect x="440" y="110" width="242" height="46" rx="10" fill="rgba(78,201,138,.10)" stroke="rgba(78,201,138,.5)"/>
+          <text x="456" y="139" fill="#f2eff7" font-size="14.5">спросить, что возможно</text>
+          <rect x="700" y="110" width="242" height="46" rx="10" fill="rgba(78,201,138,.10)" stroke="rgba(78,201,138,.5)"/>
+          <text x="716" y="139" fill="#f2eff7" font-size="14.5">выбрать свой шаг</text>
+          <g stroke="#4ec98a" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <path d="M422 133h10M432 133l-7-5M432 133l-7 5"/>
+            <path d="M682 133h10M692 133l-7-5M692 133l-7 5"/>
+          </g>
+        </g>
+      </svg></div>
       <p class="bigline">«Нет» — это ответ, из которого можно строить дальше. Молчание — нет.</p>
     </section>
 
@@ -905,6 +1101,26 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> парная работа · механика <span class="time">14 мин</span></p>
       <h2>Два раунда, <em>одна ситуация</em></h2>
       <p class="lede">Каждая пара берёт одну ситуацию и две разные позиции. Цель не в том, чтобы договориться. Цель — удержаться в усилии, когда вас из него вытаскивают.</p>
+      <div class="scrollx"><svg class="strip" viewBox="0 0 1000 108" role="img" aria-label="Структура двух раундов по времени">
+        <rect x="12" y="20" width="292" height="60" rx="12" fill="rgba(215,95,107,.12)" stroke="rgba(215,95,107,.5)"/>
+        <text x="32" y="46" fill="#d75f6b" font-size="16" font-weight="700">раунд 1 · 5 мин</text>
+        <text x="32" y="67" fill="#9c94ac" font-size="14">А играет форму, Б держится</text>
+        <rect x="330" y="20" width="150" height="60" rx="12" fill="rgba(232,163,58,.12)" stroke="rgba(232,163,58,.5)"/>
+        <text x="350" y="46" fill="#e8a33a" font-size="16" font-weight="700">разбор · 2</text>
+        <text x="350" y="67" fill="#9c94ac" font-size="14">что вытащило</text>
+        <rect x="506" y="20" width="292" height="60" rx="12" fill="rgba(78,201,138,.12)" stroke="rgba(78,201,138,.5)"/>
+        <text x="526" y="46" fill="#4ec98a" font-size="16" font-weight="700">раунд 2 · 5 мин</text>
+        <text x="526" y="67" fill="#9c94ac" font-size="14">меняетесь ролями</text>
+        <rect x="824" y="20" width="150" height="60" rx="12" fill="rgba(232,163,58,.12)" stroke="rgba(232,163,58,.5)"/>
+        <text x="844" y="46" fill="#e8a33a" font-size="16" font-weight="700">разбор · 2</text>
+        <text x="844" y="67" fill="#9c94ac" font-size="14">что помогло</text>
+        <g stroke="rgba(242,239,247,.3)" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M306 50h16M322 50l-7-5M322 50l-7 5"/>
+          <path d="M482 50h16M498 50l-7-5M498 50l-7 5"/>
+          <path d="M800 50h16M816 50l-7-5M816 50l-7 5"/>
+        </g>
+        <text x="500" y="102" text-anchor="middle" fill="#9c94ac" font-size="13.5">всего 14 минут на пару</text>
+      </svg></div>
       <div class="grid3">
         <div class="card" style="--ch:var(--cold)"><div class="h">раунд 1 · 5 мин</div>
           <p><b>А</b> выбирает одну форму — бессилие или насилие — и не говорит, какую.</p>
@@ -923,9 +1139,9 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> инструкция играющему</p>
       <h2>Выберите <em>одну</em> форму и держите её весь раунд</h2>
       <div class="grid2">
-        <div class="card" style="--ch:var(--cold)"><div class="h">бессилие</div>
+        <div class="card" style="--ch:var(--cold)"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M4 16h16M7 19h10M10 22h4"/></svg><div class="h">бессилие</div>
           <ul><li>уходить от прямого ответа</li><li>соглашаться, не соглашаясь</li><li>замолкать</li><li>говорить намёками</li><li>обесценивать своё желание</li><li>ждать, что догадаются</li><li>изображать беспомощность</li><li>жаловаться, ничего не предлагая</li></ul></div>
-        <div class="card" style="--ch:var(--hot)"><div class="h">насилие</div>
+        <div class="card" style="--ch:var(--hot)"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L5 13h5.5L9 22l9-11h-6z"/></svg><div class="h">насилие</div>
           <ul><li>продавливать</li><li>обвинять</li><li>стыдить</li><li>перебивать</li><li>требовать</li><li>не замечать чужое «нет»</li><li>ставить ультиматум</li><li>давить на вину</li></ul></div>
       </div>
       <p class="note"><b>Важно:</b> без крика, без личных оскорблений и без реального болезненного материала из жизни участников. Играем роль, а не отыгрываем свою историю.</p>
@@ -978,9 +1194,33 @@ em{font-style:normal;color:var(--accent)}
     <!-- 29 · завершение -->
     <section class="slide" data-part="A">
       <p class="eyebrow"><span class="dot"></span> завершение · один круг <span class="time">5 мин</span></p>
-      <h2 style="max-width:24ch">«В своём следующем трудном разговоре <em>я хочу попробовать…</em>»</h2>
-      <p class="lede">Одна фраза от каждого. Без комментариев и обсуждения — просто фраза.</p>
-      <div class="facnote fac"><b>как закрывать</b>Пройдите круг один раз. Не отвечайте на отдельные высказывания: пусть фразы просто постоят рядом друг с другом.</div>
+      <div class="split" style="--sc:1.1fr .9fr">
+        <div>
+          <h2 style="max-width:24ch">«В своём следующем трудном разговоре <em>я хочу попробовать…</em>»</h2>
+          <p class="lede">Одна фраза от каждого. Без комментариев и обсуждения — просто фраза.</p>
+          <div class="facnote fac"><b>как закрывать</b>Пройдите круг один раз. Не отвечайте на отдельные высказывания: пусть фразы просто постоят рядом друг с другом.</div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 400 340" role="img" aria-label="Круг, в котором говорит один за другим">
+            <circle cx="200" cy="158" r="118" fill="none" stroke="rgba(242,239,247,.13)" stroke-width="2" stroke-dasharray="5 9"/>
+            <g fill="#14121a" stroke="rgba(242,239,247,.32)" stroke-width="2.2">
+              <circle cx="200" cy="40" r="14"/><circle cx="283" cy="75" r="14"/><circle cx="318" cy="158" r="14"/>
+              <circle cx="283" cy="241" r="14"/><circle cx="117" cy="241" r="14"/><circle cx="82" cy="158" r="14"/>
+              <circle cx="117" cy="75" r="14"/>
+            </g>
+            <circle cx="200" cy="276" r="16" fill="rgba(143,184,224,.25)" stroke="#8fb8e0" stroke-width="2.6"/>
+            <path d="M230 254h124v40h-96l-16 15v-15h-12z" fill="rgba(143,184,224,.10)" stroke="#8fb8e0" stroke-width="2.2" stroke-linejoin="round"/>
+            <text x="292" y="279" text-anchor="middle" fill="#8fb8e0" font-size="15">одна фраза</text>
+            <g stroke="#e8a33a" stroke-width="2.4" fill="none" stroke-linecap="round">
+              <path d="M112 224A118 118 0 0 1 96 108"/>
+              <path d="M96 108l-8 11M96 108l11 5"/>
+            </g>
+            <text x="200" y="152" text-anchor="middle" fill="#9c94ac" font-size="15.5">по кругу,</text>
+            <text x="200" y="174" text-anchor="middle" fill="#9c94ac" font-size="15.5">один раз</text>
+            <text x="200" y="330" text-anchor="middle" fill="#9c94ac" font-size="14">никто не комментирует чужую фразу</text>
+          </svg>
+        </div>
+      </div>
     </section>
 
     <!-- 30 · шпаргалка -->
@@ -988,13 +1228,13 @@ em{font-style:normal;color:var(--accent)}
       <p class="eyebrow"><span class="dot"></span> с собой · этот экран можно сохранить в телефон</p>
       <h2>Шпаргалка <em>на трудный разговор</em></h2>
       <div class="grid3">
-        <div class="card" style="--ch:var(--warm)"><div class="h">три формы</div>
+        <div class="card" style="--ch:var(--warm)"><svg class="ico" viewBox="0 0 24 24"><path d="M2 12h5"/><path d="M7 12l5-7h10"/><path d="M7 12h15"/><path d="M7 12l5 7h10"/></svg><div class="h">три формы</div>
           <ul><li><b>Бессилие</b> — меня в разговоре нет.</li><li><b>Усилие</b> — я здесь, и ты здесь.</li><li><b>Насилие</b> — тебя в разговоре нет.</li></ul>
           <p>Смотреть не на громкость, а на то, у кого остался выбор.</p></div>
-        <div class="card" style="--ch:var(--work)"><div class="h">три вопроса себе</div>
+        <div class="card" style="--ch:var(--work)"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.2 2.4c-.6.2-.8.6-.8 1.2v.5"/><path d="M12 16.6h.01"/></svg><div class="h">три вопроса себе</div>
           <ul><li>Он знает, чего я хочу — словами?</li><li>Он может отказать без наказания?</li><li>Я знаю, что сделаю, если «нет»?</li></ul>
           <p>Три «да» — вы в усилии. Первое «нет» — в бессилии, второе — в давлении.</p></div>
-        <div class="card" style="--ch:var(--blue)"><div class="h">пять фраз</div>
+        <div class="card" style="--ch:var(--blue)"><svg class="ico" viewBox="0 0 24 24"><path d="M3 4h18v12H9l-6 5z"/><path d="M7 9h10M7 12.5h6"/></svg><div class="h">пять фраз</div>
           <ul><li>«Мне важно…, потому что…»</li><li>«Что для тебя здесь главное?»</li><li>«Я готова… . Я не готова… .»</li><li>«Моё предложение — …»</li><li>«Если не договоримся, я…»</li></ul></div>
       </div>
       <div class="rules">
