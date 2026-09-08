@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конфликт как форма контакта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14121a;--ink:#f2eff7;--muted:#9c94ac;--line:rgba(242,239,247,.13);
+  --cold:#d75f6b;--warm:#e8a33a;--work:#4ec98a;--hot:#ec5230;--blue:#8fb8e0;--violet:#a78bfa;
+  --accent:var(--blue);
+  --display:'Manrope',system-ui,sans-serif;--sans:'Golos Text',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:var(--ink);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+::selection{background:var(--accent);color:#14121a}
+
+.frame{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+.stage{position:relative;width:min(100vw,177.78vh);height:min(56.25vw,100vh);overflow:hidden;
+  background:var(--bg);container-type:inline-size;transition:background .7s ease}
+.stage.pA{--accent:var(--blue);background:#14121a}
+.stage.pB{--accent:var(--violet);background:#161320}
+.stage.pC{--accent:var(--blue);background:#121520}
+.stage.pD{--accent:var(--warm);background:#191510}
+.stage.pE{--accent:var(--work);background:#111a17}
+.stage.pF{--accent:var(--cold);background:#191219}
+.stage.pG{--accent:var(--hot);background:#1b1310}
+
+/* ── слайды ── */
+.content{position:absolute;inset:0}
+.slide{position:absolute;inset:0;padding:3.2% 7.4% 7.4%;display:flex;flex-direction:column;justify-content:center;
+  opacity:0;visibility:hidden;transform:translateY(1.1%);transition:opacity .42s ease,transform .45s ease,visibility .45s}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.eyebrow{font-size:.74cqw;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:.9cqw;display:flex;align-items:center;gap:.6cqw;font-weight:600}
+.eyebrow .dot{width:.44cqw;height:.44cqw;border-radius:50%;background:var(--accent);transition:background .7s}
+h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.034em;line-height:1.07;text-wrap:balance}
+h1{font-size:3.05cqw;margin-bottom:.9cqw}
+h2{font-size:2.1cqw;margin-bottom:.8cqw}
+h3{font-family:var(--display);font-weight:800;letter-spacing:-.028em}
+em{font-style:normal;color:var(--accent)}
+.lede{font-size:1.12cqw;line-height:1.5;color:var(--muted);max-width:60ch}
+.lede+.lede{margin-top:.55cqw}.lede b{color:var(--ink);font-weight:600}
+.quote{font-family:var(--display);font-weight:800;font-size:1.85cqw;line-height:1.32;letter-spacing:-.026em;
+  border-left:.2cqw solid var(--accent);padding-left:1.2cqw;max-width:44ch}
+.sig{margin-top:1.2cqw;padding-left:1cqw;border-left:.16cqw solid var(--accent)}
+.sig b{font-family:var(--display);font-size:1.1cqw;font-weight:800}
+.sig span{display:block;color:var(--muted);font-size:.82cqw;margin-top:.25cqw}
+.cta{margin-top:1.3cqw;border-radius:99px;background:var(--accent);color:#141018;padding:.72cqw 1.3cqw;
+  font-weight:800;font-size:.92cqw;align-self:flex-start;font-family:var(--display);transition:transform .25s;
+  display:inline-block;text-decoration:none}
+.cta:hover{transform:translateY(-.2cqw)}
+
+/* ── общие блоки ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw;margin-top:.9cqw}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1cqw;margin-top:.9cqw}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1cqw;margin-top:.9cqw}
+.card{border:1px solid var(--line);border-radius:.85cqw;padding:.9cqw 1cqw;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),transparent);display:flex;flex-direction:column;gap:.42cqw}
+.card .h{font-size:.7cqw;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ch,var(--accent))}
+.card h3{font-size:1.2cqw;color:var(--ch,var(--ink))}
+.card p{font-size:.93cqw;line-height:1.48;color:var(--muted)}
+.card p b,.card p strong{color:var(--ink);font-weight:600}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:.26cqw;margin-top:.08cqw}
+.card li{font-size:.91cqw;line-height:1.42;color:var(--muted);padding-left:.88cqw;position:relative}
+.card li:before{content:'';position:absolute;left:0;top:.55em;width:.3cqw;height:.3cqw;border-radius:50%;
+  background:var(--ch,var(--accent));opacity:.7}
+.card li b{color:var(--ink);font-weight:600}
+.bigline{font-family:var(--display);font-size:1.45cqw;font-weight:800;line-height:1.3;
+  border-left:.2cqw solid var(--accent);padding-left:1cqw;margin-top:1cqw;max-width:52ch}
+.note{margin-top:.85cqw;padding-left:1cqw;border-left:.14cqw solid var(--line);font-size:.93cqw;
+  line-height:1.5;color:var(--muted);max-width:70ch}
+.note b{color:var(--ink);font-weight:600}
+.rules{display:flex;flex-wrap:wrap;gap:.55cqw;margin-top:1cqw}
+.rule{display:flex;align-items:center;gap:.55cqw;border:1px solid var(--line);border-radius:99px;
+  padding:.52cqw 1cqw;font-size:1cqw;color:var(--ink);background:rgba(255,255,255,.03)}
+.rule i{width:.42cqw;height:.42cqw;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.words{display:flex;flex-wrap:wrap;gap:.45cqw;margin-top:.9cqw;max-width:76ch}
+.wchip{font-family:var(--display);font-weight:700;font-size:1.02cqw;padding:.38cqw .8cqw;border-radius:99px;
+  background:rgba(255,255,255,.05);border:1px solid transparent;color:var(--ink)}
+.pairs{display:flex;flex-direction:column;gap:.42cqw;margin-top:.9cqw}
+.prow{display:grid;grid-template-columns:1fr auto 1fr;gap:1cqw;align-items:center;padding:.6cqw 1.1cqw;
+  border:1px solid var(--line);border-radius:.7cqw;background:rgba(255,255,255,.022);font-size:1cqw}
+.prow .a{text-align:right;color:var(--blue)}.prow .b{color:var(--violet)}
+.prow .x{font-size:.85cqw;color:var(--muted);opacity:.6}
+
+/* ── текст + иллюстрация ── */
+.split{display:grid;grid-template-columns:var(--sc,1.05fr .95fr);gap:2cqw;align-items:center;margin-top:.5cqw}
+.split.tight{gap:1.4cqw}
+.illu{width:100%;height:auto;display:block}
+.illu text{font-family:'Golos Text',system-ui,sans-serif}
+.cap{margin-top:.5cqw;font-size:.78cqw;color:var(--muted);letter-spacing:.02em;text-align:center}
+
+/* ── нумерованные шаги ── */
+.steps{display:flex;flex-direction:column;gap:.55cqw;margin-top:.9cqw}
+.step{display:grid;grid-template-columns:2.1cqw 1fr;gap:.85cqw;align-items:start;
+  border:1px solid var(--line);border-radius:.7cqw;padding:.65cqw .95cqw;background:rgba(255,255,255,.025)}
+.step .n{font-family:var(--display);font-weight:800;font-size:1.25cqw;color:var(--accent);line-height:1.1}
+.step b{display:block;font-family:var(--display);font-weight:800;font-size:1.05cqw;margin-bottom:.15cqw}
+.step p{font-size:.9cqw;line-height:1.45;color:var(--muted)}
+
+/* ── мифы ── */
+.myths{display:flex;flex-direction:column;gap:.6cqw;margin-top:.9cqw}
+.myth{display:grid;grid-template-columns:1fr 1.25fr;gap:1.2cqw;align-items:center;
+  border:1px solid var(--line);border-radius:.7cqw;padding:.7cqw 1.05cqw;background:rgba(255,255,255,.022)}
+.myth .m{font-size:1cqw;line-height:1.4;color:var(--cold);position:relative;padding-left:1.5cqw}
+.myth .m:before{content:'миф';position:absolute;left:0;top:.28em;font-size:.6cqw;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;opacity:.7}
+.myth .t{font-size:.96cqw;line-height:1.45;color:var(--muted);border-left:.14cqw solid var(--work);padding-left:.9cqw}
+.myth .t b{color:var(--ink);font-weight:600}
+
+/* ── разбор формы ── */
+.deep{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1cqw;margin-top:.9cqw}
+.dbox{border:1px solid var(--line);border-top:.18cqw solid var(--zc,var(--accent));border-radius:.8cqw;
+  padding:.85cqw .95cqw;background:linear-gradient(180deg,var(--zt,rgba(255,255,255,.04)),transparent);
+  display:flex;flex-direction:column;gap:.35cqw}
+.dbox .h{font-size:.68cqw;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--zc,var(--accent))}
+.dbox p{font-size:.91cqw;line-height:1.46;color:var(--muted)}
+.dbox p b{color:var(--ink);font-weight:600}
+.dbox .say{font-size:.94cqw;line-height:1.5;color:var(--ink);opacity:.92;font-style:italic}
+.dbox ul{list-style:none;display:flex;flex-direction:column;gap:.24cqw}
+.dbox li{font-size:.89cqw;line-height:1.4;color:var(--muted);padding-left:.85cqw;position:relative}
+.dbox li:before{content:'';position:absolute;left:0;top:.55em;width:.28cqw;height:.28cqw;border-radius:50%;
+  background:var(--zc,var(--accent));opacity:.75}
+.tagline{display:inline-flex;align-items:center;gap:.5cqw;font-family:var(--display);font-weight:800;
+  font-size:1.5cqw;color:var(--zc);margin-bottom:.2cqw}
+
+/* ── банк фраз ── */
+.bank{display:grid;grid-template-columns:repeat(3,1fr);gap:.85cqw 1.1cqw;margin-top:.9cqw}
+.bgroup{display:flex;flex-direction:column;gap:.3cqw}
+.bgroup .h{font-size:.66cqw;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--bc,var(--accent))}
+.bgroup span{font-size:.9cqw;line-height:1.42;color:var(--muted);padding-left:.8cqw;border-left:.12cqw solid var(--bc,var(--line))}
+.bgroup span b{color:var(--ink);font-weight:600}
+
+/* ── три формы (карточки) ── */
+.forms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw;margin-top:1cqw}
+.fcard{border:1px solid var(--line);border-top:.2cqw solid var(--zc);border-radius:.85cqw;padding:.9cqw 1cqw;
+  background:linear-gradient(180deg,var(--zt),transparent);display:flex;flex-direction:column;gap:.4cqw;transition:transform .3s}
+.fcard:hover{transform:translateY(-.28cqw)}
+.fcard h3{font-size:1.55cqw;color:var(--zc);line-height:1}
+.fcard .who{font-family:var(--display);font-weight:700;font-size:.98cqw;color:var(--ink)}
+.fcard .say{font-size:.88cqw;line-height:1.42;color:var(--muted);font-style:italic;
+  border-left:.14cqw solid var(--zc);padding-left:.7cqw}
+.fcard svg{margin-top:.1cqw}
+
+/* ── ситуации ── */
+.sithead{display:flex;align-items:flex-end;justify-content:space-between;gap:2cqw}
+.rnd{display:inline-flex;align-items:center;gap:.5cqw;background:var(--warm);color:#141018;
+  font-family:var(--display);font-weight:800;font-size:.88cqw;padding:.5cqw 1.05cqw;border-radius:99px;
+  transition:transform .25s;flex:0 0 auto}
+.rnd:hover{transform:translateY(-.18cqw)}
+.tabs{display:flex;flex-wrap:wrap;gap:.45cqw;margin-top:.9cqw}
+.tab{display:inline-flex;align-items:center;gap:.5cqw;font-family:var(--display);font-weight:700;
+  font-size:.92cqw;padding:.46cqw 1cqw;border-radius:99px;border:1px solid var(--line);
+  color:var(--muted);background:rgba(255,255,255,.03);transition:.22s;white-space:nowrap}
+.tab:hover{color:var(--ink);border-color:var(--muted)}
+.tab i{width:.4cqw;height:.4cqw;border-radius:50%;background:currentColor;opacity:.6;flex:0 0 auto}
+.tab[aria-current="true"]{background:var(--ink);color:#141018;border-color:var(--ink)}
+.tab[aria-current="true"] i{opacity:1}
+.sitctx{margin-top:1.1cqw;font-size:1.08cqw;line-height:1.48;color:var(--ink);max-width:78ch}
+.sitctx b{display:block;font-family:var(--display);font-weight:800;color:var(--accent);
+  font-size:.7cqw;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.35cqw}
+.sit{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw;margin-top:1cqw}
+.pos{border:1px solid var(--line);border-left:.2cqw solid var(--pc);border-radius:.8cqw;padding:.85cqw .95cqw;
+  background:linear-gradient(90deg,var(--pt),transparent 75%);display:flex;flex-direction:column;gap:.35cqw}
+.pos .h{font-family:var(--display);font-weight:800;font-size:1cqw;color:var(--pc)}
+.pos p{font-size:.95cqw;line-height:1.46;color:var(--muted)}
+.pos .val{font-size:.82cqw;color:var(--ink);opacity:.85}
+.decide{margin-top:1cqw;padding:.8cqw 1cqw;border-radius:.75cqw;border:1px dashed var(--line);
+  font-size:.93cqw;line-height:1.45;color:var(--muted)}
+.decide b{display:block;font-family:var(--display);font-size:.7cqw;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.3cqw}
+
+/* ── режим ведущего ── */
+.fac{display:none}
+.stage.facon .fac{display:block}
+.stage.facon .time{display:inline-flex}
+.time{display:none;align-items:center;gap:.35cqw;font-size:.68cqw;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--warm);border:1px solid rgba(232,163,58,.45);border-radius:99px;padding:.16cqw .6cqw}
+.facnote{margin-top:.8cqw;padding:.7cqw .95cqw;border:1px dashed rgba(232,163,58,.45);border-radius:.7cqw;
+  background:rgba(232,163,58,.07);font-size:.86cqw;line-height:1.48;color:#e6d6b2;max-width:84ch}
+.facnote b{display:block;font-family:var(--display);font-size:.64cqw;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--warm);margin-bottom:.3cqw}
+.factoggle{position:absolute;top:1.15cqw;right:5.6cqw;border:1px solid var(--line);border-radius:99px;
+  padding:.3cqw .8cqw;font-size:.66cqw;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  color:var(--muted);z-index:24;transition:.25s}
+.factoggle:hover{color:var(--ink)}
+.stage.facon .factoggle{color:#141018;background:var(--warm);border-color:var(--warm)}
+
+/* ── навигация ── */
+.nav{position:absolute;left:0;right:0;bottom:0;padding:.9cqw 7.4% 1.2cqw;display:flex;align-items:center;
+  justify-content:space-between;z-index:20;background:linear-gradient(transparent,rgba(15,13,20,.94) 45%)}
+.nav button{color:var(--muted);font-size:.72cqw;text-transform:uppercase;letter-spacing:.1em;font-weight:600;transition:color .25s}
+.nav button:hover{color:var(--ink)}
+.nav button:disabled{opacity:0;pointer-events:none}
+.dots{display:flex;gap:.25cqw;flex-wrap:wrap;justify-content:center;max-width:70%}
+.dots span{width:.36cqw;height:.36cqw;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:.3s}
+.dots span.on{width:1.3cqw;border-radius:99px;background:var(--accent)}
+.counter{position:absolute;top:1.25cqw;right:1.6cqw;font-size:.68cqw;color:var(--muted);z-index:22;font-variant-numeric:tabular-nums}
+
+@keyframes flow{0%{offset-distance:0%;opacity:0}12%{opacity:1}80%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+/* ── телефон и узкие экраны: лента вместо слайдов ── */
+@media(max-aspect-ratio:4/3){
+  html,body{height:auto;overflow:auto;background:var(--bg)}
+  .frame{position:static;display:block;background:var(--bg)}
+  .stage{width:100%;height:auto;overflow:visible;container-type:normal;background:#14121a}
+  .content{position:static}
+  .slide{position:relative;inset:auto;justify-content:flex-start;
+    opacity:1!important;visibility:visible!important;transform:none!important;
+    padding:34px 20px 38px;border-bottom:1px solid var(--line)}
+  .nav,.counter,.factoggle,.rnd{display:none!important}
+
+  .eyebrow{font-size:11px;letter-spacing:.16em;margin-bottom:12px;gap:7px}
+  .eyebrow .dot{width:6px;height:6px}
+  h1{font-size:32px;margin-bottom:12px}
+  h2{font-size:23px;margin-bottom:10px}
+  .slide h2[style]{font-size:23px!important}
+  .lede{font-size:16px;max-width:none}
+  .lede+.lede{margin-top:8px}
+  .quote{font-size:21px;padding-left:14px;border-left-width:3px;max-width:none}
+  .sig{margin-top:16px;padding-left:12px;border-left-width:2px}
+  .sig b{font-size:17px}.sig span{font-size:13px}
+  .cta{font-size:16px;padding:12px 20px;margin-top:18px}
+
+  .split,.grid2,.grid3,.grid4,.forms,.deep,.bank,.sit{grid-template-columns:1fr!important;gap:14px;margin-top:14px}
+  .card,.dbox,.fcard,.pos{border-radius:12px;padding:14px 15px;gap:7px}
+  .card .h,.dbox .h,.bgroup .h{font-size:11px;letter-spacing:.16em}
+  .card h3{font-size:18px}
+  .card p,.card li,.dbox p,.dbox li,.note,.decide,.myth .t,.bgroup span{font-size:15px;line-height:1.5}
+  .card li,.dbox li{padding-left:14px}
+  .card li:before,.dbox li:before{width:5px;height:5px;top:.6em}
+  .bigline{font-size:19px;padding-left:14px;border-left-width:3px;margin-top:16px;max-width:none}
+  .note{margin-top:14px;padding-left:14px;border-left-width:2px;max-width:none}
+  .rules,.words{gap:8px;margin-top:14px}
+  .rule,.wchip{font-size:15px;padding:9px 15px}
+  .rule i{width:6px;height:6px}
+  .pairs{gap:8px;margin-top:14px}
+  .prow{grid-template-columns:1fr;gap:2px;font-size:15px;padding:11px 14px;text-align:left}
+  .prow .a{text-align:left}.prow .x{font-size:12px}
+  .steps{gap:10px;margin-top:14px}
+  .step{grid-template-columns:26px 1fr;gap:10px;padding:12px 14px;border-radius:12px}
+  .step .n{font-size:19px}.step b{font-size:16px}.step p{font-size:14.5px}
+  .myths{gap:10px;margin-top:14px}
+  .myth{grid-template-columns:1fr;gap:10px;padding:13px 15px}
+  .myth .m{font-size:16px;padding-left:0;padding-top:16px}
+  .myth .m:before{top:0;font-size:10px}
+  .myth .t{padding-left:12px;border-left-width:2px}
+  .deep .dbox .say{font-size:15px}
+  .tagline{font-size:26px;margin-bottom:6px}
+  .fcard h3{font-size:26px}.fcard .who{font-size:16px}.fcard .say{font-size:14.5px;padding-left:10px}
+  .bank{gap:14px}
+  .bgroup span{padding-left:11px;border-left-width:2px}
+  .sithead{display:block}
+  .tabs{gap:8px;margin-top:14px}
+  .tab{font-size:14px;padding:9px 14px}
+  .tab i{width:6px;height:6px}
+  .sitctx{font-size:16px;margin-top:16px;max-width:none}
+  .sitctx b{font-size:11px;letter-spacing:.16em;margin-bottom:6px}
+  .pos .h{font-size:16px}.pos p{font-size:15px}.pos .val{font-size:13.5px}
+  .decide{margin-top:14px;padding:13px 15px;border-radius:12px}
+  .decide b{font-size:11px;letter-spacing:.16em;margin-bottom:5px}
+  .facnote{margin-top:14px;padding:12px 14px;font-size:14px;max-width:none;border-radius:12px}
+  .facnote b{font-size:10px;margin-bottom:5px}
+  .cap{font-size:13px;margin-top:8px}
+  .illu{margin-top:14px}
+  .time{display:inline-flex;font-size:10px;padding:3px 8px}
+}
+
+/* ── печать / экспорт в PDF ── */
+@media print{
+  @page{size:297mm 167mm;margin:0}
+  html,body{height:auto;overflow:visible;background:#14121a;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .frame{position:static;display:block}
+  .stage{width:297mm;height:auto;overflow:visible;container-type:inline-size}
+  .content{position:static}
+  .slide{position:relative;inset:auto;height:167mm;opacity:1!important;visibility:visible!important;
+    transform:none!important;break-after:page;page-break-after:always;background:var(--bg)}
+  .nav,.counter,.factoggle,.rnd{display:none!important}
+  .stage.pA .slide{background:#14121a}
+}
+</style>
+</head>
+<body>
+<div class="frame"><main class="stage pA" id="stage">
+
+  <button class="factoggle" id="factoggle">ведущему</button>
+  <div class="counter" id="counter"></div>
+
+  <div class="content">
+
+    <!-- 1 · обложка -->
+    <section class="slide active" data-part="A">
+      <div class="split" style="--sc:1.15fr .85fr">
+        <div>
+          <p class="eyebrow"><span class="dot"></span> воркшоп <span class="time">≈ 60 мин</span></p>
+          <h1>Конфликт как <em>форма контакта</em></h1>
+          <p class="lede">Конфликт — не про то, как добиться «да». Он про то, чтобы сказать своё, услышать другого и выбрать следующий шаг, даже если вы не сошлись.</p>
+          <div class="sig"><b>Татьяна Руденко</b><span>психолог · коуч · телесно-ориентированный терапевт</span></div>
+          <button class="cta" data-go="1">Начать →</button>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 460 330" role="img" aria-label="Две фигуры и ток между ними">
+            <defs>
+              <radialGradient id="gA" cx="50%" cy="50%"><stop offset="0" stop-color="#8fb8e0" stop-opacity=".38"/><stop offset="1" stop-color="#8fb8e0" stop-opacity="0"/></radialGradient>
+              <radialGradient id="gB" cx="50%" cy="50%"><stop offset="0" stop-color="#a78bfa" stop-opacity=".38"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+            </defs>
+            <circle cx="120" cy="165" r="120" fill="url(#gA)"/>
+            <circle cx="340" cy="165" r="120" fill="url(#gB)"/>
+            <g fill="none" stroke-width="2.6" stroke-linecap="round">
+              <circle cx="120" cy="104" r="28" stroke="#8fb8e0"/>
+              <path d="M72 240C72 178 93 148 120 148S168 178 168 240" stroke="#8fb8e0"/>
+              <circle cx="340" cy="104" r="28" stroke="#a78bfa"/>
+              <path d="M292 240C292 178 313 148 340 148S388 178 388 240" stroke="#a78bfa"/>
+            </g>
+            <path id="arc" d="M154 88C196 46 264 46 306 88" fill="none" stroke="#4ec98a" stroke-width="2.4" stroke-dasharray="5 7" opacity=".85"/>
+            <circle r="5.5" fill="#4ec98a">
+              <animateMotion dur="3.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                <mpath href="#arc"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="4" fill="#e8a33a">
+              <animateMotion dur="3.1s" begin="1.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+                <mpath href="#arc"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3.1s" begin="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="230" y="290" text-anchor="middle" fill="#9c94ac" font-size="14" letter-spacing="3">КОНТАКТ ПОД НАПРЯЖЕНИЕМ</text>
+          </svg>
+        </div>
+      </div>
+      <div class="facnote fac"><b>тайминг</b>Разминка 8 · сбор 4 · теория 16 · парная работа 14 · свой случай 10 · завершение 5. Держите низкую интенсивность: это тренировочная площадка, а не терапевтическая группа.</div>
+    </section>
+
+    <!-- 2 · открытие -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> открытие</p>
+      <p class="quote">«Сегодня мы не учимся избегать конфликтов. Мы тренируемся <em>оставаться</em> в них — не исчезая самим и не продавливая другого».</p>
+      <div class="facnote fac"><b>сказать вслух</b>Прочитайте медленно и сделайте паузу. Эта фраза задаёт рамку всей встречи: сегодня никому не нужно побеждать.</div>
+    </section>
+
+    <!-- 3 · вопрос -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> вопрос, с которым работаем</p>
+      <h2>Не «как сделать, чтобы всё <em>закончилось хорошо</em>?»</h2>
+      <div class="grid2">
+        <div class="card" style="--ch:var(--cold)">
+          <div class="h">вопрос, который заводит в тупик</div>
+          <p>«Как побыстрее и потише закончить этот разговор — желательно в мою пользу?»</p>
+          <p>Пока вопрос стоит так, другой человек превращается в препятствие, а разговор — в соревнование, где кто-то останется в проигрыше.</p>
+        </div>
+        <div class="card" style="--ch:var(--work)">
+          <div class="h">вопрос, с которым можно работать</div>
+          <p><b>«Как сказать то, что мне важно, услышать другого и сохранить способность действовать, если мы не договоримся?»</b></p>
+          <p>Это навык, а не результат. Его можно тренировать, как любой другой — сначала неуклюже, потом всё точнее.</p>
+        </div>
+      </div>
+      <p class="note">Первый вопрос почти всегда заканчивается одинаково: вы либо промолчали, либо продавили. Со вторым можно выйти из разговора живой — даже если договориться не получилось.</p>
+    </section>
+
+    <!-- 4 · что унесёте -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> зачем это вам</p>
+      <h2>Что вы унесёте <em>через час</em></h2>
+      <div class="grid4">
+        <div class="card"><div class="h">01 · тело</div><p>Умение поймать импульс раньше, чем он вылетел репликой. Между «меня задело» и «я сказала» есть несколько секунд — мы будем их искать.</p></div>
+        <div class="card" style="--ch:var(--warm)"><div class="h">02 · различение</div><p>Три формы, которыми становится одна и та же энергия, и способ за три вопроса понять, в какой из них вы сейчас находитесь.</p></div>
+        <div class="card" style="--ch:var(--work)"><div class="h">03 · речь</div><p>Готовые фразы: назвать своё, услышать чужое, отказать, предложить, договориться о следующем шаге. Их можно взять и произнести вслух как есть.</p></div>
+        <div class="card" style="--ch:var(--violet)"><div class="h">04 · свой случай</div><p>Один ваш конфликт, разобранный до конкретной фразы и до ответа на вопрос «а что я сделаю, если мне откажут».</p></div>
+      </div>
+      <p class="note">Мы берём небольшие ситуации: на маленьком навык ставится быстрее, а потом переносится на крупное. <b>Если вы читаете это одна, без группы</b> — ваши слайды с 8 по 23 и шпаргалка в конце, остальное я использую на живых встречах.</p>
+    </section>
+
+    <!-- 5 · договорённости -->
+    <section class="slide" data-part="B">
+      <p class="eyebrow"><span class="dot"></span> перед стартом</p>
+      <h2>Пять договорённостей <em>на эту встречу</em></h2>
+      <div class="rules">
+        <span class="rule"><i></i>Можно сказать «пас»</span>
+        <span class="rule"><i></i>Берём ситуацию небольшой напряжённости</span>
+        <span class="rule"><i></i>Советы — только по запросу</span>
+        <span class="rule"><i></i>Что здесь звучит — здесь и остаётся</span>
+        <span class="rule"><i></i>Без травматичных и опасных историй</span>
+      </div>
+      <p class="note">Это не формальности. Из них складывается та степень безопасности, при которой можно быть честным — и та честность, ради которой стоит приходить.</p>
+      <div class="facnote fac"><b>проверка</b>Попросите видимый кивок на каждый пункт. Если кто-то замялся на конфиденциальности — проговорите это сейчас, а не потом.</div>
+    </section>
+
+    <!-- 6 · разминка -->
+    <section class="slide" data-part="C">
+      <p class="eyebrow"><span class="dot"></span> разминка · в парах <span class="time">8 мин</span></p>
+      <h2>Вспомните <em>небольшое</em> недавнее разногласие</h2>
+      <p class="lede">По четыре минуты каждому. Не самый крупный конфликт вашей жизни — обычный, из этой недели: кто моет посуду, кто отвечает клиенту, почему опять перенесли встречу.</p>
+      <div class="grid2">
+        <div class="card"><div class="h">расскажите партнёру</div>
+          <ul><li>Чего хотели вы?</li><li>Чего хотел другой человек?</li><li>Что вы сделали?</li><li>Что было для вас самым трудным?</li></ul></div>
+        <div class="card" style="--ch:var(--work)"><div class="h">задача слушающего</div>
+          <ul><li>Слушать и не чинить.</li><li>Советы — только если попросили.</li><li>Можно задать один уточняющий вопрос.</li><li>Не сравнивать со своей историей.</li></ul></div>
+      </div>
+      <div class="facnote fac"><b>тайминг</b>Смену через четыре минуты объявляйте вслух и давайте предупреждение за 30 секунд, чтобы человека не оборвало на полуслове.</div>
+    </section>
+
+    <!-- 7 · сбор -->
+    <section class="slide" data-part="C">
+      <p class="eyebrow"><span class="dot"></span> общий сбор <span class="time">4 мин</span></p>
+      <h2>«Когда начинается конфликт — <em>что вы обычно делаете?</em>»</h2>
+      <div class="words">
+        <span class="wchip">объясняю</span><span class="wchip">замираю</span><span class="wchip">ухожу</span>
+        <span class="wchip">соглашаюсь</span><span class="wchip">нападаю</span><span class="wchip">молчу</span>
+        <span class="wchip">шучу</span><span class="wchip">беру паузу</span><span class="wchip">договариваюсь</span>
+        <span class="wchip">настаиваю</span><span class="wchip">извиняюсь</span>
+      </div>
+      <p class="note">Первую реакцию никто не выбирает. Это привычка, которая когда-то была полезной и спасала — и срабатывает она быстрее любого решения. Поэтому её бесполезно ругать. Её можно только заметить и добавить рядом другую.</p>
+      <div class="facnote fac"><b>как вести</b>Соберите четыре-пять ответов и выпишите на доску. Слова со слайда добавляйте только если группа их не назвала. Ничего не оценивайте: все эти реакции понадобятся в следующем блоке.</div>
+    </section>
+
+    <!-- 8 · теория 1 -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> теория 1 · конфликт <span class="time">4 мин</span></p>
+      <div class="split tight" style="--sc:1.1fr .9fr">
+        <div>
+          <p class="quote">«Конфликт начинается там, где <em>две реальности не совпали</em>, а решение принимать всё равно надо».</p>
+          <div class="pairs">
+            <div class="prow"><span class="a">я хочу близости</span><span class="x">↔</span><span class="b">ты хочешь пространства</span></div>
+            <div class="prow"><span class="a">мне нужна ясность сейчас</span><span class="x">↔</span><span class="b">тебе нужно время</span></div>
+            <div class="prow"><span class="a">мне важно сдать сегодня</span><span class="x">↔</span><span class="b">у тебя нет ресурса</span></div>
+            <div class="prow"><span class="a">я говорю «нет»</span><span class="x">↔</span><span class="b">ты ждёшь «да»</span></div>
+          </div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 420 300" role="img" aria-label="Две пересекающиеся реальности и зона решения">
+            <defs>
+              <clipPath id="clipL"><circle cx="165" cy="140" r="105"/></clipPath>
+            </defs>
+            <circle cx="165" cy="140" r="105" fill="rgba(143,184,224,.13)" stroke="#8fb8e0" stroke-width="2"/>
+            <circle cx="255" cy="140" r="105" fill="rgba(167,139,250,.13)" stroke="#a78bfa" stroke-width="2"/>
+            <g clip-path="url(#clipL)"><circle cx="255" cy="140" r="105" fill="rgba(232,163,58,.22)"/></g>
+            <text x="92" y="146" text-anchor="middle" fill="#8fb8e0" font-size="15" font-weight="600">моя</text>
+            <text x="92" y="166" text-anchor="middle" fill="#8fb8e0" font-size="15" font-weight="600">реальность</text>
+            <text x="328" y="146" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="600">твоя</text>
+            <text x="328" y="166" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="600">реальность</text>
+            <text x="210" y="140" text-anchor="middle" fill="#e8a33a" font-size="15" font-weight="700">то, что</text>
+            <text x="210" y="160" text-anchor="middle" fill="#e8a33a" font-size="15" font-weight="700">надо решить</text>
+            <text x="210" y="288" text-anchor="middle" fill="#9c94ac" font-size="13.5">разница есть всегда · решение — не всегда</text>
+          </svg>
+        </div>
+      </div>
+      <p class="note">Ни в одной паре нет плохого человека. Есть разница — и решение, которое нельзя откладывать бесконечно. Если разницу не назвать, решение всё равно примется, просто молча и не в вашу пользу.</p>
+    </section>
+
+    <!-- 9 · мифы -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> по дороге · три мифа</p>
+      <h2>Что мешает <em>раньше, чем разговор начался</em></h2>
+      <div class="myths">
+        <div class="myth">
+          <div class="m">В хороших отношениях конфликтов не бывает.</div>
+          <div class="t">Там, где живут двое живых людей, разница неизбежна. Конфликтов не видно там, где кто-то один <b>перестал говорить, чего хочет</b> — и это не признак хороших отношений, а признак того, что один человек вышел из них потихоньку.</div>
+        </div>
+        <div class="myth">
+          <div class="m">Конфликт — это ссора.</div>
+          <div class="t">Ссора — только одна из форм. Конфликт бывает тихим, деловым и коротким: «Мне не подходит этот вариант. Давай искать другой». Ни голоса, ни хлопнувшей двери — а разница названа и решение принято.</div>
+        </div>
+        <div class="myth">
+          <div class="m">Если я права, разговор должен закончиться в мою пользу.</div>
+          <div class="t">Правота не даёт власти над чужим «нет». Можно быть абсолютно правой и всё равно услышать отказ. Тогда работа не в том, чтобы доказать ещё раз, а в том, чтобы <b>решить, что вы будете делать дальше</b>.</div>
+        </div>
+      </div>
+      <div class="facnote fac"><b>по опыту</b>Третий миф — самый живучий. Задержитесь на нём: именно из правоты чаще всего рождается давление, которое человек не считает давлением.</div>
+    </section>
+
+    <!-- 10 · теория 2 -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> теория 2 · агрессия <span class="time">4 мин</span></p>
+      <h2>Агрессия здесь — это <em>мобилизация</em>, а не насилие</h2>
+      <p class="lede">Энергия, которая поднимается, когда хочется приблизиться, остановить, защитить, изменить, отказаться или закончить. Без неё невозможно ни попросить, ни отказать.</p>
+      <svg class="illu" viewBox="0 0 1000 262" style="margin-top:.5cqw" role="img" aria-label="Цепочка: различие, активация, импульс, действие, последствие">
+        <rect x="505" y="34" width="185" height="172" rx="10" fill="rgba(232,163,58,.10)" stroke="rgba(232,163,58,.45)" stroke-dasharray="6 6"/>
+        <text x="597" y="24" text-anchor="middle" fill="#e8a33a" font-size="14" font-weight="700">несколько секунд · здесь ещё возможен выбор</text>
+        <path d="M30 180 L120 180 C190 180 200 152 300 148 C400 144 420 116 505 110 C590 104 610 80 690 76 L970 66"
+              fill="none" stroke="rgba(242,239,247,.24)" stroke-width="2.6"/>
+        <g stroke="rgba(242,239,247,.16)" stroke-width="1.2" stroke-dasharray="3 4">
+          <path d="M95 180v25M300 148v57M505 110v95M690 76v129M880 69v136"/>
+        </g>
+        <g text-anchor="middle">
+          <circle cx="95" cy="180" r="8" fill="#8fb8e0"/>
+          <text x="95" y="226" fill="#8fb8e0" font-size="16" font-weight="700">различие</text>
+          <text x="95" y="248" fill="#9c94ac" font-size="13.5">реальности не совпали</text>
+          <circle cx="300" cy="148" r="8" fill="#8fb8e0"/>
+          <text x="300" y="226" fill="#8fb8e0" font-size="16" font-weight="700">активация</text>
+          <text x="300" y="248" fill="#9c94ac" font-size="13.5">дыхание · сердце · жар</text>
+          <circle cx="505" cy="110" r="8" fill="#e8a33a"/>
+          <text x="505" y="226" fill="#e8a33a" font-size="16" font-weight="700">импульс</text>
+          <text x="505" y="248" fill="#9c94ac" font-size="13.5">«хочу» · «не так»</text>
+          <circle cx="690" cy="76" r="10" fill="#e8a33a" stroke="#191510" stroke-width="3"/>
+          <text x="690" y="226" fill="#e8a33a" font-size="16" font-weight="700">действие</text>
+          <text x="690" y="248" fill="#9c94ac" font-size="13.5">только это мы и выбираем</text>
+          <circle cx="880" cy="69" r="8" fill="#4ec98a"/>
+          <text x="880" y="226" fill="#4ec98a" font-size="16" font-weight="700">последствие</text>
+          <text x="880" y="248" fill="#9c94ac" font-size="13.5">что стало с контактом</text>
+        </g>
+      </svg>
+      <p class="bigline">Появится импульс или нет — не наш выбор. Его форма — наш.</p>
+    </section>
+
+    <!-- 11 · тело -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> практика внимания · тело</p>
+      <div class="split tight" style="--sc:.92fr 1.08fr">
+        <div>
+          <h2>Тело узнаёт <em>раньше головы</em></h2>
+          <p class="lede">Те самые несколько секунд между «меня задело» и «я сказала» ощущаются физически. Если поймать хотя бы один сигнал, вы попадаете в точку, где выбор ещё есть.</p>
+          <p class="note">Задание на неделю: выберите <b>один</b> маркер — свой, самый заметный — и просто отмечайте, когда он появляется. Ничего не делайте с ним. У многих одно только наблюдение уже меняет разговоры: успеваешь заметить «меня разогнало» до того, как фраза вылетела.</p>
+          <div class="facnote fac"><b>микропрактика · 1 мин</b>Попросите вспомнить последний неприятный разговор и заметить, что откликается в теле прямо сейчас. Соберите два-три ответа вслух — дальше группа слушает теорию уже из ощущения, а не из головы.</div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 850 372" role="img" aria-label="Карта телесных маркеров мобилизации">
+            <g fill="none" stroke="rgba(242,239,247,.32)" stroke-width="2.6" stroke-linecap="round">
+              <circle cx="400" cy="64" r="36"/>
+              <path d="M364 116c-24 9-40 28-40 56v82h152v-82c0-28-16-47-40-56"/>
+              <path d="M324 178l-42 48M476 178l42 48"/>
+              <path d="M352 254v76M448 254v76"/>
+            </g>
+            <g stroke="rgba(232,163,58,.5)" stroke-width="1.4" stroke-dasharray="3 4">
+              <path d="M370 80H272M380 116H272M400 158H272M356 208H272M432 76h96M492 168h84M494 218h82"/>
+            </g>
+            <g fill="#e8a33a">
+              <circle cx="370" cy="80" r="5.5"/><circle cx="380" cy="116" r="5.5"/><circle cx="400" cy="158" r="5.5"/>
+              <circle cx="356" cy="208" r="5.5"/><circle cx="432" cy="76" r="5.5"/><circle cx="492" cy="168" r="5.5"/><circle cx="494" cy="218" r="5.5"/>
+            </g>
+            <g fill="#f2eff7" font-size="17" text-anchor="end">
+              <text x="262" y="86">челюсть сжалась</text>
+              <text x="262" y="122">горло сузилось</text>
+              <text x="262" y="164">дыхание короткое, вверх</text>
+              <text x="262" y="214">живот подтянулся</text>
+            </g>
+            <g fill="#f2eff7" font-size="17">
+              <text x="538" y="82">жар в лице</text>
+              <text x="586" y="174">плечи к ушам</text>
+              <text x="586" y="224">кулак или холодные руки</text>
+            </g>
+            <text x="400" y="362" text-anchor="middle" fill="#9c94ac" font-size="15">у каждого свой набор — важно знать свои два-три</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · три формы -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> теория 3 · три формы <span class="time">6 мин</span></p>
+      <h2>Три вещи, которыми становится <em>одна и та же энергия</em></h2>
+      <div class="forms">
+        <div class="fcard" style="--zc:var(--cold);--zt:rgba(215,95,107,.10)">
+          <svg class="illu" viewBox="0 0 300 78" role="img" aria-label="Ток уходит в землю">
+            <path d="M50 10v30" stroke="#d75f6b" stroke-width="3" fill="none"/>
+            <circle cx="50" cy="10" r="7" fill="#d75f6b"/>
+            <g fill="#d75f6b"><circle cx="50" cy="26" r="4.4" opacity=".7"/><circle cx="50" cy="38" r="3.2" opacity=".4"/><circle cx="50" cy="47" r="2.2" opacity=".2"/></g>
+            <g stroke="rgba(215,95,107,.6)" stroke-width="2.6" stroke-linecap="round"><path d="M24 54h52M32 63h36M40 72h20"/></g>
+            <text x="102" y="47" fill="#9c94ac" font-size="19">ушло в землю</text>
+          </svg>
+          <h3>Бессилие</h3><div class="who">Я исчезаю.</div>
+          <div class="say">«Да ладно, забей. Мне не принципиально».</div>
+        </div>
+        <div class="fcard" style="--zc:var(--work);--zt:rgba(78,201,138,.10)">
+          <svg class="illu" viewBox="0 0 300 78" role="img" aria-label="Ток зажигает лампу">
+            <path d="M12 40h26M90 40h26" stroke="#4ec98a" stroke-width="3"/>
+            <circle cx="64" cy="40" r="21" fill="rgba(78,201,138,.22)" stroke="#4ec98a" stroke-width="3"/>
+            <g stroke="#4ec98a" stroke-width="2.4" stroke-linecap="round" opacity=".85">
+              <path d="M64 6v9M64 65v9M41 17l7 7M87 63l-7-7M41 63l7-7M87 17l-7 7"/>
+            </g>
+            <text x="130" y="47" fill="#9c94ac" font-size="19">даёт свет</text>
+          </svg>
+          <h3>Усилие</h3><div class="who">Я здесь, и ты здесь.</div>
+          <div class="say">«Мне это важно. Можем обсудить?»</div>
+        </div>
+        <div class="fcard" style="--zc:var(--hot);--zt:rgba(236,82,48,.10)">
+          <svg class="illu" viewBox="0 0 300 78" role="img" aria-label="Короткое замыкание">
+            <path d="M12 14h34l18 26M12 66h34l18-26" stroke="#ec5230" stroke-width="3" fill="none" stroke-linejoin="round"/>
+            <g stroke="#ec5230" stroke-width="2.6" stroke-linecap="round">
+              <path d="M64 40h18M72 22l12 7M72 58l12-7M88 8l4 12M88 72l4-12"/>
+            </g>
+            <circle cx="82" cy="40" r="5" fill="#ec5230"/>
+            <text x="112" y="47" fill="#9c94ac" font-size="19">замкнуло</text>
+          </svg>
+          <h3>Насилие</h3><div class="who">Ты исчезаешь.</div>
+          <div class="say">«Сделаешь, хочешь ты этого или нет».</div>
+        </div>
+      </div>
+      <p class="bigline">Разница не в громкости и не в эмоциональности. Разница в том, что происходит с <em>выбором</em>.</p>
+      <p class="note">Насилие — та же самая мобилизация, просто направленная сквозь человека. Поэтому «убрать в себе агрессию» не выйдет: убирать нечего, можно только переключить.</p>
+    </section>
+
+    <!-- 13 · электричество -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> метафора · один ток</p>
+      <h2>Один ток — <em>разные приборы</em></h2>
+      <p class="lede">Импульс похож на электричество: сам по себе он не хороший и не плохой. Всё решает то, во что он включён.</p>
+      <svg class="illu" viewBox="0 0 1000 300" style="margin-top:.5cqw" role="img" aria-label="Схема: импульс распределяется в три контура">
+        <g>
+          <rect x="20" y="118" width="118" height="62" rx="12" fill="rgba(232,163,58,.14)" stroke="#e8a33a" stroke-width="2"/>
+          <text x="79" y="145" text-anchor="middle" fill="#e8a33a" font-size="17" font-weight="700">импульс</text>
+          <text x="79" y="166" text-anchor="middle" fill="#9c94ac" font-size="13">«мне важно»</text>
+        </g>
+        <path d="M138 149h72" stroke="#e8a33a" stroke-width="2.4"/>
+        <path d="M210 149V52h60M210 149h60M210 149v96h60" stroke="rgba(242,239,247,.28)" stroke-width="2.4" fill="none"/>
+        <g>
+          <rect x="270" y="24" width="700" height="56" rx="12" fill="rgba(215,95,107,.09)" stroke="rgba(215,95,107,.5)"/>
+          <text x="292" y="49" fill="#d75f6b" font-size="17" font-weight="700">бессилие</text>
+          <text x="292" y="69" fill="#9c94ac" font-size="13.5">уйти · отдалиться · обесценить · намекнуть · пожаловаться третьим · копить обиду</text>
+          <text x="940" y="57" text-anchor="end" fill="#d75f6b" font-size="13.5" opacity=".8">желание не дошло</text>
+        </g>
+        <g>
+          <rect x="270" y="121" width="700" height="56" rx="12" fill="rgba(78,201,138,.09)" stroke="rgba(78,201,138,.5)"/>
+          <text x="292" y="146" fill="#4ec98a" font-size="17" font-weight="700">усилие</text>
+          <text x="292" y="166" fill="#9c94ac" font-size="13.5">спросить · попросить · предложить · договориться · настоять · обозначить границу</text>
+          <text x="940" y="154" text-anchor="end" fill="#4ec98a" font-size="13.5" opacity=".8">желание названо, выбор у обоих</text>
+        </g>
+        <g>
+          <rect x="270" y="218" width="700" height="56" rx="12" fill="rgba(236,82,48,.09)" stroke="rgba(236,82,48,.5)"/>
+          <text x="292" y="243" fill="#ec5230" font-size="17" font-weight="700">насилие</text>
+          <text x="292" y="263" fill="#9c94ac" font-size="13.5">продавить · пристыдить · обвинить · пригрозить · поставить ультиматум · оборвать</text>
+          <text x="940" y="251" text-anchor="end" fill="#ec5230" font-size="13.5" opacity=".8">желание прошло через человека</text>
+        </g>
+        <g fill="#e8a33a">
+          <circle r="5"><animateMotion path="M210 149V52h60" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite"/></circle>
+          <circle r="5"><animateMotion path="M210 149h60" dur="2.6s" begin=".55s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin=".55s" repeatCount="indefinite"/></circle>
+          <circle r="5"><animateMotion path="M210 149v96h60" dur="2.6s" begin="1.1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="1.1s" repeatCount="indefinite"/></circle>
+        </g>
+      </svg>
+      <div class="facnote fac"><b>ключевая мысль</b>Люди приходят с идеей «во мне слишком много агрессии, надо убавить». Метафора возвращает другое: убавлять нечего, вопрос в подключении. Это снимает вину и делает разговор про навык.</div>
+    </section>
+
+    <!-- 14 · бессилие -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> разбор формы · 1 из 3</p>
+      <div class="tagline" style="--zc:var(--cold)">Бессилие</div>
+      <h2 style="font-size:1.7cqw">Желание снимается <em>раньше</em>, чем в нём успели отказать</h2>
+      <div class="deep">
+        <div class="dbox" style="--zc:var(--cold);--zt:rgba(215,95,107,.09)">
+          <div class="h">как выглядит</div>
+          <ul><li>уйти из контакта, замолчать</li><li>согласиться, не соглашаясь</li><li>говорить намёками и ждать, что догадаются</li><li>обесценить своё желание: «да мне и не надо»</li><li>жаловаться третьим, а не тому, кого касается</li><li>копить обиду как аргумент на будущее</li></ul>
+        </div>
+        <div class="dbox" style="--zc:var(--cold);--zt:rgba(215,95,107,.09)">
+          <div class="h">как звучит</div>
+          <p class="say">«Мне всё равно, решай сам».</p>
+          <p class="say">«Ну ты же и так понимаешь».</p>
+          <p class="say">«Ладно, забудь, не важно».</p>
+          <p class="say">«Я не хочу тебя напрягать».</p>
+        </div>
+        <div class="dbox" style="--zc:var(--warm);--zt:rgba(232,163,58,.09)">
+          <div class="h">чего это стоит</div>
+          <p>Желание никуда не девается — оно уходит в фон и копится. Другой человек не получает информации, по которой мог бы что-то сделать, и искренне не понимает, что происходит.</p>
+          <p><b>Рано или поздно это выходит взрывом или холодом</b> — и со стороны выглядит как «на пустом месте».</p>
+        </div>
+      </div>
+      <p class="note">Что помогает выйти: назвать вслух <b>одно</b> своё желание, без гарантий, что его исполнят. Не «мне ничего не нужно», а «мне хочется, чтобы в выходные был один день только наш».</p>
+    </section>
+
+    <!-- 15 · насилие -->
+    <section class="slide" data-part="D">
+      <p class="eyebrow"><span class="dot"></span> разбор формы · 2 из 3</p>
+      <div class="tagline" style="--zc:var(--hot)">Насилие</div>
+      <h2 style="font-size:1.7cqw">Желание проходит — <em>через</em> другого человека</h2>
+      <div class="deep">
+        <div class="dbox" style="--zc:var(--hot);--zt:rgba(236,82,48,.09)">
+          <div class="h">как выглядит</div>
+          <ul><li>продавить, не услышав «нет»</li><li>обвинить и пристыдить</li><li>перебить, не дать договорить</li><li>поставить ультиматум</li><li>надавить на вину или страх</li><li>наказать молчанием на три дня</li></ul>
+        </div>
+        <div class="dbox" style="--zc:var(--hot);--zt:rgba(236,82,48,.09)">
+          <div class="h">как звучит</div>
+          <p class="say">«Ты всегда так делаешь».</p>
+          <p class="say">«Нормальный человек бы понял».</p>
+          <p class="say">«Или ты соглашаешься, или я ухожу».</p>
+          <p class="say">«После всего, что я для тебя сделала».</p>
+        </div>
+        <div class="dbox" style="--zc:var(--warm);--zt:rgba(232,163,58,.09)">
+          <div class="h">чего это стоит</div>
+          <p>Вы получаете действие, но не получаете согласия. Это разные вещи, и разница вылезет позже — в саботаже, забывчивости, отстранённости.</p>
+          <p><b>С вами перестают разговаривать и начинают аккуратничать.</b> А то, что вам на самом деле было важно, так и остаётся неуслышанным.</p>
+        </div>
+      </div>
+      <p class="note">Что помогает выйти: пауза — и вернуть другому право сказать «нет». «Я сейчас давлю. Мне правда важно, но решать тебе. Скажи, что для тебя здесь сложно».</p>
+    </section>
+
+    <!-- 16 · усилие -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> разбор формы · 3 из 3</p>
+      <div class="tagline" style="--zc:var(--work)">Усилие</div>
+      <h2 style="font-size:1.7cqw">Желание названо, и <em>«нет» переживаемо</em></h2>
+      <div class="deep">
+        <div class="dbox" style="--zc:var(--work);--zt:rgba(78,201,138,.09)">
+          <div class="h">как выглядит</div>
+          <ul><li>вы знаете, чего хотите, и говорите это вслух</li><li>другой знает, что может отказать</li><li>вы переспрашиваете, а не достраиваете</li><li>вы держите своё, не разрушая при этом его</li><li>у разговора есть внятный итог: договорились или нет</li><li>вы понимаете, что делаете дальше</li></ul>
+        </div>
+        <div class="dbox" style="--zc:var(--work);--zt:rgba(78,201,138,.09)">
+          <div class="h">как звучит</div>
+          <p class="say">«Мне это важно, потому что…»</p>
+          <p class="say">«Что для тебя здесь главное?»</p>
+          <p class="say">«Я готова вот на это. На это — не готова».</p>
+          <p class="say">«Если не договоримся, я сделаю так…»</p>
+        </div>
+        <div class="dbox" style="--zc:var(--warm);--zt:rgba(232,163,58,.09)">
+          <div class="h">чего это стоит</div>
+          <p>Усилие — самая затратная форма. В ней надо выдержать сразу две вещи: что я чего-то хочу и что мне могут отказать.</p>
+          <p><b>Оно не гарантирует «да».</b> Оно даёт ясность, сохранённый выбор у обоих и понятный следующий шаг — то, из чего вообще можно жить дальше.</p>
+        </div>
+      </div>
+      <p class="note">Усилие часто путают с добротой и хорошими манерами. На деле оно про то, чтобы остаться в контакте ровно тогда, когда проще исчезнуть или надавить.</p>
+    </section>
+
+    <!-- 17 · тест -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> инструмент · три вопроса</p>
+      <div class="split tight" style="--sc:1fr 1fr">
+        <div>
+          <h2>Как понять, <em>в какой я форме</em></h2>
+          <p class="lede">Первое время эти вопросы работают после разговора, когда вы его перебираете. Постепенно один из них начнёт всплывать прямо посреди — обычно второй.</p>
+          <div class="steps">
+            <div class="step"><span class="n">1</span><div><b>Другой знает, чего я хочу?</b><p>Словами, а не по намёкам, вздохам и выражению лица.</p></div></div>
+            <div class="step"><span class="n">2</span><div><b>Он может сказать «нет» без наказания?</b><p>Без обиды на три дня, без холода, без «ну и ладно».</p></div></div>
+            <div class="step"><span class="n">3</span><div><b>Я знаю, что сделаю, если он скажет «нет»?</b><p>Не угроза, а ваш собственный следующий шаг.</p></div></div>
+          </div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 440 330" role="img" aria-label="Ответы на три вопроса и формы">
+            <g font-size="15">
+              <rect x="20" y="20" width="400" height="76" rx="12" fill="rgba(78,201,138,.10)" stroke="rgba(78,201,138,.5)"/>
+              <text x="42" y="52" fill="#4ec98a" font-size="18" font-weight="700">три «да» — усилие</text>
+              <text x="42" y="76" fill="#9c94ac">я сказала своё, и у тебя есть выбор</text>
+
+              <rect x="20" y="112" width="400" height="76" rx="12" fill="rgba(215,95,107,.10)" stroke="rgba(215,95,107,.5)"/>
+              <text x="42" y="144" fill="#d75f6b" font-size="18" font-weight="700">«нет» на первый — бессилие</text>
+              <text x="42" y="168" fill="#9c94ac">меня в разговоре нет, догадывайся сам</text>
+
+              <rect x="20" y="204" width="400" height="76" rx="12" fill="rgba(236,82,48,.10)" stroke="rgba(236,82,48,.5)"/>
+              <text x="42" y="236" fill="#ec5230" font-size="18" font-weight="700">«нет» на второй — насилие</text>
+              <text x="42" y="260" fill="#9c94ac">отказ обойдётся тебе слишком дорого</text>
+            </g>
+            <text x="220" y="312" text-anchor="middle" fill="#9c94ac" font-size="13.5">«нет» на третий — вы просите, но не решили, что делать с отказом</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 · карта -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> карта · громкость ничего не решает</p>
+      <div class="split tight" style="--sc:.95fr 1.05fr">
+        <div>
+          <h2>Две оси, <em>четыре угла</em></h2>
+          <p class="lede">Громкость здесь не ось — она вообще ничего не решает. В каждом квадрате есть и тихий вариант, и громкий.</p>
+          <p class="note"><b>Тихое насилие</b> — обиженное молчание, из которого другой обязан догадаться и почувствовать себя виноватым. Формально ни одного грубого слова.</p>
+          <p class="note"><b>Громкое усилие</b> — резко, на повышенных, с горячим лицом: «Меня это бесит, и мне важно, чтобы ты знал. Что скажешь?» Право ответить «нет» осталось.</p>
+          <div class="facnote fac"><b>вопрос в зал</b>«Вспомните разговор, где ни одного грубого слова не прозвучало, а вы вышли из него раздавленной». Обычно отзывается сразу и очень сильно — это лучший вход в тему тихого насилия.</div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 440 400" role="img" aria-label="Карта: моё желание предъявлено и выбор другого сохранён">
+            <rect x="70" y="30" width="150" height="150" rx="10" fill="rgba(215,95,107,.10)" stroke="rgba(215,95,107,.4)"/>
+            <rect x="222" y="30" width="150" height="150" rx="10" fill="rgba(78,201,138,.12)" stroke="rgba(78,201,138,.55)"/>
+            <rect x="70" y="182" width="150" height="150" rx="10" fill="rgba(167,139,250,.10)" stroke="rgba(167,139,250,.4)"/>
+            <rect x="222" y="182" width="150" height="150" rx="10" fill="rgba(236,82,48,.10)" stroke="rgba(236,82,48,.4)"/>
+            <g text-anchor="middle">
+              <text x="145" y="98" fill="#d75f6b" font-size="17" font-weight="700">бессилие</text>
+              <text x="145" y="122" fill="#9c94ac" font-size="13">меня нет,</text>
+              <text x="145" y="140" fill="#9c94ac" font-size="13">и ты не в курсе</text>
+              <text x="297" y="98" fill="#4ec98a" font-size="17" font-weight="700">усилие</text>
+              <text x="297" y="122" fill="#9c94ac" font-size="13">я здесь,</text>
+              <text x="297" y="140" fill="#9c94ac" font-size="13">и ты здесь</text>
+              <text x="145" y="248" fill="#a78bfa" font-size="14" font-weight="700">тихое насилие</text>
+              <text x="145" y="272" fill="#9c94ac" font-size="13">я молчу,</text>
+              <text x="145" y="290" fill="#9c94ac" font-size="13">и ты виноват</text>
+              <text x="297" y="248" fill="#ec5230" font-size="14" font-weight="700">прямое насилие</text>
+              <text x="297" y="272" fill="#9c94ac" font-size="13">я здесь,</text>
+              <text x="297" y="290" fill="#9c94ac" font-size="13">а тебя нет</text>
+            </g>
+            <path d="M40 356h360M46 350V16" stroke="rgba(242,239,247,.3)" stroke-width="2"/>
+            <text x="220" y="382" text-anchor="middle" fill="#9c94ac" font-size="14">я говорю, чего хочу →</text>
+            <text x="0" y="0" fill="#9c94ac" font-size="14" transform="translate(30,240) rotate(-90)">выбор другого сохранён →</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 · семь ходов -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> навык · что делать в разговоре</p>
+      <h2>Семь ходов, <em>которые можно пробовать</em></h2>
+      <div class="grid2">
+        <div class="card" style="--ch:var(--work)"><div class="h">по ходу разговора</div>
+          <ul><li><b>Назвать свою позицию</b> — коротко и один раз.</li><li><b>Не оправдываться по кругу</b>: три причины не убедительнее одной.</li><li><b>Услышать, что важно другому</b>, а не только что он требует.</li><li><b>Спросить</b> вместо того, чтобы догадываться.</li><li><b>Сделать конкретное предложение</b> или обозначить границу.</li><li><b>Оставить место для «нет».</b></li><li><b>Выбрать свой следующий шаг</b> — вслух.</li></ul></div>
+        <div class="card"><div class="h">на что смотреть в себе</div>
+          <p>Один вопрос вместо семи правил, если всё вылетело из головы:</p>
+          <p style="font-family:var(--display);font-weight:800;font-size:1.2cqw;color:var(--ink);line-height:1.3">«Получилось ли у меня не исчезнуть — и не сделать так, чтобы исчез другой?»</p>
+          <p>Ответ «частично» — нормальный результат. Навык растёт из частично, а не из идеально.</p></div>
+      </div>
+      <div class="facnote fac"><b>важно проговорить</b>Семь ходов — это меню: в живом разговоре успеваешь сделать один-два, и этого хватает. Скажите это вслух, иначе группа начнёт ставить себе двойки.</div>
+    </section>
+
+    <!-- 20 · банк фраз -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> что говорить</p>
+      <h2>Фразы, которые <em>можно взять готовыми</em></h2>
+      <div class="bank">
+        <div class="bgroup" style="--bc:var(--work)"><div class="h">назвать своё</div>
+          <span>«Мне важно <b>…</b>, потому что <b>…</b>»</span>
+          <span>«Я хочу <b>…</b>»</span>
+          <span>«Мне это не подходит».</span></div>
+        <div class="bgroup" style="--bc:var(--blue)"><div class="h">услышать другого</div>
+          <span>«Я слышу, что тебе важно <b>…</b>»</span>
+          <span>«Что для тебя здесь главное?»</span>
+          <span>«С чем ты сейчас не согласен?»</span></div>
+        <div class="bgroup" style="--bc:var(--blue)"><div class="h">спросить, а не гадать</div>
+          <span>«Я правильно понимаю, что <b>…</b>?»</span>
+          <span>«Ты имеешь в виду <b>…</b>?»</span>
+          <span>«Мне показалось, ты злишься. Так?»</span></div>
+        <div class="bgroup" style="--bc:var(--work)"><div class="h">предложить</div>
+          <span>«Моё предложение — <b>…</b>»</span>
+          <span>«Давай попробуем так: <b>…</b>»</span>
+          <span>«Что если <b>…</b>?»</span></div>
+        <div class="bgroup" style="--bc:var(--warm)"><div class="h">отказать</div>
+          <span>«Я не готова на это».</span>
+          <span>«Нет. И я скажу почему».</span>
+          <span>«Я могу вот столько — и не больше».</span></div>
+        <div class="bgroup" style="--bc:var(--violet)"><div class="h">сказать про следующий шаг</div>
+          <span>«Если не договоримся, я <b>…</b>»</span>
+          <span>«Давай вернёмся к этому в четверг».</span>
+          <span>«Мне нужна пауза, десять минут».</span></div>
+      </div>
+      <p class="note">Половина этих фраз звучит неловко, когда произносишь их впервые. Так и должно быть: непривычное движение всегда сначала кажется чужим. К третьему разу оно становится своим.</p>
+    </section>
+
+    <!-- 21 · когда накрыло -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> саморегуляция · 30 секунд</p>
+      <div class="split tight" style="--sc:1.08fr .92fr">
+        <div>
+          <h2>Что делать, когда <em>уже накрыло</em></h2>
+          <div class="steps">
+            <div class="step"><span class="n">1</span><div><b>Заметить тело</b><p>Тот самый свой маркер: челюсть, горло, дыхание. Просто отметить: «меня разогнало».</p></div></div>
+            <div class="step"><span class="n">2</span><div><b>Выдох длиннее вдоха</b><p>Вдох на четыре, выдох на шесть-восемь. Два-три раза. Стопы почувствовать в полу.</p></div></div>
+            <div class="step"><span class="n">3</span><div><b>Сказать про паузу вслух</b><p>«Мне нужна минута». Взять паузу — законный ход в разговоре, им можно пользоваться.</p></div></div>
+            <div class="step"><span class="n">4</span><div><b>Вернуться одной фразой</b><p>«Давай продолжим. Мне важно договориться, а не выиграть».</p></div></div>
+          </div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 420 260" role="img" aria-label="Схема дыхания: короткий вдох, длинный выдох">
+            <path id="breath" d="M20 200 C48 200 56 78 90 78 C150 78 156 200 240 200 C268 200 276 78 310 78 C370 78 376 200 400 200"
+                  fill="none" stroke="rgba(78,201,138,.4)" stroke-width="2.8"/>
+            <circle r="8" fill="#4ec98a"><animateMotion dur="4.6s" repeatCount="indefinite"><mpath href="#breath"/></animateMotion></circle>
+            <g stroke="rgba(242,239,247,.18)" stroke-width="1.4" stroke-dasharray="4 5"><path d="M90 68v146M240 68v146M310 68v146"/></g>
+            <text x="55" y="234" text-anchor="middle" fill="#9c94ac" font-size="15">вдох · 4</text>
+            <text x="165" y="234" text-anchor="middle" fill="#4ec98a" font-size="15">выдох · 6–8</text>
+            <text x="275" y="234" text-anchor="middle" fill="#9c94ac" font-size="15">вдох</text>
+            <text x="355" y="234" text-anchor="middle" fill="#4ec98a" font-size="15">выдох</text>
+            <text x="210" y="42" text-anchor="middle" fill="#9c94ac" font-size="14.5">на длинном выдохе тело сбрасывает обороты</text>
+          </svg>
+          <p class="note" style="margin-top:.6cqw">Если после паузы всё ещё трясёт — переносите разговор и <b>назовите время</b>: «Не сегодня. Давай завтра после шести». Перенос без названного времени почти всегда читается как отказ разговаривать вообще.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 22 · выдержать нет -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> самое трудное место</p>
+      <h2>Как выдержать <em>«нет»</em></h2>
+      <p class="lede">Сложнее всего в усилии не сказать, а услышать ответ. Обычно именно здесь человека выбрасывает — либо в «ну и не надо», либо в давление.</p>
+      <div class="grid3">
+        <div class="card" style="--ch:var(--cold)"><div class="h">почему «нет» невыносимо</div>
+          <ul><li>читается как «ты не важна»</li><li>внутри поднимается стыд за то, что попросила</li><li>хочется срочно переубедить</li><li>или наказать: холодом, молчанием, отдалением</li></ul></div>
+        <div class="card" style="--ch:var(--work)"><div class="h">что помогает</div>
+          <ul><li>отделить отказ от отвержения: «нет» относится к просьбе, а не к вам</li><li>уточнить, чему именно «нет» — часто отказ узкий, а слышится тотальным</li><li>спросить, что возможно вместо этого</li><li>вернуть себе решение: что <b>я</b> теперь делаю</li></ul></div>
+        <div class="card"><div class="h">три вопроса после отказа</div>
+          <ul><li>«Тебе не подходит вся идея или какая-то часть?»</li><li>«А что было бы для тебя нормально?»</li><li>«Могу я вернуться к этому позже?»</li></ul></div>
+      </div>
+      <p class="bigline">«Нет» — это ответ, из которого можно строить дальше. Молчание — нет.</p>
+    </section>
+
+    <!-- 23 · пределы -->
+    <section class="slide" data-part="F">
+      <p class="eyebrow"><span class="dot"></span> честная оговорка</p>
+      <h2>Когда усилия <em>недостаточно</em></h2>
+      <p class="lede">Не всякий конфликт — конфликт равных. Есть ситуации, где навык разговора не решает задачу, и важно это признать, а не тренироваться усерднее.</p>
+      <div class="grid3">
+        <div class="card" style="--ch:var(--hot)"><div class="h">это не про навык</div>
+          <ul><li>есть угроза безопасности — вашей или ребёнка</li><li>ваше «нет» систематически не признаётся</li><li>любой разговор заканчивается вашей виной</li><li>вы регулярно сомневаетесь в собственной памяти и восприятии</li></ul></div>
+        <div class="card" style="--ch:var(--warm)"><div class="h">что тогда задача</div>
+          <p>Здесь работает не разговор, а <b>опора</b>: дистанция, третья сторона, юрист, терапевт, люди рядом.</p>
+          <p>Иногда самый здоровый вариант усилия — выйти из разговора и не возвращаться в него.</p></div>
+        <div class="card"><div class="h">что важно помнить</div>
+          <p>Усилие — не обязанность оставаться в контакте любой ценой.</p>
+          <p>Способность уйти — часть той же силы, что и способность попросить. Она из того же тока, просто включена в другое.</p></div>
+      </div>
+      <div class="facnote fac"><b>обязательно вслух</b>Этот слайд не пропускать даже при нехватке времени. Без него часть аудитории уносит идею «я просто плохо стараюсь» — и уходит в ещё большее самообвинение.</div>
+    </section>
+
+    <!-- 24 · практика механика -->
+    <section class="slide" data-part="F">
+      <p class="eyebrow"><span class="dot"></span> парная работа · механика <span class="time">14 мин</span></p>
+      <h2>Два раунда, <em>одна ситуация</em></h2>
+      <p class="lede">Каждая пара берёт одну ситуацию и две разные позиции. Цель не в том, чтобы договориться. Цель — удержаться в усилии, когда вас из него вытаскивают.</p>
+      <div class="grid3">
+        <div class="card" style="--ch:var(--cold)"><div class="h">раунд 1 · 5 мин</div>
+          <p><b>А</b> выбирает одну форму — бессилие или насилие — и не говорит, какую.</p>
+          <p><b>Б</b> старается остаться в усилии: «я здесь, и ты здесь».</p></div>
+        <div class="card" style="--ch:var(--warm)"><div class="h">разбор · 2 мин</div>
+          <ul><li>Какую стратегию использовал А?</li><li>Что вытащило Б из усилия?</li><li>В какой момент захотелось исчезнуть или надавить?</li><li>Какие слова помогли Б остаться?</li></ul></div>
+        <div class="card" style="--ch:var(--work)"><div class="h">раунд 2 · 5 + 2 мин</div>
+          <p>Те же позиции, поведение меняется местами: теперь <b>А</b> в усилии, а <b>Б</b> выбирает бессилие или насилие.</p>
+          <p>После — снова короткий разбор.</p></div>
+      </div>
+      <div class="facnote fac"><b>за чем следить</b>Пары, которые начинают решать задачу вместо того, чтобы тренироваться. Напоминайте: прийти к решению — не задание. Задание — заметить, куда вас тянет.</div>
+    </section>
+
+    <!-- 25 · инструкция играющему -->
+    <section class="slide" data-part="F">
+      <p class="eyebrow"><span class="dot"></span> инструкция играющему</p>
+      <h2>Выберите <em>одну</em> форму и держите её весь раунд</h2>
+      <div class="grid2">
+        <div class="card" style="--ch:var(--cold)"><div class="h">бессилие</div>
+          <ul><li>уходить от прямого ответа</li><li>соглашаться, не соглашаясь</li><li>замолкать</li><li>говорить намёками</li><li>обесценивать своё желание</li><li>ждать, что догадаются</li><li>изображать беспомощность</li><li>жаловаться, ничего не предлагая</li></ul></div>
+        <div class="card" style="--ch:var(--hot)"><div class="h">насилие</div>
+          <ul><li>продавливать</li><li>обвинять</li><li>стыдить</li><li>перебивать</li><li>требовать</li><li>не замечать чужое «нет»</li><li>ставить ультиматум</li><li>давить на вину</li></ul></div>
+      </div>
+      <p class="note"><b>Важно:</b> без крика, без личных оскорблений и без реального болезненного материала из жизни участников. Играем роль, а не отыгрываем свою историю.</p>
+      <div class="facnote fac"><b>если пара залипла</b>Подойдите и предложите играющему сменить одну конкретную стратегию из списка — часто этого хватает, чтобы сцена ожила.</div>
+    </section>
+
+    <!-- 26 · инструкция в усилии -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> инструкция тому, кто в усилии</p>
+      <h2>Ваша задача — <em>удержаться в контакте</em></h2>
+      <div class="grid2">
+        <div class="card" style="--ch:var(--work)"><div class="h">за что держаться</div>
+          <ul><li>Семь ходов держите под рукой — успеете один-два, этого достаточно.</li><li>Скажите своё один раз и возвращайтесь к этому, если утащило в сторону.</li><li>Слушайте, что важно другому, даже когда он давит.</li><li>Оставляйте ему право сказать «нет» — особенно когда хочется дожать.</li><li>Назовите свой следующий шаг вслух.</li></ul></div>
+        <div class="card"><div class="h">чем можно себе помочь</div>
+          <ul><li>Замедлиться: пауза перед ответом — это нормально.</li><li>Возвращаться к своей фразе, а не к его аргументу.</li><li>Замечать момент, когда захотелось оправдаться, — и не оправдываться.</li><li>Если утащило — сказать вслух: «Меня сейчас унесло, возвращаюсь».</li></ul></div>
+      </div>
+      <p class="bigline">Получилось ли не исчезнуть — и не сделать так, чтобы исчез другой?</p>
+    </section>
+
+    <!-- 27 · ситуации -->
+    <section class="slide" data-part="G" id="sitslide">
+      <div class="sithead">
+        <div>
+          <p class="eyebrow"><span class="dot"></span> парная работа · выберите ситуацию</p>
+          <h2>Шесть ситуаций <em>на выбор</em></h2>
+        </div>
+        <button class="rnd" id="rnd">⤫ случайная</button>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="sitctx" id="sitctx"></div>
+      <div class="sit" id="sitpos"></div>
+      <div class="decide" id="sitdec"></div>
+      <p class="note">Ситуации учебные, не ваши собственные. Напряжение в них заложено специально: на чужом материале тренироваться безопаснее, чем на своём. Свой случай возьмём отдельно, следующим блоком.</p>
+      <div class="facnote fac"><b>раздача</b>Каждая пара берёт одну ситуацию, участники берут разные позиции. Карточки печатаются отдельно — по одной на человека, чтобы никто не читал чужую сторону. Клавиши 1–6 переключают ситуации.</div>
+    </section>
+
+    <!-- 28 · свой случай -->
+    <section class="slide" data-part="E">
+      <p class="eyebrow"><span class="dot"></span> свой случай · в парах <span class="time">10 мин</span></p>
+      <h2>Теперь возьмите <em>свой</em> небольшой конфликт</h2>
+      <div class="grid2">
+        <div class="card" style="--ch:var(--work)"><div class="h">по пять минут каждому</div>
+          <ul><li>Рассказать партнёру ситуацию — коротко.</li><li>Назвать свою привычную форму: бессилие или давление.</li><li>Сформулировать вариант усилия — одной фразой.</li><li>Произнести её вслух.</li><li>Услышать в ответ реалистичную реакцию, а не идеальную.</li><li>Выбрать следующий шаг.</li></ul></div>
+        <div class="card"><div class="h">вопросы, чтобы подготовиться</div>
+          <ul><li>Что на самом деле произошло — по фактам?</li><li>Чего я хочу и чего не хочу?</li><li>Что мне здесь важно?</li><li>Что может быть важно другому?</li><li>О чём я могу спросить вместо того, чтобы догадываться?</li><li>Что я сделаю, если ответ будет «нет»?</li></ul></div>
+      </div>
+      <div class="facnote fac"><b>напоминание</b>Небольшое и недавнее. Если человек приносит тяжёлый случай, мягко переводите: «Оставьте эту историю для другого формата, возьмите сегодня что-то обычное».</div>
+    </section>
+
+    <!-- 29 · завершение -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> завершение · один круг <span class="time">5 мин</span></p>
+      <h2 style="max-width:24ch">«В своём следующем трудном разговоре <em>я хочу попробовать…</em>»</h2>
+      <p class="lede">Одна фраза от каждого. Без комментариев и обсуждения — просто фраза.</p>
+      <div class="facnote fac"><b>как закрывать</b>Пройдите круг один раз. Не отвечайте на отдельные высказывания: пусть фразы просто постоят рядом друг с другом.</div>
+    </section>
+
+    <!-- 30 · шпаргалка -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> с собой · этот экран можно сохранить в телефон</p>
+      <h2>Шпаргалка <em>на трудный разговор</em></h2>
+      <div class="grid3">
+        <div class="card" style="--ch:var(--warm)"><div class="h">три формы</div>
+          <ul><li><b>Бессилие</b> — меня в разговоре нет.</li><li><b>Усилие</b> — я здесь, и ты здесь.</li><li><b>Насилие</b> — тебя в разговоре нет.</li></ul>
+          <p>Смотреть не на громкость, а на то, у кого остался выбор.</p></div>
+        <div class="card" style="--ch:var(--work)"><div class="h">три вопроса себе</div>
+          <ul><li>Он знает, чего я хочу — словами?</li><li>Он может отказать без наказания?</li><li>Я знаю, что сделаю, если «нет»?</li></ul>
+          <p>Три «да» — вы в усилии. Первое «нет» — в бессилии, второе — в давлении.</p></div>
+        <div class="card" style="--ch:var(--blue)"><div class="h">пять фраз</div>
+          <ul><li>«Мне важно…, потому что…»</li><li>«Что для тебя здесь главное?»</li><li>«Я готова… . Я не готова… .»</li><li>«Моё предложение — …»</li><li>«Если не договоримся, я…»</li></ul></div>
+      </div>
+      <div class="rules">
+        <span class="rule"><i></i>Накрыло: заметить тело</span>
+        <span class="rule"><i></i>выдох длиннее вдоха</span>
+        <span class="rule"><i></i>«мне нужна минута»</span>
+        <span class="rule"><i></i>«давай продолжим»</span>
+      </div>
+      <p class="bigline">Удавшийся конфликт не всегда заканчивается согласием. Он заканчивается ясностью, сохранённым выбором и понятным следующим шагом.</p>
+    </section>
+
+    <!-- 31 · финал -->
+    <section class="slide" data-part="A">
+      <p class="eyebrow"><span class="dot"></span> дальше</p>
+      <div class="split" style="--sc:1.1fr .9fr">
+        <div>
+          <p class="quote">«Сложные разговоры — это <em>навык</em>. Он ставится не пониманием, а повторением».</p>
+          <p class="lede" style="margin-top:1cqw">В телеграм-канале я разбираю такие разговоры по частям: как попросить, как отказать, как выдержать чужую реакцию и не исчезнуть при этом самой. Приходите, если хочется тренироваться дальше.</p>
+          <a class="cta" href="https://t.me/your_telo_port" target="_blank" rel="noopener">Телеграм-канал →</a>
+          <div class="sig" style="margin-top:1.5cqw"><b>Татьяна Руденко</b><span>психолог · коуч · телесно-ориентированный терапевт</span><span>t.me/your_telo_port</span></div>
+        </div>
+        <div>
+          <svg class="illu" viewBox="0 0 420 300" role="img" aria-label="Контакт сохранён">
+            <defs><radialGradient id="gC" cx="50%" cy="50%"><stop offset="0" stop-color="#4ec98a" stop-opacity=".3"/><stop offset="1" stop-color="#4ec98a" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="210" cy="150" r="130" fill="url(#gC)"/>
+            <g fill="none" stroke-width="2.5" stroke-linecap="round">
+              <circle cx="130" cy="112" r="26" stroke="#8fb8e0"/>
+              <path d="M88 236C88 186 106 156 130 156S172 186 172 236" stroke="#8fb8e0"/>
+              <circle cx="290" cy="112" r="26" stroke="#a78bfa"/>
+              <path d="M248 236C248 186 266 156 290 156S332 186 332 236" stroke="#a78bfa"/>
+            </g>
+            <path d="M162 96C190 74 230 74 258 96" fill="none" stroke="#4ec98a" stroke-width="2.4"/>
+            <circle cx="210" cy="82" r="9" fill="#4ec98a"/>
+            <text x="210" y="268" text-anchor="middle" fill="#9c94ac" font-size="14.5">оба остались</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button id="prev">‹ назад</button>
+    <div class="dots" id="dots"></div>
+    <button id="next">дальше ›</button>
+  </div>
+</main></div>
+
+<script>
+const SITS=[
+ {n:1,tab:'Родные',t:'Родные: воскресные обеды',
+  ctx:'Семья собирается на общий обед каждое воскресенье.',
+  a:'Вы хотите, чтобы близкий человек приезжал каждую неделю.',av:'семейная близость и традиция, которая держит всех вместе',
+  b:'Вы готовы приезжать раз в месяц.',bv:'отдых, свобода и время на собственную жизнь',
+  d:'Как часто вы видитесь и какой контакт возможен между встречами.'},
+ {n:2,tab:'Отношения',t:'Отношения: говорить сейчас или потом',
+  ctx:'После ссоры один хочет обсудить всё немедленно, второй хочет остановить разговор.',
+  a:'Вы хотите поговорить прямо сейчас.',av:'ясность, восстановленный контакт и подтверждение, что с вами всё в порядке',
+  b:'Вы хотите продолжить завтра.',bv:'тишина, время и восстановление — вы перегружены',
+  d:'Продолжать ли сейчас, и если нет — то во сколько именно вы к этому вернётесь.'},
+ {n:3,tab:'Руководитель',t:'Работа: срочная задача на ночь',
+  ctx:'В конце рабочего дня появляется задача, которую надо сдать к утру.',
+  a:'Руководитель — вам нужно, чтобы задача была готова к утру.',av:'обязательства перед клиентом и деньги компании',
+  b:'Сотрудник — вы не готовы работать всю ночь.',bv:'здоровье, границы и реалистичная нагрузка',
+  d:'Что реально будет к утру, что сдвигается и кто может взять часть работы.'},
+ {n:4,tab:'Коллеги',t:'Коллеги: отправить или доработать',
+  ctx:'Вы вместе готовили презентацию для клиента.',
+  a:'Вы хотите отправить презентацию сегодня.',av:'скорость, дедлайн и закрытая задача',
+  b:'Вы хотите сначала переделать несколько разделов.',bv:'качество, точность и ответственность за результат',
+  d:'Отправить как есть, доработать или перенести срок.'},
+ {n:5,tab:'Друзья',t:'Друзья: разный бюджет на поездку',
+  ctx:'Две подруги собираются вместе в отпуск.',
+  a:'Вы хотите отель подороже и покомфортнее.',av:'комфорт и качество отдыха, на который вы копили',
+  b:'Ваш бюджет ограничен, вы хотите вариант подешевле.',bv:'финансовая устойчивость и возможность поехать вообще',
+  d:'Есть ли общий формат — или в этот раз вы едете по отдельности.'},
+ {n:6,tab:'Отмены',t:'Подруга: планы отменяются в последний момент',
+  ctx:'Третий раз подряд встречу отменяют за час до неё.',
+  a:'Вы хотите, чтобы договорённости соблюдались.',av:'ощущение, что ваше время и ожидание что-то значат',
+  b:'У вас правда тяжёлый период и мало сил.',bv:'право не тянуть, когда нет ресурса, и не оправдываться за это',
+  d:'Как вы теперь договариваетесь о встречах, чтобы обоим было честно.'}
+];
+
+const $=id=>document.getElementById(id);
+
+/* ситуации · вкладки */
+let si=0;
+SITS.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.className='tab';b.dataset.i=i;
+  b.innerHTML='<i></i>'+s.tab;
+  b.onclick=()=>pickSit(i);
+  $('tabs').appendChild(b);
+});
+function pickSit(i){
+  si=i;const s=SITS[i];
+  [...$('tabs').children].forEach(el=>el.setAttribute('aria-current',el.dataset.i==String(i)));
+  $('sitctx').innerHTML='<b>ситуация '+s.n+' · '+s.t+'</b>'+s.ctx;
+  $('sitpos').innerHTML=
+    '<div class="pos" style="--pc:var(--blue);--pt:rgba(143,184,224,.10)">'+
+      '<div class="h">Позиция А</div><p>'+s.a+'</p>'+
+      '<div class="val">Что важно: '+s.av+'</div></div>'+
+    '<div class="pos" style="--pc:var(--violet);--pt:rgba(167,139,250,.10)">'+
+      '<div class="h">Позиция Б</div><p>'+s.b+'</p>'+
+      '<div class="val">Что важно: '+s.bv+'</div></div>';
+  $('sitdec').innerHTML='<b>что решаете вместе</b>'+s.d;
+}
+$('rnd').onclick=()=>{let n;do{n=Math.floor(Math.random()*SITS.length)}while(n===si&&SITS.length>1);pickSit(n);};
+pickSit(0);
+
+/* навигация */
+const slides=[...document.querySelectorAll('.slide')],stage=$('stage'),dots=$('dots');
+let idx=0;
+slides.forEach((_,i)=>{const d=document.createElement('span');d.onclick=()=>show(i);dots.appendChild(d);});
+function show(i){
+  idx=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,j)=>s.classList.toggle('active',j===idx));
+  [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===idx));
+  stage.className='stage p'+(slides[idx].dataset.part||'A')+(stage.classList.contains('facon')?' facon':'');
+  $('prev').disabled=idx===0;$('next').disabled=idx===slides.length-1;
+  $('counter').textContent=(idx+1)+' / '+slides.length;
+}
+$('prev').onclick=()=>show(idx-1);
+$('next').onclick=()=>show(idx+1);
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(+b.dataset.go));
+$('factoggle').onclick=()=>stage.classList.toggle('facon');
+addEventListener('keydown',e=>{
+  if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(idx+1);}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1);}
+  if('fFаА'.includes(e.key))$('factoggle').click();
+  if(/^[1-6]$/.test(e.key)&&$('sitslide').classList.contains('active'))pickSit(+e.key-1);
+});
+show(0);
+</script>
+</body>
+</html>
