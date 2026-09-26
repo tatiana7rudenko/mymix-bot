@@ -1,0 +1,96 @@
+:root{
+  --paper:#FFFFFF; --ink:#2A2230; --muted:#6F6570; --plum:#5B2A4A; --clay:#B4583C;
+  --gold:#B8903F; --line:#D9CFC4; --soft:#F3ECE3; --soft2:#EFE6EC;
+}
+@page{ size:A4; margin:18mm 18mm 20mm 18mm;
+  @bottom-center{ content:counter(page); font-family:'Manrope',sans-serif; font-size:8.5pt; color:#9A8F96; }
+}
+@page cover{ margin:0; @bottom-center{content:none} }
+@page chapter{ @bottom-center{content:none} }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Lora',Georgia,serif; font-size:10.6pt; line-height:1.55; }
+p{ margin:0 0 3.2mm; text-align:left; hyphens:auto; }
+strong{ font-weight:600; }
+h1,h2{ font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--plum); }
+h2{ font-size:20pt; line-height:1.15; margin:9mm 0 3.5mm; break-after:avoid; }
+h3{ font-family:'Manrope',sans-serif; font-size:11pt; font-weight:700; margin:0 0 2.5mm; color:var(--ink); break-after:avoid; letter-spacing:.1px; }
+ul,ol{ margin:0 0 3.5mm 5mm; padding-left:4mm; } li{ margin-bottom:1.2mm; }
+.pb{ break-after:page; }
+
+/* cover */
+.cover{ page:cover; width:210mm; height:297mm; position:relative; overflow:hidden; background:var(--plum); color:#F6EEE6; break-after:page; }
+.cover .inner{ position:absolute; left:22mm; right:22mm; top:34mm; }
+.cover .kicker{ font-family:'Manrope',sans-serif; letter-spacing:3.5px; text-transform:uppercase; font-size:9pt; color:#E4C98F; }
+.cover h1{ color:#FFF7EE; font-size:58pt; line-height:.95; margin:10mm 0 8mm; font-weight:500; }
+.cover .sub{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19pt; line-height:1.3; color:#EADFD6; max-width:150mm; }
+.cover svg{ position:absolute; left:0; bottom:0; width:210mm; height:150mm; }
+.cover .foot{ position:absolute; left:22mm; bottom:18mm; font-family:'Manrope',sans-serif; font-size:9pt; letter-spacing:1.5px; color:#E4C98F; text-transform:uppercase; }
+
+/* chapter opener */
+.chapter{ page:chapter; break-before:page; break-after:page; height:250mm; display:flex; flex-direction:column; justify-content:center; padding:0 6mm; position:relative; }
+.chapter::before{ content:""; position:absolute; left:6mm; top:52mm; width:34mm; height:2px; background:var(--gold); }
+.ch-num{ font-family:'Manrope',sans-serif; font-size:10pt; letter-spacing:4px; text-transform:uppercase; color:var(--clay); margin-bottom:6mm; }
+.chapter h1{ font-size:44pt; line-height:1.02; margin:0 0 7mm; font-weight:500; }
+.ch-sub{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17pt; color:var(--muted); max-width:140mm; line-height:1.35; }
+
+blockquote.epi{ margin:2mm 0 7mm; padding:0 0 0 6mm; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14.5pt; line-height:1.4; color:var(--plum); }
+blockquote.epi cite{ display:block; font-style:normal; font-family:'Manrope',sans-serif; font-size:8.5pt; letter-spacing:1px; color:var(--muted); margin-top:2mm; text-transform:uppercase; }
+
+/* case file */
+.case{ background:var(--soft); border-radius:3mm; padding:5mm 6mm 4mm; margin:5mm 0 6mm; break-inside:avoid; position:relative; }
+.case-lbl{ font-family:'Manrope',sans-serif; font-size:8pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--clay); margin-bottom:1.5mm; font-weight:700; }
+.case h3{ font-size:11.5pt; }
+.case p:last-of-type{ margin-bottom:1.5mm; }
+.src{ font-family:'Manrope',sans-serif; font-size:7.8pt; color:var(--muted); margin-top:1.5mm; }
+
+/* exercise */
+.ex{ border:1.2px solid var(--plum); border-radius:3mm; padding:5mm 6mm 4mm; margin:6mm 0; }
+.ex-head{ display:flex; justify-content:space-between; font-family:'Manrope',sans-serif; font-size:8pt; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5mm; }
+.ex-code{ color:#fff; background:var(--plum); padding:1mm 2.5mm; border-radius:1mm; font-weight:700; }
+.ex-time{ color:var(--muted); }
+.ex h3{ font-family:'Cormorant Garamond',serif; font-size:17pt; font-weight:600; color:var(--plum); margin:2mm 0 3mm; }
+.q{ font-family:'Manrope',sans-serif; font-size:9.6pt; font-weight:600; margin:3.5mm 0 1mm; break-after:avoid; }
+.lines{ margin:0 0 2mm; } .lines .ln{ height:8.2mm; border-bottom:1px solid var(--line); }
+.box{ border:1px dashed #C2B4A8; border-radius:2mm; margin:2mm 0 4mm; position:relative; break-inside:avoid; }
+.box-lbl{ position:absolute; top:2mm; left:3mm; font-family:'Manrope',sans-serif; font-size:8pt; color:var(--muted); }
+
+.note{ background:var(--soft2); border-left:3px solid var(--clay); padding:4mm 5mm 2mm; margin:5mm 0; break-inside:avoid; border-radius:0 2mm 2mm 0; }
+.note-lbl{ font-family:'Manrope',sans-serif; font-weight:700; font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:1.5mm; }
+
+table{ border-collapse:collapse; width:100%; margin:2mm 0 4mm; font-size:9pt; }
+table.grid th{ font-family:'Manrope',sans-serif; font-size:8pt; font-weight:700; text-align:left; background:var(--soft); padding:2mm; border:1px solid var(--line); vertical-align:bottom; }
+table.grid td{ border:1px solid var(--line); height:13mm; padding:1.5mm 2mm; vertical-align:top; }
+table.grid.filled td{ height:auto; }
+table.tracker td{ height:8.5mm; } table.tracker td.n{ width:10mm; text-align:center; font-family:'Manrope'; color:var(--muted); }
+tr{ break-inside:avoid; }
+table.rate td{ border-bottom:1px solid var(--line); padding:2mm 1.5mm; }
+table.rate td.n{ width:6mm; color:var(--muted); font-family:'Manrope'; }
+table.rate td.c{ width:8mm; } table.rate td.c::after{ content:""; display:block; width:4.2mm; height:4.2mm; border:1px solid #A89A90; border-radius:1mm; margin:auto; }
+table.rate th{ font-family:'Manrope'; font-size:8pt; color:var(--muted); font-weight:600; }
+
+.scale{ margin:3mm 0 4mm; break-inside:avoid; }
+.scale-lbl{ font-family:'Manrope',sans-serif; font-size:9.3pt; font-weight:600; margin-bottom:1.5mm; }
+.scale-row{ display:flex; gap:1.6mm; } .scale-row span{ flex:1; text-align:center; border:1px solid #BFB1A6; border-radius:50%; aspect-ratio:1; max-width:9mm; line-height:8.4mm; font-family:'Manrope'; font-size:8pt; color:var(--muted); }
+
+ul.check{ list-style:none; margin-left:0; padding-left:0; } ul.check li{ padding-left:7mm; position:relative; }
+ul.check li::before{ content:""; position:absolute; left:0; top:1.2mm; width:3.6mm; height:3.6mm; border:1px solid #A89A90; border-radius:1mm; }
+
+.arrow{ margin:3mm 0; } .arr-box{ height:14mm; border:1px solid var(--line); border-radius:2mm; background:#fff; }
+.arr-box.core{ border:1.5px solid var(--clay); background:#FFF9F4; } .arr-box.core span{ font-family:'Manrope'; font-size:8pt; color:var(--clay); padding:1.5mm 3mm; display:block; font-weight:700; }
+.arr{ text-align:center; color:var(--clay); font-size:12pt; margin:1mm 0; } .arr span{ font-family:'Manrope'; font-size:7.8pt; color:var(--muted); }
+
+.cont{ margin:5mm 0 7mm; break-inside:avoid; } .cont-lbl{ font-family:'Manrope'; font-size:9.3pt; font-weight:600; margin-bottom:6mm; }
+.cont-line{ border-top:2px solid var(--plum); display:flex; justify-content:space-between; font-family:'Manrope'; font-size:8pt; color:var(--muted); padding-top:1.5mm; position:relative; }
+.cont-line::before,.cont-line::after{ content:""; position:absolute; top:-3.5mm; width:2px; height:5mm; background:var(--plum); } .cont-line::before{left:0} .cont-line::after{right:0}
+
+.card{ border:1.5px dashed var(--plum); border-radius:3mm; padding:5mm 6mm; margin:5mm 0; break-inside:avoid; background:#fff; }
+.card-lbl{ font-family:'Manrope'; font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--plum); font-weight:700; margin-bottom:2mm; }
+.card .ln{ height:7.5mm; }
+
+.toc{ font-family:'Manrope',sans-serif; } 
+.lead{ font-family:'Cormorant Garamond',serif; font-size:15pt; line-height:1.4; color:var(--plum); }
+.small{ font-size:8.6pt; color:var(--muted); }
+.sources p{ font-size:8.6pt; line-height:1.45; margin-bottom:1.6mm; }
+table.grid.filled td:empty{ height:11mm; }
+.ex-head{ break-after:avoid; } .ex > h3 + *{ break-before:avoid; } .ex > p:first-of-type{ break-before:avoid; }
+.ex{ break-inside:auto; } .ex-top{ break-inside:avoid; }

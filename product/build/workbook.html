@@ -1,0 +1,750 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Дело о дефекте</title><style>@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-500-italic-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-500-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-500-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-500-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-600-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/CormorantGaramond-600-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Lora-400-italic-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Lora-400-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Lora-400-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Lora-400-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Lora-600-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Lora-600-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Manrope-400-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Manrope-400-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Manrope-600-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/Manrope-600-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/Manrope-700-normal-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/Manrope-700-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root{
+  --paper:#FFFFFF; --ink:#2A2230; --muted:#6F6570; --plum:#5B2A4A; --clay:#B4583C;
+  --gold:#B8903F; --line:#D9CFC4; --soft:#F3ECE3; --soft2:#EFE6EC;
+}
+@page{ size:A4; margin:18mm 18mm 20mm 18mm;
+  @bottom-center{ content:counter(page); font-family:'Manrope',sans-serif; font-size:8.5pt; color:#9A8F96; }
+}
+@page cover{ margin:0; @bottom-center{content:none} }
+@page chapter{ @bottom-center{content:none} }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Lora',Georgia,serif; font-size:10.6pt; line-height:1.55; }
+p{ margin:0 0 3.2mm; text-align:left; hyphens:auto; }
+strong{ font-weight:600; }
+h1,h2{ font-family:'Cormorant Garamond',serif; font-weight:600; color:var(--plum); }
+h2{ font-size:20pt; line-height:1.15; margin:9mm 0 3.5mm; break-after:avoid; }
+h3{ font-family:'Manrope',sans-serif; font-size:11pt; font-weight:700; margin:0 0 2.5mm; color:var(--ink); break-after:avoid; letter-spacing:.1px; }
+ul,ol{ margin:0 0 3.5mm 5mm; padding-left:4mm; } li{ margin-bottom:1.2mm; }
+.pb{ break-after:page; }
+
+/* cover */
+.cover{ page:cover; width:210mm; height:297mm; position:relative; overflow:hidden; background:var(--plum); color:#F6EEE6; break-after:page; }
+.cover .inner{ position:absolute; left:22mm; right:22mm; top:34mm; }
+.cover .kicker{ font-family:'Manrope',sans-serif; letter-spacing:3.5px; text-transform:uppercase; font-size:9pt; color:#E4C98F; }
+.cover h1{ color:#FFF7EE; font-size:58pt; line-height:.95; margin:10mm 0 8mm; font-weight:500; }
+.cover .sub{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19pt; line-height:1.3; color:#EADFD6; max-width:150mm; }
+.cover svg{ position:absolute; left:0; bottom:0; width:210mm; height:150mm; }
+.cover .foot{ position:absolute; left:22mm; bottom:18mm; font-family:'Manrope',sans-serif; font-size:9pt; letter-spacing:1.5px; color:#E4C98F; text-transform:uppercase; }
+
+/* chapter opener */
+.chapter{ page:chapter; break-before:page; break-after:page; height:250mm; display:flex; flex-direction:column; justify-content:center; padding:0 6mm; position:relative; }
+.chapter::before{ content:""; position:absolute; left:6mm; top:52mm; width:34mm; height:2px; background:var(--gold); }
+.ch-num{ font-family:'Manrope',sans-serif; font-size:10pt; letter-spacing:4px; text-transform:uppercase; color:var(--clay); margin-bottom:6mm; }
+.chapter h1{ font-size:44pt; line-height:1.02; margin:0 0 7mm; font-weight:500; }
+.ch-sub{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17pt; color:var(--muted); max-width:140mm; line-height:1.35; }
+
+blockquote.epi{ margin:2mm 0 7mm; padding:0 0 0 6mm; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14.5pt; line-height:1.4; color:var(--plum); }
+blockquote.epi cite{ display:block; font-style:normal; font-family:'Manrope',sans-serif; font-size:8.5pt; letter-spacing:1px; color:var(--muted); margin-top:2mm; text-transform:uppercase; }
+
+/* case file */
+.case{ background:var(--soft); border-radius:3mm; padding:5mm 6mm 4mm; margin:5mm 0 6mm; break-inside:avoid; position:relative; }
+.case-lbl{ font-family:'Manrope',sans-serif; font-size:8pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--clay); margin-bottom:1.5mm; font-weight:700; }
+.case h3{ font-size:11.5pt; }
+.case p:last-of-type{ margin-bottom:1.5mm; }
+.src{ font-family:'Manrope',sans-serif; font-size:7.8pt; color:var(--muted); margin-top:1.5mm; }
+
+/* exercise */
+.ex{ border:1.2px solid var(--plum); border-radius:3mm; padding:5mm 6mm 4mm; margin:6mm 0; }
+.ex-head{ display:flex; justify-content:space-between; font-family:'Manrope',sans-serif; font-size:8pt; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5mm; }
+.ex-code{ color:#fff; background:var(--plum); padding:1mm 2.5mm; border-radius:1mm; font-weight:700; }
+.ex-time{ color:var(--muted); }
+.ex h3{ font-family:'Cormorant Garamond',serif; font-size:17pt; font-weight:600; color:var(--plum); margin:2mm 0 3mm; }
+.q{ font-family:'Manrope',sans-serif; font-size:9.6pt; font-weight:600; margin:3.5mm 0 1mm; break-after:avoid; }
+.lines{ margin:0 0 2mm; } .lines .ln{ height:8.2mm; border-bottom:1px solid var(--line); }
+.box{ border:1px dashed #C2B4A8; border-radius:2mm; margin:2mm 0 4mm; position:relative; break-inside:avoid; }
+.box-lbl{ position:absolute; top:2mm; left:3mm; font-family:'Manrope',sans-serif; font-size:8pt; color:var(--muted); }
+
+.note{ background:var(--soft2); border-left:3px solid var(--clay); padding:4mm 5mm 2mm; margin:5mm 0; break-inside:avoid; border-radius:0 2mm 2mm 0; }
+.note-lbl{ font-family:'Manrope',sans-serif; font-weight:700; font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:1.5mm; }
+
+table{ border-collapse:collapse; width:100%; margin:2mm 0 4mm; font-size:9pt; }
+table.grid th{ font-family:'Manrope',sans-serif; font-size:8pt; font-weight:700; text-align:left; background:var(--soft); padding:2mm; border:1px solid var(--line); vertical-align:bottom; }
+table.grid td{ border:1px solid var(--line); height:13mm; padding:1.5mm 2mm; vertical-align:top; }
+table.grid.filled td{ height:auto; }
+table.tracker td{ height:8.5mm; } table.tracker td.n{ width:10mm; text-align:center; font-family:'Manrope'; color:var(--muted); }
+tr{ break-inside:avoid; }
+table.rate td{ border-bottom:1px solid var(--line); padding:2mm 1.5mm; }
+table.rate td.n{ width:6mm; color:var(--muted); font-family:'Manrope'; }
+table.rate td.c{ width:8mm; } table.rate td.c::after{ content:""; display:block; width:4.2mm; height:4.2mm; border:1px solid #A89A90; border-radius:1mm; margin:auto; }
+table.rate th{ font-family:'Manrope'; font-size:8pt; color:var(--muted); font-weight:600; }
+
+.scale{ margin:3mm 0 4mm; break-inside:avoid; }
+.scale-lbl{ font-family:'Manrope',sans-serif; font-size:9.3pt; font-weight:600; margin-bottom:1.5mm; }
+.scale-row{ display:flex; gap:1.6mm; } .scale-row span{ flex:1; text-align:center; border:1px solid #BFB1A6; border-radius:50%; aspect-ratio:1; max-width:9mm; line-height:8.4mm; font-family:'Manrope'; font-size:8pt; color:var(--muted); }
+
+ul.check{ list-style:none; margin-left:0; padding-left:0; } ul.check li{ padding-left:7mm; position:relative; }
+ul.check li::before{ content:""; position:absolute; left:0; top:1.2mm; width:3.6mm; height:3.6mm; border:1px solid #A89A90; border-radius:1mm; }
+
+.arrow{ margin:3mm 0; } .arr-box{ height:14mm; border:1px solid var(--line); border-radius:2mm; background:#fff; }
+.arr-box.core{ border:1.5px solid var(--clay); background:#FFF9F4; } .arr-box.core span{ font-family:'Manrope'; font-size:8pt; color:var(--clay); padding:1.5mm 3mm; display:block; font-weight:700; }
+.arr{ text-align:center; color:var(--clay); font-size:12pt; margin:1mm 0; } .arr span{ font-family:'Manrope'; font-size:7.8pt; color:var(--muted); }
+
+.cont{ margin:5mm 0 7mm; break-inside:avoid; } .cont-lbl{ font-family:'Manrope'; font-size:9.3pt; font-weight:600; margin-bottom:6mm; }
+.cont-line{ border-top:2px solid var(--plum); display:flex; justify-content:space-between; font-family:'Manrope'; font-size:8pt; color:var(--muted); padding-top:1.5mm; position:relative; }
+.cont-line::before,.cont-line::after{ content:""; position:absolute; top:-3.5mm; width:2px; height:5mm; background:var(--plum); } .cont-line::before{left:0} .cont-line::after{right:0}
+
+.card{ border:1.5px dashed var(--plum); border-radius:3mm; padding:5mm 6mm; margin:5mm 0; break-inside:avoid; background:#fff; }
+.card-lbl{ font-family:'Manrope'; font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--plum); font-weight:700; margin-bottom:2mm; }
+.card .ln{ height:7.5mm; }
+
+.toc{ font-family:'Manrope',sans-serif; } 
+.lead{ font-family:'Cormorant Garamond',serif; font-size:15pt; line-height:1.4; color:var(--plum); }
+.small{ font-size:8.6pt; color:var(--muted); }
+.sources p{ font-size:8.6pt; line-height:1.45; margin-bottom:1.6mm; }
+table.grid.filled td:empty{ height:11mm; }
+.ex-head{ break-after:avoid; } .ex > h3 + *{ break-before:avoid; } .ex > p:first-of-type{ break-before:avoid; }
+.ex{ break-inside:auto; } .ex-top{ break-inside:avoid; }
+</style></head><body><section class="cover"><div class="inner"><div class="kicker">Рабочая тетрадь · 6 частей · 5 недель</div><h1>Дело<br>о дефекте</h1><div class="sub">Для тех, кто всю жизнь подозревает, что с ней что-то не так, — и устала это подозревать</div></div><svg viewBox="0 0 210 150" preserveAspectRatio="none"><path d="M-5 150 L-5 118 C 30 110, 55 128, 82 112 C 104 99, 118 116, 140 104 C 160 93, 182 110, 215 96 L215 150 Z" fill="#4A2140"/><path d="M-2 121 C 24 112, 46 126, 70 117 L 84 111 L 92 119 L 101 103 C 116 110, 128 101, 142 104 L 150 97 L 158 106 C 172 99, 190 104, 212 95" fill="none" stroke="#D4AE5E" stroke-width="1.1"/><path d="M92 119 L 89 127" fill="none" stroke="#D4AE5E" stroke-width=".8"/><path d="M150 97 L 154 84 L 149 76" fill="none" stroke="#D4AE5E" stroke-width=".7"/><path d="M40 121 L 42 128" fill="none" stroke="#D4AE5E" stroke-width=".6"/></svg><div class="foot">Пересмотр самого старого приговора о себе</div></section>
+<h2>Прежде чем открыть дело</h2>
+<p class="lead">Если ты держишь эту тетрадь, скорее всего, внутри тебя давно живёт тихая фраза. Она редко звучит вслух. Она просто фон: <em>со мной что-то не так</em>.</p>
+<p>Иногда она говорит: «ты слишком». Слишком чувствительная, слишком сложная, слишком много хочешь. Иногда: «ты недостаточно». Недостаточно умная, красивая, спокойная, успешная, любимая. Иногда она ничего не говорит, просто делает так, что после хорошего разговора ты полночи прокручиваешь, где ошиблась. А после комплимента ждёшь, когда же всё раскроется.</p>
+<p>Ты, возможно, уже много с этим делала. Читала книги, смотрела ролики, узнавала себя в «десяти признаках», проходила тесты, ходила к психологу, «работала над собой». И всё равно — фон остаётся. Иногда даже громче: теперь у него появились умные слова.</p>
+<p>Эта тетрадь устроена иначе. Она не будет искать, <em>что именно</em> с тобой не так. Она не поставит тебе ещё один диагноз и не пообещает, что после неё ты станешь «лучшей версией себя». Её задача скромнее и глубже: <strong>пересмотреть само дело</strong>. Посмотреть на фразу «со мной что-то не так» не как на правду о тебе, а как на обвинение, которое когда-то было вынесено — и с тех пор ни разу не пересматривалось.</p>
+<h2>Как устроено расследование</h2>
+<p>В хорошем детективе следователь не спорит с подозреваемым. Он поднимает архив. Смотрит, кто и когда завёл дело, какие улики собраны, кто свидетели, откуда взялись показания. Так и здесь. Ты — не подсудимая. Ты — следователь, который берёт старое дело и проверяет его по всем правилам.</p>
+<table class="grid filled"><thead><tr><th>Часть</th><th>Что происходит</th><th>Неделя</th></tr></thead><tbody><tr><td>1. Обвинительное заключение</td><td>Формулируем приговор точно: какими словами он звучит и где «живёт»</td><td>1</td></tr><tr><td>2. Как приговор собирает улики</td><td>Наука о том, почему убеждение само находит себе доказательства</td><td>1–2</td></tr><tr><td>3. Происхождение дела</td><td>Откуда взялся приговор и кто первым его произнёс</td><td>2–3</td></tr><tr><td>4. Кто ведёт обвинение</td><td>Знакомство с внутренним критиком — и с тем, что он пытается защитить</td><td>3</td></tr><tr><td>5. Пересмотр дела</td><td>Инструменты, которые меняют старое убеждение на новое</td><td>4</td></tr><tr><td>6. Жизнь без приговора</td><td>Самосострадание, ценности и выход из вечной «работы над собой»</td><td>5</td></tr></tbody></table>
+<p>В каждой части есть три вида страниц:</p>
+<ul><li><strong>Досье</strong> — короткие рассказы о реальных исследованиях и историях. Они нужны не «для общего развития», а как новые улики по делу. Каждое досье опирается на опубликованный источник — список в конце тетради.</li><li><strong>Задания</strong> — письменные упражнения из доказательных подходов: когнитивно-поведенческой терапии, схема-терапии, терапии, сфокусированной на сострадании, терапии принятия и ответственности, нарративной практики. Время указано рядом с номером.</li><li><strong>Заметки</strong> — то, что важно не пропустить.</li></ul>
+<h2>Правила работы</h2>
+<ul><li><strong>Пиши рукой.</strong> Если есть выбор между «подумать» и «записать», — записывай. Мысль в голове ускользает, мысль на бумаге можно проверить.</li><li><strong>20–30 минут в день, 5 дней в неделю.</strong> Лучше медленно и до конца, чем за выходные и бросить. Дни пропускать можно, части — нет: они построены одна на другой.</li><li><strong>Не ищи правильных ответов.</strong> Здесь нет экзамена. Если ответ кажется глупым, стыдным или «не таким», — это как раз хорошая улика.</li><li><strong>Замечай сопротивление.</strong> Если какое-то задание очень не хочется делать, отметь это на полях. Иногда именно там лежит ключ.</li><li><strong>Будь следователем, а не прокурором.</strong> Ты собираешь факты, а не новые доказательства своей вины.</li></ul>
+<div class="note"><div class="note-lbl">Честно о границах</div>
+<p>Эта тетрадь — инструмент самопомощи, а не психотерапия и не диагностика. Она не заменяет работу со специалистом. Если во время работы тебя накрывает так, что трудно функционировать, если появляются мысли о том, чтобы причинить себе вред или не жить, — отложи тетрадь и обратись за помощью: к психотерапевту, к врачу или в экстренную службу своей страны. Это не провал. Это самое взрослое решение из возможных.</p>
+</div>
+<div class="pb"></div>
+<h2>Протокол входа</h2>
+<p>Прежде чем начать, зафиксируем, где ты сейчас. В конце тетради ты заполнишь такой же протокол — и сравнишь.</p>
+<p>Это не психологический тест и не диагноз. Это твоя личная отметка «до», как фото на первом дне тренировок. Отметь, насколько каждое утверждение верно для тебя <strong>за последние две недели</strong>: 0 — совсем неверно, 4 — абсолютно про меня.</p>
+<table class="rate"><thead><tr><th></th><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td class="n">1</td><td>Мне кажется, что со мной что-то фундаментально не так.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">2</td><td>Если люди узнают меня по-настоящему, они разочаруются.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">3</td><td>После разговоров я долго прокручиваю, что сказала не так.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">4</td><td>Когда я ошибаюсь, я думаю не «я ошиблась», а «я плохая».</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">5</td><td>Я стыжусь некоторых своих чувств и реакций.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">6</td><td>Мне кажется, что у других всё устроено проще и правильнее, чем у меня.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">7</td><td>Похвала и комплименты вызывают у меня неловкость или недоверие.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">8</td><td>Я постоянно «работаю над собой», но ощущение, что я недостаточно хороша, не уходит.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">9</td><td>Внутренний голос говорит со мной жёстче, чем я говорила бы с любым другим человеком.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">10</td><td>Я скрываю от других то, что считаю в себе «неправильным».</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">11</td><td>Я боюсь, что если перестану себя критиковать, то расслаблюсь и всё испорчу.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">12</td><td>Мне трудно поверить, что меня можно любить такой, какая я есть.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr></tbody></table>
+<div class="q">Сумма баллов (от 0 до 48):</div><div class="lines"><div class="ln"></div></div>
+<div class="q">Какое утверждение отозвалось сильнее всего? Почему именно оно?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что я хочу, чтобы изменилось к концу этой тетради? Опиши не чувство («чтобы было хорошо»), а конкретную ситуацию: как бы я повела себя иначе.</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="note"><div class="note-lbl">Если хочешь научный замер</div>
+<p>Самый распространённый в мире опросник отношения к себе — Шкала самосострадания Кристин Нефф (краткая версия из 12 пунктов, SCS-SF). Она бесплатно доступна на официальном сайте self-compassion.org. Можешь пройти её в начале и в конце — и сравнить.</p>
+</div>
+<section class="chapter"><div class="ch-num">Часть 1</div><h1>Обвинительное заключение</h1><div class="ch-sub">Прежде чем пересматривать дело, нужно точно прочитать, в чём тебя обвиняют</div></section>
+<blockquote class="epi">Как только вы сможете допустить, что ваша дефективность — не факт, начинается процесс исцеления.<cite>Джеффри Янг, создатель схема-терапии</cite></blockquote>
+<h2>Приговор, который никто не зачитывал</h2>
+<p>У большинства людей с ощущением «со мной что-то не так» нет чёткой формулировки. Есть фон. Лёгкая тревога перед встречей. Стыд после того, как много говорила. Уверенность, что другие — нормальные, а ты — как будто с браком, просто хорошо это прячешь.</p>
+<p>Американский психолог и преподаватель медитации Тара Брах назвала это состояние <strong>«трансом недостойности»</strong>. Слово «транс» здесь ключевое: человек в трансе не знает, что он в трансе. Он принимает своё состояние за реальность. Самосуд и недовольство собой становятся клеткой, в которой мы живём так давно, что перестаём её замечать.</p>
+<div class="case"><div class="case-lbl">Досье 1</div><h3>Тигрица, которая осталась в углу</h3>
+<p>В книге «Радикальное принятие» Брах рассказывает историю Мохини — белой тигрицы из Национального зоопарка в Вашингтоне. Много лет она прожила в старом вольере: клетка примерно три с половиной на три с половиной метра, железные прутья, бетонный пол. Целыми днями она ходила из угла в угол. Потом сотрудники построили для неё просторный естественный вольер — несколько акров, холмы, деревья, пруд. Её выпустили туда. Но Мохини сразу ушла в дальний угол — и прожила в этом углу до конца жизни, продолжая ходить по тем же двенадцати футам.</p>
+<p>Брах использует эту историю как образ: внешние обстоятельства могут давно измениться, но если клетка осталась внутри, мы продолжаем ходить по ней.</p>
+<div class="src">Tara Brach, «Radical Acceptance», 2003.</div>
+</div>
+<p>Первый шаг из клетки — увидеть её прутья. Поэтому в этой части мы не будем ничего менять. Мы будем <strong>называть</strong>. Исследования показывают, что уже простое называние переживания словами снижает его накал (об этом — в части 2). А главное, то, что названо, можно проверить. То, что не названо, — просто воздух, которым ты дышишь.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.1</span><span class="ex-time">10 минут</span></div><h3>Как звучит мой приговор</h3>
+<p>Ниже — формулировки, которыми люди описывают своё «со мной что-то не так». Отметь все, что звучат в твоей голове. Потом подчеркни одну — самую «твою».</p>
+</div>
+<ul class="check"><li>Я какая-то не такая, как все.</li><li>Я слишком: чувствительная, эмоциональная, сложная, требовательная, «много».</li><li>Я недостаточно: умная, красивая, успешная, интересная, спокойная.</li><li>Со мной сложно. Меня трудно любить.</li><li>Если меня узнают по-настоящему — уйдут.</li><li>Я всё порчу.</li><li>Я притворяюсь, и скоро это раскроется.</li><li>Во мне есть какой-то изъян, который нельзя исправить.</li><li>Я должна сначала починить себя, а потом уже жить.</li><li>Со мной что-то не так, но я не знаю, что именно.</li></ul>
+<div class="q">Мой приговор — своими словами, так, как он звучит внутри (без смягчений):</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="scale"><div class="scale-lbl">Насколько я в него верю прямо сейчас, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+<div class="q">Каким голосом он звучит? Чей это тон — мой, мамин, учительницы, бывшего партнёра, «общества»?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.2</span><span class="ex-time">15 минут</span></div><h3>Нисходящая стрела: от ситуации к ядру</h3>
+<p>Приговор редко появляется в чистом виде. Обычно мы замечаем поверхностную мысль: «я плохо выступила», «она не ответила на сообщение». Техника <strong>нисходящей стрелы</strong> пришла из когнитивной терапии (её использовали Аарон Бек и Дэвид Бернс). Она помогает спуститься от такой мысли к глубинному убеждению.</p>
+</div>
+<ol><li>Вспомни конкретную недавнюю ситуацию, после которой стало стыдно или тревожно.</li><li>Запиши первую мысль, которая тогда появилась, в верхнее окно.</li><li>Спроси себя: «Если это правда — что это значит обо мне?» Запиши ответ ниже.</li><li>Повторяй, пока ответ не перестанет углубляться. Обычно хватает 3–5 шагов.</li></ol>
+<p>Пример: «Коллега не поздоровалась» → «Я ей неприятна» → «Я неприятна людям» → «Со мной что-то не так, меня невозможно любить».</p>
+<div class="q">Ситуация:</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="arrow"><div class="arr-box"></div><div class="arr">↓ <span>Если это правда — что это значит обо мне?</span></div><div class="arr-box"></div><div class="arr">↓ <span>Если это правда — что это значит обо мне?</span></div><div class="arr-box"></div><div class="arr">↓ <span>Если это правда — что это значит обо мне?</span></div><div class="arr-box"></div><div class="arr">↓ <span>Если это правда — что это значит обо мне?</span></div><div class="arr-box core"><span>Ядро:</span></div></div>
+<div class="note"><div class="note-lbl">После стрелы</div>
+<p>Этот спуск может быть болезненным: внизу обычно оказывается что-то честное и неприятное. Если стало тяжело — положи руку на грудь, сделай пять медленных выдохов и скажи себе: «Сейчас мне больно. Это нормально, что больно». Ядро, которое ты нашла, — не правда о тебе. Это формулировка обвинения. Именно её мы будем пересматривать всю тетрадь.</p>
+</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.3</span><span class="ex-time">15 минут</span></div><h3>Где живёт мой приговор</h3>
+<p>Исследовательница стыда Брене Браун, опросив сотни женщин, выделила двенадцать областей, где стыд накрывает чаще всего. Приговор «со мной что-то не так» редко звучит одинаково громко везде. Отметь, насколько сильно он включается в каждой зоне.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Зона</th><th>0–10</th><th>Как именно звучит здесь</th></tr></thead><tbody><tr><td>Внешность и тело</td><td></td><td></td></tr><tr><td>Материнство (или его отсутствие)</td><td></td><td></td></tr><tr><td>Семья, из которой я</td><td></td><td></td></tr><tr><td>Воспитание детей</td><td></td><td></td></tr><tr><td>Деньги и работа</td><td></td><td></td></tr><tr><td>Психическое и физическое здоровье</td><td></td><td></td></tr><tr><td>Секс</td><td></td><td></td></tr><tr><td>Возраст</td><td></td><td></td></tr><tr><td>Религия и убеждения</td><td></td><td></td></tr><tr><td>Стереотипы и ярлыки обо мне</td><td></td><td></td></tr><tr><td>Право высказываться, быть услышанной</td><td></td><td></td></tr><tr><td>Пережитая травма</td><td></td><td></td></tr></tbody></table>
+<div class="q">Три самые «горячие» зоны. Что их объединяет?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.4</span><span class="ex-time">15 минут</span></div><h3>Нежеланная идентичность</h3>
+<p>Браун пишет: «Главный источник стыда — нежеланная идентичность». У каждой из нас есть образ, какой мы хотим быть: заботливой, умной, лёгкой, сильной. И есть образы, которыми мы <strong>боимся оказаться</strong> в чужих глазах: истеричка, неудачница, «сложная», навязчивая, скучная, эгоистка. Стыд вспыхивает, когда что-то намекает: а вдруг ты и есть она?</p>
+</div>
+<div class="q">Я хочу, чтобы меня видели как… (3–5 качеств)</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Больше всего я боюсь, что меня увидят как… (3–5 образов)</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Откуда я знаю, что это — плохо? Кто и когда впервые показал мне, что быть такой — стыдно?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Представь, что близкая подруга иногда бывает ровно такой, как в моём «страшном» списке. Перестаю ли я её любить?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Три маски одного приговора</h2>
+<p>Одно и то же убеждение «со мной что-то не так» может выглядеть совершенно по-разному. Создатель схема-терапии Джеффри Янг и его соавтор Джанет Клоско описывают три способа, которыми люди живут со своей «ловушкой дефективности».</p>
+<div class="case"><div class="case-lbl">Досье 2</div><h3>Сэм, Бобби и Алекс</h3>
+<p>В книге «Прочь из замкнутого круга» Янг и Клоско показывают трёх мужчин с одной и той же ловушкой. <strong>Сэм</strong>, двадцатилетний студент, <em>сдаётся</em> ей: при знакомстве мямлит, краснеет, постоянно извиняется, даже когда не виноват, — и выбирает людей, которые продолжают его принижать. Сорокалетний <strong>Бобби</strong> <em>сбегает</em>: глушит чувство дефектности алкоголем и ни с кем — даже с женой — не бывает по-настоящему близок. <strong>Алекс</strong> <em>контратакует</em>: держится как особенный, уверенная улыбка, дорогая одежда, критика других. Со стороны он выглядит человеком без комплексов.</p>
+<p>Вывод авторов: внешняя уверенность, перфекционизм или отстранённость могут быть тем же самым «со мной что-то не так» — просто в другой упаковке.</p>
+<div class="src">Jeffrey Young, Janet Klosko, «Reinventing Your Life», 1994.</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.5</span><span class="ex-time">15 минут</span></div><h3>Мои маски</h3>
+<p>Обычно у человека есть все три стиля, но один — любимый. Запиши свои примеры из последнего месяца.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Стиль</th><th>Как это выглядит у меня (конкретные ситуации)</th></tr></thead><tbody><tr><td><strong>Сдаться</strong> — живу так, будто приговор верен: соглашаюсь, извиняюсь, выбираю тех, кто критикует, не прошу своего</td><td></td></tr><tr><td><strong>Сбежать</strong> — прячусь: не сближаюсь, не показываю себя, откладываю, «работаю над собой» вместо того, чтобы жить</td><td></td></tr><tr><td><strong>Контратаковать</strong> — доказываю обратное: перфекционизм, сверхдостижения, контроль, критика других</td><td></td></tr></tbody></table>
+<div class="q">Какая маска — моя «любимая»? Что она мне даёт? Чего стоит?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Итог части 1</h2>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 1.6</span><span class="ex-time">10 минут</span></div><h3>Обвинительное заключение</h3>
+<p>Собери всё найденное на одной странице. Это документ, который мы будем пересматривать.</p>
+</div>
+<div class="q">Формулировка обвинения (ядро из задания 1.2):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Где оно звучит громче всего (зоны из 1.3):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Кем я боюсь оказаться (из 1.4):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Как я защищаюсь (маски из 1.5):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Сколько лет этому делу? Когда я впервые почувствовала что-то подобное?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="scale"><div class="scale-lbl">Вера в обвинение сегодня, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+</div>
+<section class="chapter"><div class="ch-num">Часть 2</div><h1>Как приговор собирает улики</h1><div class="ch-sub">Почему убеждение «со мной что-то не так» так хорошо находит себе доказательства — и почему им нельзя верить на слово</div></section>
+<blockquote class="epi">Мы видим вещи не такими, какие они есть. Мы видим их такими, какие мы есть.<cite>Приписывается Анаис Нин</cite></blockquote>
+<h2>Самый главный эксперимент этой тетради</h2>
+<div class="case"><div class="case-lbl">Досье 3</div><h3>Шрам, которого не было</h3>
+<p>В 1980 году психологи Роберт Клек и Анджело Стрента из Дартмутского колледжа пригласили студенток на исследование — якобы о том, как люди реагируют на внешний дефект. Профессиональный гримёр рисовал каждой на лице правдоподобный шрам. Девушке давали рассмотреть его в зеркале. Потом гримёр возвращался «поправить и закрепить грим» — и незаметно полностью стирал шрам.</p>
+<p>После этого девушка шла разговаривать с незнакомым человеком, который ничего не знал об эксперименте. Лицо у неё было совершенно обычным. Но после разговора участницы уверенно рассказывали: собеседник был напряжён, отводил взгляд, держался снисходительно. И объясняли это своим «уродством».</p>
+<p>Шрама не было. Но <strong>улики нашлись</strong>.</p>
+<div class="src">Kleck &amp; Strenta, «Perceptions of the Impact of Negatively Valued Physical Characteristics on Social Interaction», 1980.</div>
+</div>
+<p>Перечитай это досье ещё раз, медленно. Это не история про шрамы. Это история про то, как работает любое убеждение о собственном дефекте. Если ты уверена, что с тобой что-то не так, мозг начинает читать мир через это убеждение. Пауза собеседника становится осуждением. Невзятая трубка — отвержением. Нейтральное лицо — раздражением. И каждая такая «улика» делает убеждение ещё сильнее.</p>
+<p>Приговор — это не вывод из фактов. Это <strong>фильтр</strong>, через который факты проходят.</p>
+<h2>Ещё четыре улики против обвинения</h2>
+<div class="case"><div class="case-lbl">Досье 4</div><h3>Тебя замечают вдвое меньше, чем кажется</h3>
+<p>Психологи Томас Гилович, Виктория Медвек и Кеннет Савицки просили студентов надеть футболку с портретом певца Барри Манилоу — для студентов того времени это было стыдно — и зайти в аудиторию, где сидели другие. Потом спрашивали: как думаешь, сколько человек запомнили, что было на футболке? Участники думали, что примерно половина. На самом деле — около 20–25%. Это назвали <strong>эффектом прожектора</strong>: мы переоцениваем, насколько окружающие замечают нашу внешность, промахи и неловкость. Причина проста: мы отталкиваемся от собственных очень ярких ощущений («на мне эта футболка!»), а другие в это время заняты собой.</p>
+<div class="src">Gilovich, Medvec, Savitsky, Journal of Personality and Social Psychology, 2000.</div>
+</div>
+<div class="case"><div class="case-lbl">Досье 5</div><h3>Ты нравишься людям больше, чем думаешь</h3>
+<p>Исследователи из Йеля, Корнелла и Эссекса изучали, как люди оценивают разговор с новым человеком. Незнакомцы в лаборатории, первокурсники с соседями по общежитию, участники тренинга — во всех ситуациях люди считали, что понравились собеседнику <strong>меньше, чем было на самом деле</strong>. Это назвали <strong>разрывом симпатии</strong> (liking gap). Первокурсники недооценивали, насколько нравятся соседям, почти весь учебный год. Причина: после разговора мы строго разбираем собственное «выступление» — что сказала не так, где замолчала. А про другого у нас нет такого каталога ошибок, поэтому к нему мы добрее. Чем застенчивее человек, тем больше разрыв. Позже тот же эффект нашли в онлайн-общении и в рабочих командах.</p>
+<div class="src">Boothby, Cooney, Sandstrom, Clark, Psychological Science, 2018.</div>
+</div>
+<div class="case"><div class="case-lbl">Досье 6</div><h3>Своя уязвимость — позор, чужая — смелость</h3>
+<p>Психологи из Мангеймского университета Анна Брук, Сабина Шолль и Герберт Блесс в семи исследованиях просили людей представить ситуации уязвимости: первой признаться в любви, признать ошибку, попросить о помощи, показать несовершенное тело. Одни представляли это про себя, другие — про другого человека. Результат устойчиво повторялся: <strong>свою</strong> уязвимость люди оценивали как слабость и разоблачение, а <strong>точно такую же</strong> уязвимость другого — как смелость и искренность. Это назвали <strong>эффектом прекрасного беспорядка</strong>: в других беспорядок кажется прекрасным, в себе — просто беспорядком. А в продолжении исследования выяснилось: у людей с более высоким самосостраданием этот разрыв меньше — они судят себя той же мерой, что и других.</p>
+<div class="src">Bruk, Scholl, Bless, JPSP, 2018; PSPB, 2022.</div>
+</div>
+<div class="case"><div class="case-lbl">Досье 7</div><h3>«Страшные» мысли бывают почти у всех</h3>
+<p>Навязчивые мысли — непрошеные образы и импульсы: толкнуть человека под поезд, навредить близкому, сказать что-то ужасное. Многие считают их доказательством того, что с ними что-то глубоко не так. Международная группа исследователей во главе с Адамом Радомски опросила 777 студентов в 13 странах на шести континентах. <strong>93,6%</strong> сообщили хотя бы об одной такой мысли за последние три месяца. Вывод авторов: сами по себе такие мысли — почти универсальная часть человеческого опыта. Проблема начинается не с содержания мысли, а с того, что человек о ней думает: «раз я так подумала, значит, я плохая».</p>
+<div class="src">Radomsky et al., Journal of Obsessive-Compulsive and Related Disorders, 2014.</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.1</span><span class="ex-time">20 минут, повторять</span></div><h3>Факт или интерпретация</h3>
+<p>Главный навык следователя — отличать то, что случилось, от того, что ты об этом решила. Факт — это то, что увидела бы видеокамера. Интерпретация — то, что добавил приговор.</p>
+</div>
+<p>Пример. Факт: «Подруга ответила на сообщение через 6 часов одним словом». Интерпретация: «Я её утомила, со мной тяжело». Другие возможные объяснения: «Она была занята», «Она отвечает так всем», «У неё что-то случилось».</p>
+<table class="grid"><thead><tr><th>Ситуация</th><th>Факт (что сняла бы камера)</th><th>Что я решила (улика приговора)</th><th>Три других объяснения</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+<div class="q">Что я заметила, заполняя таблицу?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.2</span><span class="ex-time">15 минут</span></div><h3>«История, которую я себе рассказываю»</h3>
+<p>Брене Браун заметила, что в эмоционально трудной ситуации мозг мгновенно сочиняет историю, в которой мы — плохие. Она предлагает не прятать эту историю, а честно записать её как <strong>первый черновик</strong> — без цензуры, со всеми глупостями. И только потом проверять.</p>
+</div>
+<div class="q">Ситуация, которая до сих пор задевает:</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">«История, которую я себе рассказываю, — …» (пиши быстро, не редактируя):</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что в этой истории — факты, а что — догадки о чужих мыслях?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Чего я в этой истории боюсь больше всего?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Как могла бы звучать более точная версия — с другой концовкой?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.3</span><span class="ex-time">эксперимент на неделю</span></div><h3>Проверка прожектора</h3>
+<p>Проверим эффект прожектора на собственной жизни.</p>
+</div>
+<ol><li>Выбери небольшую «неловкость», которая обычно тебя тревожит: надеть что-то непривычное, прийти без макияжа, сказать мнение на встрече, задать «глупый» вопрос.</li><li><strong>До:</strong> запиши прогноз — сколько людей заметят и что подумают.</li><li>Сделай это.</li><li><strong>После:</strong> запиши, что было на самом деле. Если можешь — спроси кого-то из присутствующих, что они запомнили.</li></ol>
+<table class="grid"><thead><tr><th>Что я делаю</th><th>Мой прогноз (кто заметит, что подумает, 0–100% уверенности)</th><th>Что было на самом деле</th><th>Вывод</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.4</span><span class="ex-time">после каждого важного разговора</span></div><h3>Разрыв симпатии: пост-разговорный разбор</h3>
+<p>После встречи с новым или значимым человеком заполни две колонки. Главное — заполнить правую так же подробно, как левую.</p>
+</div>
+<table class="grid"><thead><tr><th>Что я помню о своих «ошибках» в разговоре</th><th>Что я помню о собеседнике: что ему было интересно, когда он смеялся, что спрашивал</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+<div class="scale"><div class="scale-lbl">Насколько, по-моему, я понравилась, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+<div class="q">Если разрыв симпатии существует — какую оценку мне стоило бы поставить на самом деле?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Когда ярлык становится уликой</h2>
+<p>Есть ещё один источник «доказательств», о котором редко говорят. Это ярлыки: диагнозы, типы, «признаки». Иногда они — настоящее облегчение и дорога к помощи. Но у них есть и обратная сторона.</p>
+<div class="case"><div class="case-lbl">Досье 8</div><h3>Ген, который переписал прошлое</h3>
+<p>Психологи Мэтью Лебовиц и Ву-кьюнг Ан из Йеля высылали участникам набор для «анализа слюны» — как в коммерческих генетических тестах — и сообщали «результат». Результат был случайным: одним говорили, что у них повышенная генетическая предрасположенность к депрессии, другим — что нет. Затем все заполняли стандартную шкалу депрессии о своём самочувствии <strong>за последние две недели</strong>. Эти две недели уже прошли — их нельзя изменить. Тем не менее люди, которым сказали «у вас ген депрессии», в среднем сообщали о более сильных симптомах.</p>
+<p>Ярлык переписал воспоминания о прошлом.</p>
+<div class="src">Lebowitz &amp; Ahn, Journal of Consulting and Clinical Psychology, 2017.</div>
+</div>
+<div class="case"><div class="case-lbl">Досье 9</div><h3>Когда просвещение делает хуже</h3>
+<p>Психологи Люси Фоулкс (Оксфорд) и Джек Эндрюс в 2023 году сформулировали <strong>гипотезу инфляции распространённости</strong>. Разговоры о психическом здоровье, по их мнению, работают двумя путями. Хороший: люди с настоящими проблемами начинают их замечать и получают помощь. Рискованный: обычные тяжёлые переживания — тревогу перед экзаменом, грусть, волнение — люди начинают толковать как расстройство. А получив ярлык, начинают думать и вести себя так, что трудность действительно усиливается: например, избегают ситуаций, где «симптом» может проявиться.</p>
+<p>Рядом — цифры из соцсетей. В 2022 году канадские исследователи проанализировали 100 самых популярных видео про СДВГ в TikTok: <strong>52%</strong> специалисты признали вводящими в заблуждение. Типичные «симптомы» из роликов — тревога, перепады настроения, конфликты — бывают при очень многих состояниях и просто в трудные периоды жизни. Британские исследователи в 2026 году сформулировали главную ловушку ленты коротко: люди путают <strong>«узнаваемое»</strong> с <strong>«надёжным»</strong>. Кажется правдой, потому что похоже на меня.</p>
+<div class="src">Foulkes &amp; Andrews, New Ideas in Psychology, 2023; Yeung et al., Canadian Journal of Psychiatry, 2022; University of Birmingham, 2026.</div>
+</div>
+<div class="note"><div class="note-lbl">Это не значит «твои трудности выдуманы»</div>
+<p>Если ты подозреваешь у себя СДВГ, депрессию, тревожное расстройство или аутизм — это важный повод обратиться к специалисту за полноценной диагностикой. Настоящий диагноз может изменить жизнь к лучшему. Речь о другом: ярлык, найденный в ролике за 30 секунд, легко становится ещё одной уликой в деле «со мной что-то не так». Проверять его стоит так же, как любую другую улику.</p>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.5</span><span class="ex-time">20 минут</span></div><h3>Ярлыки, которые я на себя надела</h3>
+</div>
+<table class="grid"><thead><tr><th>Ярлык (тип, «диагноз», черта: «тревожная», «токсичная», «созависимая», «интроверт»…)</th><th>Откуда он у меня</th><th>Что он мне даёт (облегчение, язык, сообщество)</th><th>Чего он мне стоит (что я перестала пробовать, как стала о себе думать)</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+<div class="q">Какой из этих ярлыков я проверила у специалиста, а какой — нашла сама?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Если бы завтра выяснилось, что этого ярлыка у меня нет, — что бы я начала делать иначе?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Итог части 2</h2>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 2.6</span><span class="ex-time">10 минут</span></div><h3>Протокол по уликам</h3>
+</div>
+<div class="q">Какие «улики» приговора за последнюю неделю оказались интерпретациями, а не фактами?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Какое досье из этой части задело сильнее всего? Почему?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="scale"><div class="scale-lbl">Вера в обвинение сегодня, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+</div>
+<section class="chapter"><div class="ch-num">Часть 3</div><h1>Происхождение дела</h1><div class="ch-sub">Кто завёл это дело, когда и на каком основании</div></section>
+<blockquote class="epi">Не «что с тобой не так?», а «что с тобой случилось?»<cite>Опра Уинфри и Брюс Перри</cite></blockquote>
+<h2>Приговор не рождается вместе с человеком</h2>
+<p>Ни один младенец не приходит в мир с мыслью «со мной что-то не так». Этому учатся. Иногда — через большую боль. Гораздо чаще — через тысячу маленьких моментов, которые по отдельности не выглядят травмой вообще.</p>
+<p>В схема-терапии Джеффри Янга есть понятие <strong>ранних дезадаптивных схем</strong> — глубинных убеждений о себе и мире, которые складываются в детстве, когда важные потребности ребёнка остаются без ответа. Одна из восемнадцати схем называется <strong>«Дефективность/стыд»</strong>. Её суть: я изначально плохая, неполноценная, недостойная любви, и любой, кто узнает меня по-настоящему, меня отвергнет. Это практически дословно тема этой тетради.</p>
+<p>Важно, откуда эта схема берётся. Не обязательно из насилия или явной жестокости. Она может вырасти в семье, где у ребёнка было всё необходимое — еда, одежда, кружки, — но не было ощущения, что его принимают <strong>таким, какой он есть</strong>. Где его критиковали не за поступки, а за то, кто он: «слишком чувствительная», «вечно ты со своими капризами», «в кого ты такая». Ребёнок не может подумать «у мамы тяжёлый период» или «папа не умеет выражать любовь». Детская логика проще: если со мной так обращаются, значит, со мной что-то не так.</p>
+<div class="case"><div class="case-lbl">Досье 10</div><h3>Вопрос, который меняет всё</h3>
+<p>В 2021 году вышла книга Опры Уинфри и детского психиатра Брюса Перри «What Happened to You?» — «Что с тобой случилось?». Она стала бестселлером №1 New York Times, тираж превысил миллион экземпляров. Вся книга держится на одном сдвиге: заменить вопрос «что с тобой не так?» вопросом «что с тобой случилось?». Смысл в том, что реакции, привычки и чувство собственной «неправильности» объясняются пережитым опытом, а не изъяном человека.</p>
+<div class="src">Oprah Winfrey, Bruce D. Perry, «What Happened to You?», 2021.</div>
+</div>
+<h2>Стыд и вина: одна буква разницы, две разные судьбы</h2>
+<p>Прежде чем поднимать архив, важно различить два чувства, которые часто путают. Исследовательница Джун Тэнгни из Университета Джорджа Мейсона посвятила этому различию десятилетия работы.</p>
+<ul><li><strong>Вина</strong> говорит: «Я сделала плохо». Она касается поступка. Поступок можно исправить: извиниться, загладить, сделать иначе.</li><li><strong>Стыд</strong> говорит: «Я — плохая». Он касается всей личности. Исправить себя целиком нельзя, поэтому стыд хочется спрятать.</li></ul>
+<div class="case"><div class="case-lbl">Досье 11</div><h3>Что вырастает из стыда</h3>
+<p>Команда Тэнгни измерила у пятиклассников склонность к стыду и склонность к вине — а через восемь лет нашла их снова. Дети, склонные к вине, во взрослом возрасте реже употребляли наркотики и алкоголь и реже имели проблемы с законом. Дети, склонные к стыду, чаще рисковали и чаще употребляли наркотики. В другом исследовании — с 476 заключёнными — склонность к вине предсказывала меньший риск повторного преступления. Стыд работал иначе: он тесно связан с желанием переложить вину на других («это они виноваты») и через эту защиту повышал риск рецидива. Стыд настолько невыносим, что психика выталкивает его наружу — в злость и обвинения.</p>
+<p>Вывод парадоксален для бытовой логики «пусть ей будет стыдно — тогда исправится»: <strong>стыд помогает исправляться хуже, чем вина.</strong></p>
+<div class="src">Stuewig, Tangney et al., 2015; Tangney, Stuewig, Martinez, Psychological Science, 2014.</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 3.1</span><span class="ex-time">15 минут</span></div><h3>Из стыда — в вину</h3>
+<p>Перепиши свои фразы-приговоры из языка стыда на язык вины и ответственности. Не отрицай, что что-то пошло не так. Просто перенеси фокус с «кто я» на «что я сделала и что могу сделать».</p>
+</div>
+<table class="grid filled"><thead><tr><th>Язык стыда («я — …»)</th><th>Язык вины и ответственности («я сделала…, и я могу…»)</th></tr></thead><tbody><tr><td>Я ужасная мать.</td><td>Я накричала на сына из-за усталости. Я могу извиниться и подумать, где взять отдых.</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+<div class="q">Что меняется в теле, когда я читаю правую колонку?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Поднимаем архив</h2>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 3.2</span><span class="ex-time">40 минут, можно в два захода</span></div><h3>Исторический тест убеждения</h3>
+<p>Эта техника описана когнитивным терапевтом Кристин Падески и используется в когнитивной терапии для работы с глубинными убеждениями. Мы пройдём по твоей жизни по периодам и посмотрим на каждый глазами взрослого следователя.</p>
+</div>
+<p>Для каждого периода запиши: (1) что тогда, казалось, <strong>подтверждало</strong> «со мной что-то не так»; (2) что этому <strong>противоречило</strong> — даже мелочи; (3) как ты видишь подтверждающие события <strong>сейчас, взрослым взглядом</strong>.</p>
+<p>Пример: «В 8 лет меня отругали при всём классе за ошибку у доски» → «Бабушка всегда просила меня читать ей вслух и радовалась» → «Учительница была известна своей жёсткостью; я была ребёнком, который ошибся, как ошибаются все дети».</p>
+<table class="grid filled"><thead><tr><th>Период</th><th>Что «подтверждало» приговор</th><th>Что ему противоречило</th><th>Взрослый взгляд</th></tr></thead><tbody><tr><td>0–6 лет</td><td></td><td></td><td></td></tr><tr><td>7–12 лет</td><td></td><td></td><td></td></tr><tr><td>13–18 лет</td><td></td><td></td><td></td></tr><tr><td>19–25 лет</td><td></td><td></td><td></td></tr><tr><td>26 лет — сейчас</td><td></td><td></td><td></td></tr></tbody></table>
+<div class="q">Итог по делу: что я вижу, глядя на всю хронологию целиком?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 3.3</span><span class="ex-time">20 минут</span></div><h3>Первые голоса</h3>
+</div>
+<div class="q">Какие фразы обо мне я слышала в детстве и юности — от родителей, учителей, сверстников, родственников? Запиши дословно, как запомнилось.</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Кто из этих людей сам жил с ощущением «со мной что-то не так»? Что я знаю об их жизни и их трудностях?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Если бы сейчас в той комнате стояла я — взрослая, — что бы я сказала себе маленькой после этих слов?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Паутина, в которой невозможно не запутаться</h2>
+<p>Брене Браун описывает, почему женщине так легко почувствовать, что с ней что-то не так: она запутана в <strong>паутине стыда</strong> — многослойных, противоречивых и конкурирующих ожиданиях. Будь успешной, но не «карьеристкой». Будь привлекательной, но не «слишком». Будь хорошей матерью — и работай так, будто детей нет. Выгляди естественно — но идеально. Выполнить всё одновременно невозможно. Значит, ощущение провала встроено в саму систему, а не в конкретную женщину.</p>
+<p>К этой паутине в последние годы добавилась новая нить — <strong>культура бесконечной работы над собой</strong>. Сегодня у самоулучшения есть целая индустрия, и у неё очевидный экономический интерес: чтобы ты постоянно чувствовала себя незаконченным проектом. В 2026 году международный саммит индустрии благополучия Global Wellness Summit даже внёс в десятку главных трендов года «откат от переоптимизации» — усталость людей от давления «делать благополучие правильно».</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 3.4</span><span class="ex-time">20 минут</span></div><h3>Моя паутина</h3>
+<p>Выпиши противоречивые требования, которые ты чувствуешь на себе. Для каждого — чей это голос и кому выгодно, чтобы ты в это верила.</p>
+</div>
+<table class="grid"><thead><tr><th>Будь…</th><th>…но не…</th><th>Чей это голос (семья, среда, соцсети, реклама, культура)</th><th>Кому выгодно, чтобы я в это верила</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+<div class="q">Какое из этих требований я готова отпустить первым — хотя бы на неделю?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Итог части 3</h2>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 3.5</span><span class="ex-time">10 минут</span></div><h3>Справка о происхождении дела</h3>
+</div>
+<div class="q">Когда, по моим ощущениям, было заведено это дело?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Кто были первые «свидетели обвинения»?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что тогда случилось со мной — вместо «что со мной не так»?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="scale"><div class="scale-lbl">Вера в обвинение сегодня, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+</div>
+<section class="chapter"><div class="ch-num">Часть 4</div><h1>Кто ведёт обвинение</h1><div class="ch-sub">Знакомство с внутренним критиком — и с тем, что он на самом деле пытается сделать</div></section>
+<blockquote class="epi">Я вижу тебя, Мара. Давай выпьем чаю.<cite>Буддийская легенда в пересказе Тары Брах</cite></blockquote>
+<h2>Голос, который никогда не спит</h2>
+<p>У приговора «со мной что-то не так» почти всегда есть голос. Он комментирует твоё отражение в зеркале, разбирает каждое сказанное слово, напоминает о старых ошибках в три часа ночи. Его называют по-разному: внутренний критик, внутренний судья, карающий родитель. В этой тетради — <strong>прокурор</strong>.</p>
+<p>Прокурор кажется частью тебя, даже самой честной частью: «я просто трезво на себя смотрю». Но если записать его слова и прочитать вслух, выяснится, что ни с одним живым человеком ты так не разговариваешь.</p>
+<div class="case"><div class="case-lbl">Досье 12</div><h3>Что происходит в мозге, когда ты себя ругаешь</h3>
+<p>Исследователи во главе с Оливией Лонж при участии британского психолога Пола Гилберта поместили людей в томограф и просили представить, что они либо критикуют себя за ошибку, либо поддерживают себя. Когда человек себя критиковал, включались зоны, которые отвечают за обнаружение ошибок и торможение поведения. Мозг как будто отвечал на самокритику тормозом и сигналом «ошибка». Когда человек себя поддерживал, активнее работали области, которые включаются, когда мы сочувствуем другим людям. У людей, по жизни склонных к самокритике, сильнее реагировали зоны, связанные с угрозой.</p>
+<p>Самокритика для мозга — не «трезвый взгляд». Это <strong>сигнал опасности</strong>.</p>
+<div class="src">Longe, Maratos, Gilbert et al., NeuroImage, 2010.</div>
+</div>
+<h2>Три системы: почему «работа над собой» иногда не помогает</h2>
+<p>Пол Гилберт, создатель терапии, сфокусированной на сострадании, описывает три эволюционные системы, которые регулируют наши эмоции.</p>
+<ul><li><strong>Система угрозы</strong> (красная). Защищает от опасности. Порождает тревогу, гнев, стыд. Её девиз: «Осторожно!»</li><li><strong>Система драйва</strong> (синяя). Отвечает за цели, достижения, награды. Её девиз: «Добейся!»</li><li><strong>Система успокоения</strong> (зелёная). Даёт ощущение безопасности, покоя, связи с другими. Её девиз: «Ты в порядке. Можно выдохнуть».</li></ul>
+<p>У людей с сильным стыдом и самокритикой красная система гипертрофирована, а зелёная почти не развита. И вот важная ловушка: синий драйв часто начинает работать <strong>на угрозу</strong>. «Сейчас я похудею, заработаю, пройду ещё один курс, проработаю ещё одну травму — и тогда со мной наконец будет всё в порядке». Человек бесконечно переключается между красным («со мной что-то не так») и синим («сейчас я себя исправлю») — и ни разу не заходит в зелёный.</p>
+<p>Гилберт называет это <strong>«хитрым мозгом»</strong>. Наш мозг сложился эволюционно, он полон компромиссов и не спроектирован для счастья. Древняя система угрозы легко захватывает всё остальное. Отсюда главная мысль его подхода: <strong>это не твоя вина</strong> — ты не выбирала мозг, склонный к самокритике, и обстоятельства, которые его настроили. <strong>Но это твоя ответственность</strong> — научиться с ним обращаться.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.1</span><span class="ex-time">20 минут</span></div><h3>Мои три круга</h3>
+<p>Нарисуй три круга — красный, синий и зелёный. Размер каждого — пропорционально тому, сколько места эта система занимает в твоей жизни сейчас.</p>
+</div>
+<div class="box" style="height:70mm"><div class="box-lbl">Мои три круга</div></div>
+<div class="q">Что включает мою красную систему? Какие мысли, ощущения, действия?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что включает синюю? Какие мои «достижения» на самом деле попытка убежать от красной?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Когда я последний раз была в зелёной — в покое, без необходимости что-то доказывать? Что там было?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Какая система включается, когда я «работаю над собой»?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">3–5 вещей, которые реально включают мою зелёную систему (не достижения, а покой и связь):</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Прокурор тоже чего-то боится</h2>
+<p>В подходе психотерапевта Ричарда Шварца «Внутренние семейные системы» (IFS) психика рассматривается как набор частей. Главная идея его книги звучит в её названии: «Плохих частей нет». Даже часть, которая кажется жестокой, когда-то взялась за свою работу, чтобы тебя защитить. Внутренний критик часто защищает от отвержения очень простым способом: критикует раньше, чем это сделают другие. «Если я сама найду все свои недостатки, никто не застанет меня врасплох».</p>
+<p>Это не значит, что с критиком нужно соглашаться. Это значит, что с ним можно <strong>разговаривать</strong>, а не воевать.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.2</span><span class="ex-time">20 минут</span></div><h3>Досье на прокурора</h3>
+<p>В нарративной терапии, основанной Майклом Уайтом и Дэвидом Эпстоном, есть принцип: «Проблема — это проблема. Человек — не проблема». Отделим голос от тебя. Опиши его как отдельного персонажа.</p>
+</div>
+<div class="q">Имя или прозвище (например, «Мадам Недостаточно», «Главбух», «Училка»):</div><div class="lines"><div class="ln"></div></div>
+<div class="q">Как он выглядит? Сколько ему лет? Во что одет?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Его любимые фразы (дословно):</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Когда он появляется чаще всего?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что он, по его мнению, для меня делает? От чего защищает?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Чего он боится, что произойдёт, если он замолчит?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Когда ему не удалось мной управлять? Что я тогда сделала?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.3</span><span class="ex-time">30 минут</span></div><h3>Письменный диалог на трёх стульях</h3>
+<p>В терапии, сфокусированной на сострадании, и в схема-терапии есть техника работы на стульях. Мы адаптируем её письменно. Три участника: <strong>прокурор</strong>, <strong>та, кого обвиняют</strong>, и <strong>сострадательная я</strong> — версия тебя, у которой есть мудрость, сила и тепло. Сострадательной быть не обязательно «чувствовать». Достаточно сыграть роль, как актриса.</p>
+</div>
+<p>Пиши по кругу 3 раунда. Последнее слово — всегда за сострадательной.</p>
+<table class="grid"><thead><tr><th>Прокурор говорит…</th><th>Обвиняемая чувствует…</th><th>Сострадательная я отвечает обеим…</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+<div class="q">Что я поняла о своём прокуроре после диалога?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Мысль — это не факт</h2>
+<p>Ещё один способ ослабить прокурора пришёл из терапии принятия и ответственности (ACT). Там не спорят с мыслью «со мной что-то не так» и не доказывают обратное. Там учатся видеть её <strong>как мысль</strong>, а не как правду о себе.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.4</span><span class="ex-time">10 минут</span></div><h3>«У меня есть мысль, что…»</h3>
+</div>
+<ol><li>Запиши приговор в его привычной форме и оцени, насколько он «цепляет» (0–10).</li><li>Перепиши с приставкой: «У меня есть мысль, что…»</li><li>Перепиши ещё раз: «Я замечаю, что у меня есть мысль, что…»</li><li>Оцени снова.</li></ol>
+<div class="q">Мысль как есть:</div><div class="lines"><div class="ln"></div></div>
+<div class="q">У меня есть мысль, что…</div><div class="lines"><div class="ln"></div></div>
+<div class="q">Я замечаю, что у меня есть мысль, что…</div><div class="lines"><div class="ln"></div></div>
+<div class="q">Насколько цепляет было → стало (0–10):</div><div class="lines"><div class="ln"></div></div>
+<div class="q">Дай своему приговору название, как сериалу: «О, опять серия „…"».</div><div class="lines"><div class="ln"></div></div>
+</div>
+<div class="case"><div class="case-lbl">Досье 13</div><h3>Пассажиры в автобусе</h3>
+<p>Одна из известных метафор ACT. Ты — водитель автобуса своей жизни. На остановках заходят пассажиры: пугающие мысли, воспоминания, голоса. «Ты не такая». «Опозоришься». «Сначала почини себя». Они кричат и требуют ехать туда, куда скажут. Если водитель подчиняется, чтобы они замолчали, автобус едет не туда, куда хотел водитель. Главное: пассажиры страшные на вид, но руль у тебя. Они не могут его отобрать. Можно ехать к тому, что важно, пока они шумят.</p>
+<div class="src">Hayes, Strosahl, Wilson, «Acceptance and Commitment Therapy», 1999.</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.5</span><span class="ex-time">15 минут</span></div><h3>Разговор с собой по имени</h3>
+<p>Психолог Этан Кросс из Мичиганского университета показал в серии экспериментов: если думать о себе не «я», а по имени или на «ты» («Почему Таня так волнуется?»), это создаёт психологическую дистанцию. В одном из исследований эмоциональная реакция мозга снижалась примерно за секунду — и без дополнительных усилий. Люди начинают рассуждать о себе так, как советовали бы другу.</p>
+</div>
+<div class="q">Напиши абзац о том, что тебя сейчас мучает, от первого лица («я…»):</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">А теперь — о себе по имени, в третьем лице, как будто ты мудрая подруга, которая смотрит со стороны:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Представь, что прошло 10 лет. Как ты-будущая смотрит на эту ситуацию?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Итог части 4</h2>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 4.6</span><span class="ex-time">10 минут</span></div><h3>Протокол о прокуроре</h3>
+</div>
+<div class="q">Кто он, мой прокурор, — в двух предложениях:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что он пытается защитить:</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что я теперь буду делать, когда он включается:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="scale"><div class="scale-lbl">Вера в обвинение сегодня, 0–10</div><div class="scale-row"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+</div>
+<section class="chapter"><div class="ch-num">Часть 5</div><h1>Пересмотр дела</h1><div class="ch-sub">Как заменить старый приговор новым решением — не на словах, а на уликах</div></section>
+<blockquote class="epi">Любопытный парадокс: когда я принимаю себя такой, какая я есть, тогда я могу измениться.<cite>Карл Роджерс</cite></blockquote>
+<h2>Почему нельзя просто «поверить в себя»</h2>
+<p>Ты, наверняка, уже пробовала спорить с приговором в лоб. Аффирмации, «я достаточно хороша», списки своих достоинств. Часто это не работает — и даже делает хуже: внутри поднимается «да ладно, кого ты обманываешь». Причина — в том, что мы видели в части 2. Старое убеждение работает как фильтр: замечает всё, что его подтверждает, и отбрасывает остальное. Один красивый лозунг против тысячи «улик» не выстоит.</p>
+<p>Когнитивный терапевт Кристин Падески предложила другой путь. Не спорить со старым убеждением, а:</p>
+<ol><li>сформулировать <strong>новое</strong> — реалистичное, а не зеркальное («я идеальная» так же ложно, как «я дефектная»);</li><li><strong>собирать улики</strong> в его пользу — специально, ежедневно, как следователь, которому поручили новую версию;</li><li><strong>проверять</strong> старое в реальных экспериментах.</li></ol>
+<p>Это не быстро. Убеждения меняются маленькими шагами. Но меняются.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 5.1</span><span class="ex-time">15 минут</span></div><h3>Новое рабочее убеждение</h3>
+<p>Новое убеждение должно быть таким, чтобы в него хотя бы немного можно было поверить. Примеры: «Я обычный человек, у меня есть сильные и слабые стороны, как у всех». «Со мной всё в порядке, даже когда я ошибаюсь». «Меня можно любить — не идеальную, а такую». «Я достаточно хороша для жизни, которую хочу».</p>
+</div>
+<div class="q">Моё старое убеждение (из части 1):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Моё новое рабочее убеждение:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<table class="grid filled"><thead><tr><th></th><th>Старое</th><th>Новое</th></tr></thead><tbody><tr><td>Верю головой, 0–100%</td><td></td><td></td></tr><tr><td>Верю сердцем, 0–100%</td><td></td><td></td></tr></tbody></table>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 5.2</span><span class="ex-time">25 минут</span></div><h3>Континуум: шкала вместо приговора</h3>
+<p>Приговоры устроены по принципу «всё или ничего»: либо я нормальная, либо со мной что-то не так. Континуум превращает ярлык в шкалу.</p>
+</div>
+<p>Шаг 1. Отметь на шкале, где ты сейчас по новому убеждению.</p>
+<div class="cont"><div class="cont-lbl">«Со мной всё в порядке / я достаточно хороша»</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<p>Шаг 2. Кто был бы на 0%? Опиши самого «дефектного» человека, какого можешь представить: что он делает? Кто на 100%? Потом размести на шкале нескольких реальных знакомых. И снова себя.</p>
+<div class="cont"><div class="cont-lbl">Люди на шкале: 0% — …, 100% — …, знакомые, я</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<div class="q">Что изменилось в моей отметке? Почему?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<p>Шаг 3. Что для меня значит «нормальный, достойный человек»? Выпиши 4–5 конкретных критериев (например: «забочусь о близких», «держу слово», «могу признать ошибку»). Оцени себя по каждому отдельно.</p>
+<div class="cont"><div class="cont-lbl">Критерий 1: …</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<div class="cont"><div class="cont-lbl">Критерий 2: …</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<div class="cont"><div class="cont-lbl">Критерий 3: …</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<div class="cont"><div class="cont-lbl">Критерий 4: …</div><div class="cont-line"><span>0%</span><span>50%</span><span>100%</span></div></div>
+<div class="q">Совпадает ли результат по критериям с глобальным приговором?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 5.3</span><span class="ex-time">20 минут, по ситуации</span></div><h3>Дневник мыслей</h3>
+<p>Базовый инструмент когнитивно-поведенческой терапии в версии Кристин Падески и Денниса Гринбергера (книга «Разум рулит настроением»). Заполняй, когда приговор включается в конкретной ситуации. В тетради — два бланка; сделай копии, если нужно больше.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Колонка</th><th>Бланк 1</th><th>Бланк 2</th></tr></thead><tbody><tr><td>1. Ситуация: кто, что, где, когда</td><td></td><td></td></tr><tr><td>2. Чувства и их сила, 0–100%</td><td></td><td></td></tr><tr><td>3. Автоматические мысли; обведи «горячую»</td><td></td><td></td></tr><tr><td>4. Факты ЗА горячую мысль (только факты!)</td><td></td><td></td></tr><tr><td>5. Факты ПРОТИВ (было ли иначе? что сказала бы подруга? что я упускаю?)</td><td></td><td></td></tr><tr><td>6. Сбалансированная мысль и вера в неё, 0–100%</td><td></td><td></td></tr><tr><td>7. Чувства сейчас, 0–100%</td><td></td><td></td></tr></tbody></table>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 5.4</span><span class="ex-time">15 минут на план + сам эксперимент</span></div><h3>Поведенческий эксперимент</h3>
+<p>Приговор делает предсказания: «если я скажу своё мнение, меня высмеют», «если попрошу о помощи, откажут и подумают, что я слабая», «если покажу незаконченную работу, поймут, что я бездарность». Эксперимент проверяет предсказание в жизни. Начинай с небольшого риска.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Шаг</th><th>Эксперимент 1</th><th>Эксперимент 2</th></tr></thead><tbody><tr><td>Убеждение, которое проверяю, и вера в него, %</td><td></td><td></td></tr><tr><td>Точное предсказание: что именно произойдёт</td><td></td><td></td></tr><tr><td>План: что сделаю, когда, с кем</td><td></td><td></td></tr><tr><td>Что может помешать и как я с этим справлюсь</td><td></td><td></td></tr><tr><td>Что произошло на самом деле</td><td></td><td></td></tr><tr><td>Вывод: что это говорит о моём убеждении? Вера сейчас, %</td><td></td><td></td></tr></tbody></table>
+<div class="note"><div class="note-lbl">Про смелость</div>
+<p>Психотерапевт Альберт Эллис придумал «упражнения на атаку стыда»: сознательно сделать что-то безобидное, но неловкое — например, громко спросить время в людном месте или надеть непарные носки. Цель — на опыте убедиться, что чужое неодобрение можно пережить, стыд спадает, а катастрофы не происходит. Если хочется большего — попробуй. Но только то, что безопасно, законно и никому не вредит.</p>
+</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 5.5</span><span class="ex-time">20 минут</span></div><h3>Флэшкарта схемы</h3>
+<p>В схема-терапии Джеффри Янга есть простой инструмент: карточка, которую человек составляет заранее, в спокойном состоянии, и носит с собой. Её перечитывают в тот момент, когда схема «включилась». При регулярной практике вера в схему постепенно слабеет. Составь свою по шаблону, потом перепиши на карточку в конце тетради (её можно вырезать).</p>
+</div>
+<div class="q">1. Признаю чувство: «Прямо сейчас я чувствую…, потому что…»</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">2. Называю схему: «Я знаю, что это мой старый приговор. Он появился, когда…»</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">3. Проверяю реальностью: «Хотя мне кажется, что…, факты такие…»</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">4. Выбираю поведение: «Мне хочется [спрятаться/доказывать/извиняться], но вместо этого я…»</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Журнал новых улик</h2>
+<p>Теперь главное упражнение этой части и, может быть, всей тетради. В течение 21 дня ты собираешь улики в пользу нового убеждения. Кристин Падески называет это <strong>позитивным журналом данных</strong>.</p>
+<p>Правила простые:</p>
+<ul><li>Записывай каждый день 1–3 конкретных факта, которые согласуются с новым убеждением. Мелочи считаются: «коллега спросила моего совета», «я сказала "нет" и мир не рухнул», «подруга написала, что скучает», «я ошиблась, извинилась, и всё наладилось».</li><li>Самое трудное — не обесценивать («это не считается»). Правило: <strong>записывай всё, что засчитала бы подруге</strong>.</li><li>Раз в неделю перечитывай всё записанное и отмечай, насколько веришь в новое убеждение.</li></ul>
+<table class="grid tracker"><thead><tr><th>День</th><th>Улики за новое убеждение (1–3 факта)</th><th>Вера, 0–100%</th></tr></thead><tbody><tr><td class="n">1</td><td></td><td></td></tr><tr><td class="n">2</td><td></td><td></td></tr><tr><td class="n">3</td><td></td><td></td></tr><tr><td class="n">4</td><td></td><td></td></tr><tr><td class="n">5</td><td></td><td></td></tr><tr><td class="n">6</td><td></td><td></td></tr><tr><td class="n">7</td><td></td><td></td></tr><tr><td class="n">8</td><td></td><td></td></tr><tr><td class="n">9</td><td></td><td></td></tr><tr><td class="n">10</td><td></td><td></td></tr><tr><td class="n">11</td><td></td><td></td></tr><tr><td class="n">12</td><td></td><td></td></tr><tr><td class="n">13</td><td></td><td></td></tr><tr><td class="n">14</td><td></td><td></td></tr><tr><td class="n">15</td><td></td><td></td></tr><tr><td class="n">16</td><td></td><td></td></tr><tr><td class="n">17</td><td></td><td></td></tr><tr><td class="n">18</td><td></td><td></td></tr><tr><td class="n">19</td><td></td><td></td></tr><tr><td class="n">20</td><td></td><td></td></tr><tr><td class="n">21</td><td></td><td></td></tr></tbody></table>
+<section class="chapter"><div class="ch-num">Часть 6</div><h1>Жизнь без приговора</h1><div class="ch-sub">Самосострадание, ценности — и смелость закончить «работу над собой»</div></section>
+<blockquote class="epi">Стыду нужны три вещи: секретность, молчание и осуждение.<cite>Брене Браун</cite></blockquote>
+<h2>Самый частый страх</h2>
+<p>Когда речь заходит о доброте к себе, почти у всех включается одно и то же возражение: «Если я перестану себя пилить, я расслаблюсь и всё испорчу. Критика — мой мотор». Это понятный страх. И он проверен экспериментально.</p>
+<div class="case"><div class="case-lbl">Досье 14</div><h3>Что на самом деле мотивирует</h3>
+<p>Психологи Джулиана Брайнс и Серена Чен из Калифорнийского университета в Беркли провели серию экспериментов. В самом наглядном студенты проваливали трудный тест, после чего получали время подготовиться к повторному. Одних перед этим настраивали на самосострадание — доброе, понимающее отношение к своей ошибке. Другим поднимали самооценку («ты же умный, ты молодец»). Третьи просто отвлекались на приятное. Те, кто отнёсся к провалу с самосостраданием, <strong>готовились дольше всех</strong>. В других экспериментах той же серии самосострадание усиливало желание исправить ошибку и работать над слабостями.</p>
+<p>Доброта к себе не расслабляет. Она даёт силы вернуться к трудному.</p>
+<div class="src">Breines &amp; Chen, Personality and Social Psychology Bulletin, 2012.</div>
+</div>
+<p>Американский психолог Кристин Нефф, которая ввела научное понятие самосострадания, описывает его через три элемента — и три противоположности, которые хорошо знакомы людям с приговором:</p>
+<ul><li><strong>Доброта к себе</strong> вместо самоосуждения — относиться к себе так, как к хорошей подруге.</li><li><strong>Общая человечность</strong> вместо изоляции — страдание и ошибки — часть общего человеческого опыта, а не доказательство моей особой дефектности. Именно этот элемент отвечает на мысль «у всех всё нормально, а со мной что-то не так».</li><li><strong>Осознанность</strong> вместо слияния — замечать боль, не преуменьшая и не раздувая её.</li></ul>
+<div class="case"><div class="case-lbl">Досье 15</div><h3>«Тебе сейчас так тяжело, милая»</h3>
+<p>У сына Кристин Нефф, Роуэна, в три года диагностировали аутизм. Когда ему было пять, она везла его через океан к бабушке и дедушке, и посреди перелёта у него случилась страшная истерика. Мальчик кричал и отбивался, весь салон смотрел на них. Нефф потащила его к туалету — тот оказался занят. Сидя с сыном в тесном закутке, чувствуя полную беспомощность, она стала говорить себе: «Тебе сейчас так тяжело, милая». «Я с тобой». Следя, чтобы Роуэн был в безопасности, основное внимание она отдала тому, чтобы успокоить себя. И по мере того как успокаивалась она, затих и сын.</p>
+<div class="src">Kristin Neff, «The Five Myths of Self-Compassion».</div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.1</span><span class="ex-time">15 минут</span></div><h3>Как бы ты отнеслась к подруге?</h3>
+<p>Упражнение Кристин Нефф, которое показывает двойной стандарт своими глазами.</p>
+</div>
+<div class="q">Вспомни, как близкая подруга переживала неудачу или чувствовала себя «неправильной». Что ты делала и говорила? Каким тоном?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Вспомни, как ты реагируешь на себя в похожей ситуации. Что говоришь себе? Каким тоном?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Видишь разницу? Какие страхи заставляют меня обращаться с собой иначе, чем с ней?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что бы изменилось, если бы я говорила с собой так же, как с ней?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.2</span><span class="ex-time">5 минут, в любой трудный момент</span></div><h3>Мой перерыв самосострадания</h3>
+<p>Короткая практика Кристин Нефф «скорой помощи». Три шага — три элемента самосострадания. Главное — подобрать свои слова, которые звучат естественно.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Шаг</th><th>Что делаю</th><th>Мои слова</th></tr></thead><tbody><tr><td>1. Осознанность</td><td>Признаю, что мне сейчас больно</td><td>Например: «Это момент боли». «Мне сейчас тяжело».</td></tr><tr><td>2. Общая человечность</td><td>Вспоминаю, что я не одна такая</td><td>Например: «Так бывает у всех людей». «Не я одна так себя чувствую».</td></tr><tr><td>3. Доброта к себе</td><td>Кладу руку на сердце и говорю с собой тепло</td><td>Например: «Пусть я буду к себе добра». «Что мне сейчас нужно?»</td></tr></tbody></table>
+<div class="q">Мои собственные фразы для каждого шага:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.3</span><span class="ex-time">25 минут</span></div><h3>Письмо от сострадательной подруги</h3>
+<p>Вспомни ту часть себя, из-за которой больше всего стыдно (из части 1). Теперь представь подругу, которая безусловно тебя любит и принимает. Она видит все твои сильные и слабые стороны — включая эту. Она знает, что твоя жизнь сложилась из множества причин, которые ты не выбирала: гены, семья, время, обстоятельства. Напиши себе письмо <strong>от её лица</strong>. Что бы она сказала о твоей боли? Как напомнила бы, что ты — человек? Если бы она предложила что-то изменить, как бы это звучало заботой, а не упрёком?</p>
+</div>
+<p>Отложи письмо на день. Потом перечитай.</p>
+<div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Мягкость и сила</h2>
+<p>Самосострадание — это не только «погладить себя». В книге «Жёсткое самосострадание» Кристин Нефф различает две его стороны. <strong>Мягкое</strong> — принять и утешить, как мать утешает ребёнка. <strong>Жёсткое</strong> — защитить, сказать «нет», поставить границу, мотивировать себя к переменам, как медведица, которая защищает медвежонка. Людям с приговором часто не хватает именно второго: позволить себе защищаться, а не только извиняться.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.4</span><span class="ex-time">10 минут</span></div><h3>Что мне нужно сейчас?</h3>
+</div>
+<div class="q">Ситуация, в которой мне сейчас трудно:</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что мне нужно — утешение (мягкое) или защита и действие (жёсткое)?</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Как звучал бы голос, который мотивирует меня из любви, а не из страха «со мной что-то не так»?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Куда ехать, если не чинить себя</h2>
+<p>Если убрать из жизни задачу «сначала исправить себя», освобождается огромное количество времени и сил. Возникает вопрос: а на что их тратить? Ответ терапии принятия и ответственности — на <strong>ценности</strong>: то, каким человеком ты хочешь быть и что для тебя действительно важно.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.5</span><span class="ex-time">20 минут</span></div><h3>Мишень ценностей</h3>
+<p>Инструмент психолога Тобиаса Лундгрена. Для каждой из четырёх сфер запиши, какой ты хочешь быть в ней (это направление, а не цель, которую можно «закрыть»). Потом отметь крестиком, насколько близко ты сейчас живёшь к этой ценности: в центре — полностью, на краю — далеко.</p>
+</div>
+<table class="grid filled"><thead><tr><th>Сфера</th><th>Какой я хочу быть здесь</th><th>Близко к центру? 0–10</th><th>Что мешает (часто — «пассажиры»)</th></tr></thead><tbody><tr><td>Работа и учёба</td><td></td><td></td><td></td></tr><tr><td>Отношения</td><td></td><td></td><td></td></tr><tr><td>Отдых и удовольствие</td><td></td><td></td><td></td></tr><tr><td>Здоровье и развитие</td><td></td><td></td><td></td></tr></tbody></table>
+</div>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.6</span><span class="ex-time">10 минут + 14 дней</span></div><h3>Маленький эксперимент вместо большого исправления</h3>
+<p>Нейробиолог Анн-Лор Ле Кунфф предлагает заменить модель «цель → успех или провал» на <strong>эксперимент</strong>: одно конкретное действие на конкретный срок, после которого ты собираешь данные, а не выносишь себе оценку. Результат эксперимента — информация, а не вердикт о твоей ценности.</p>
+</div>
+<div class="q">Мой эксперимент: «Я буду … в течение 14 дней» (одно маленькое действие в сторону ценности):</div><div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<table class="grid tracker"><thead><tr><th>День</th><th>Сделала?</th><th>Что заметила</th></tr></thead><tbody><tr><td class="n">1</td><td></td><td></td></tr><tr><td class="n">2</td><td></td><td></td></tr><tr><td class="n">3</td><td></td><td></td></tr><tr><td class="n">4</td><td></td><td></td></tr><tr><td class="n">5</td><td></td><td></td></tr><tr><td class="n">6</td><td></td><td></td></tr><tr><td class="n">7</td><td></td><td></td></tr><tr><td class="n">8</td><td></td><td></td></tr><tr><td class="n">9</td><td></td><td></td></tr><tr><td class="n">10</td><td></td><td></td></tr><tr><td class="n">11</td><td></td><td></td></tr><tr><td class="n">12</td><td></td><td></td></tr><tr><td class="n">13</td><td></td><td></td></tr><tr><td class="n">14</td><td></td><td></td></tr></tbody></table>
+<div class="q">Что я узнала — о мире и о себе?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<h2>Когда остановиться</h2>
+<p>Последнее, о чём важно сказать. В 2025–2026 годах в англоязычном мире вышла заметная волна текстов о <strong>«культуре бесконечного исцеления»</strong>. Люди признаются, что годами «работают над собой», проходят курс за курсом, прорабатывают травму за травмой — и всё равно чувствуют, что им нужно лечиться дальше. Один из заголовков звучал так: «Почему все на пути исцеления, но никому не становится лучше?»</p>
+<p>Рядом — важная мысль из исследований стыда: стыд возникает не из-за нашей уязвимости как таковой, а когда в ответ на неё нас отвергают. Когда на нас смотрят, но не видят. Поэтому часть выхода — не в новом инсайте о себе, а в <strong>людях</strong>. Журналистка Дженнифер Брехени Уоллес называет это ощущение <strong>значимостью</strong> (mattering): чувствовать, что тебя ценят и что ты можешь приносить ценность другим.</p>
+<p>Эта тетрадь задумана так, чтобы <strong>закончиться</strong>. Её цель — не открыть ещё один бесконечный проект по починке себя, а закрыть старое дело. И пойти жить.</p>
+<div class="ex"><div class="ex-top"><div class="ex-head"><span class="ex-code">Задание 6.7</span><span class="ex-time">15 минут</span></div><h3>Кому я важна</h3>
+</div>
+<div class="q">Кто те люди, рядом с которыми мне не нужно быть «исправленной»?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Кому я могу рассказать о том, что узнала в этой тетради? (Брене Браун: стыд теряет силу, когда о нём говорят тому, кто заслужил право слышать.)</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Где и для кого я могу быть полезной — не чтобы доказать свою ценность, а потому что мне это важно?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<section class="chapter"><div class="ch-num">Финал</div><h1>Постановление о пересмотре дела</h1><div class="ch-sub">Итог расследования</div></section>
+<h2>Протокол выхода</h2>
+<p>Заполни те же утверждения, что и в начале. Отметь, насколько каждое верно для тебя <strong>за последние две недели</strong>: 0 — совсем неверно, 4 — абсолютно про меня.</p>
+<table class="rate"><thead><tr><th></th><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td class="n">1</td><td>Мне кажется, что со мной что-то фундаментально не так.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">2</td><td>Если люди узнают меня по-настоящему, они разочаруются.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">3</td><td>После разговоров я долго прокручиваю, что сказала не так.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">4</td><td>Когда я ошибаюсь, я думаю не «я ошиблась», а «я плохая».</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">5</td><td>Я стыжусь некоторых своих чувств и реакций.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">6</td><td>Мне кажется, что у других всё устроено проще и правильнее, чем у меня.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">7</td><td>Похвала и комплименты вызывают у меня неловкость или недоверие.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">8</td><td>Я постоянно «работаю над собой», но ощущение, что я недостаточно хороша, не уходит.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">9</td><td>Внутренний голос говорит со мной жёстче, чем я говорила бы с любым другим человеком.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">10</td><td>Я скрываю от других то, что считаю в себе «неправильным».</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">11</td><td>Я боюсь, что если перестану себя критиковать, то расслаблюсь и всё испорчу.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr><tr><td class="n">12</td><td>Мне трудно поверить, что меня можно любить такой, какая я есть.</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr></tbody></table>
+<table class="grid filled"><thead><tr><th></th><th>В начале</th><th>Сейчас</th></tr></thead><tbody><tr><td>Сумма баллов (0–48)</td><td></td><td></td></tr><tr><td>Вера в старое обвинение (0–10)</td><td></td><td></td></tr><tr><td>Вера в новое убеждение, головой (0–100%)</td><td></td><td></td></tr><tr><td>Вера в новое убеждение, сердцем (0–100%)</td><td></td><td></td></tr></tbody></table>
+<div class="q">Что изменилось больше всего? Что почти не изменилось?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Если какие-то вещи остались тяжёлыми — это не провал. Где мне может понадобиться поддержка специалиста или близких?</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="pb"></div>
+<h2>Постановление</h2>
+<p>Это финальный документ дела. Напиши его торжественно, как настоящий пересмотр. Можно начать так: «Рассмотрев материалы дела "Со мной что-то не так", заведённого в … году, следствие установило…»</p>
+<div class="q">Что установлено о происхождении дела:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Какие «улики» оказались интерпретациями:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Кто вёл обвинение и чего он на самом деле боялся:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Какие новые факты собраны:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Решение по делу:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div class="q">Что я обещаю себе, когда прокурор снова заговорит:</div><div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+<div style="display:flex;gap:10mm;margin-top:10mm"><div style="flex:1;border-top:1px solid #6F6570;padding-top:1.5mm;font-family:Manrope;font-size:8pt;color:#6F6570">Дата</div><div style="flex:1;border-top:1px solid #6F6570;padding-top:1.5mm;font-family:Manrope;font-size:8pt;color:#6F6570">Подпись следователя</div></div>
+<section class="chapter"><div class="ch-num">Приложения</div><h1>Инструменты под рукой</h1><div class="ch-sub">Протокол на пять минут, тексты для аудиопрактик, карточки и источники</div></section>
+<h2>Если накрыло: протокол на 5 минут</h2>
+<p>Когда приговор включается на полную громкость, думать трудно. Эта страница — для таких моментов. Её можно сфотографировать и держать в телефоне.</p>
+<ol><li><strong>Стоп.</strong> Остановись. Поставь обе стопы на пол. Сделай пять медленных выдохов — выдох длиннее вдоха.</li><li><strong>Назови.</strong> Одним-двумя словами: «Это стыд». «Это страх». «Это старый приговор». Называние чувства уже снижает его накал.</li><li><strong>Отдели.</strong> Скажи: «У меня есть мысль, что со мной что-то не так». Мысль — не факт.</li><li><strong>Заземлись.</strong> Назови 5 вещей, которые видишь, 4 — которые можешь потрогать, 3 — которые слышишь, 2 запаха, 1 вкус.</li><li><strong>Утешь.</strong> Рука на сердце. «Мне сейчас тяжело. Так бывает у людей. Пусть я буду к себе добра».</li><li><strong>Проверь.</strong> Позже, когда станет легче: факт или интерпретация? Что сказала бы подруга?</li><li><strong>Выбери.</strong> Одно маленькое действие — не из страха, а из того, что для тебя важно.</li></ol>
+<div class="note"><div class="note-lbl">Когда нужна не тетрадь, а человек</div>
+<p>Если состояние не отпускает днями, мешает спать, работать, заботиться о себе; если появляются мысли о самоповреждении или о том, чтобы не жить, — обратись к специалисту или в экстренную службу своей страны. Просить о помощи — это не подтверждение приговора. Это смелость.</p>
+</div>
+<h2>Тексты для аудиопрактик</h2>
+<p>Эти тексты можно прочитать медленно самой себе, записать своим голосом на диктофон или слушать в записи автора. Паузы (…) — это 3–5 секунд тишины.</p>
+<h3>1. Перерыв самосострадания (по Кристин Нефф) · 5 минут</h3>
+<p>Устройся удобно… Вспомни ситуацию, которая сейчас тебя тревожит. Не самую тяжёлую — среднюю по силе… Позволь себе почувствовать, как это ощущается в теле… Где живёт эта тяжесть?… Теперь скажи себе медленно: «Это момент боли»… «Мне сейчас трудно»… Это осознанность. Ты замечаешь то, что есть… Теперь скажи: «Боль — часть жизни»… «Не я одна так себя чувствую. Многие люди прямо сейчас переживают что-то похожее»… Это общая человечность… Теперь положи руку на сердце. Почувствуй тепло и лёгкое давление ладони… И скажи себе: «Пусть я буду к себе добра»… «Пусть я дам себе то, что мне сейчас нужно»… Если слова не находятся, представь, что с этой бедой к тебе пришла близкая подруга. Что бы ты ей сказала?… Скажи то же самое себе… Побудь так ещё немного… И когда будешь готова, открой глаза.</p>
+<h3>2. Сострадательная я (по Полу Гилберту) · 10 минут</h3>
+<p>Сядь прямо, но удобно. Закрой глаза или опусти взгляд… Замедли дыхание. Вдох… и длинный выдох… Ещё раз… Пусть дыхание найдёт свой спокойный ритм… Теперь представь, что ты — актриса, которой досталась роль сострадательного человека. Не нужно чувствовать, что ты уже такая. Просто играй роль… У этого человека есть мудрость: он понимает, что жизнь трудна, и мы многое в ней не выбирали… Есть сила: он может выдержать боль, не рассыпаясь… Есть тепло: искреннее желание помочь… Позволь лицу чуть смягчиться, появиться лёгкой тёплой улыбке… Представь, каким голосом говорит этот человек… Побудь в этой роли минуту… Теперь посмотри глазами сострадательной себя на ту часть, которая думает «со мной что-то не так»… Что ты к ней чувствуешь?… Что хочешь ей сказать?… Скажи это — мысленно, тем самым тёплым голосом… Побудь с этим… И когда будешь готова, возвращайся.</p>
+<h3>3. Листья на ручье (практика терапии принятия и ответственности) · 7 минут</h3>
+<p>Устройся удобно и закрой глаза… Представь, что ты сидишь на берегу неглубокого ручья. Вода медленно течёт… По воде плывут листья — разные, большие и маленькие… Теперь начни замечать свои мысли. Каждую мысль, которая появляется, — словами или картинкой, — положи на лист и позволь ей уплыть… Хорошие мысли и плохие — одинаково… «Со мной что-то не так» — тоже просто мысль. Положи её на лист… Смотри, как он уплывает… Если заметила, что ушла в мысль вместе с ней, — это нормально. Мягко вернись на берег… И снова: мысль — лист — вода… Ты не ручей и не листья. Ты та, кто смотрит… Ещё немного… И когда будешь готова, вернись в комнату.</p>
+<div class="pb"></div>
+<h2>Карточки</h2>
+<p>Вырежи карточки по пунктирной линии. Носи с собой, клади на рабочий стол, фотографируй в телефон.</p>
+<div class="card"><div class="card-lbl">Моя флэшкарта</div>
+<p>Прямо сейчас я чувствую… потому что…</p>
+<div class="lines"><div class="ln"></div></div>
+<p>Я знаю, что это мой старый приговор. Он появился, когда…</p>
+<div class="lines"><div class="ln"></div></div>
+<p>Хотя мне кажется, что…, факты такие:</p>
+<div class="lines"><div class="ln"></div><div class="ln"></div></div>
+<p>Мне хочется…, но вместо этого я…</p>
+<div class="lines"><div class="ln"></div></div>
+</div>
+<div class="card"><div class="card-lbl">Мой перерыв самосострадания</div>
+<ol><li>«Это момент боли». Мои слова:</li></ol>
+<div class="lines"><div class="ln"></div></div>
+<ol><li>«Не я одна так себя чувствую». Мои слова:</li></ol>
+<div class="lines"><div class="ln"></div></div>
+<ol><li>Рука на сердце. «Пусть я буду к себе добра». Мои слова:</li></ol>
+<div class="lines"><div class="ln"></div></div>
+</div>
+<div class="card"><div class="card-lbl">Следственная проверка улики</div>
+<p>Что случилось — как сняла бы камера?</p>
+<p>Что я про это решила?</p>
+<p>Какие ещё есть три объяснения?</p>
+<p>Что сказала бы я подруге в этой ситуации?</p>
+<p>Это факт — или приговор?</p>
+</div>
+<div class="card"><div class="card-lbl">Моё новое убеждение</div>
+<div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<div class="pb"></div>
+<h2>Источники</h2>
+<div class="sources">
+<p>Все досье в этой тетради основаны на опубликованных исследованиях и книгах. Если хочешь проверить или углубиться — вот первоисточники.</p>
+<p><strong>Часть 1.</strong> Brach T. <em>Radical Acceptance.</em> Bantam, 2003. · Young J., Klosko J. <em>Reinventing Your Life.</em> Plume, 1994. · Brown B. <em>I Thought It Was Just Me (but it isn't).</em> 2007. · Burns D. <em>Feeling Good.</em> 1980 (техника нисходящей стрелы).</p>
+<p><strong>Часть 2.</strong> Kleck R., Strenta A. Perceptions of the impact of negatively valued physical characteristics on social interaction. <em>Journal of Personality and Social Psychology,</em> 1980. · Gilovich T., Medvec V., Savitsky K. The spotlight effect in social judgment. <em>JPSP,</em> 2000, 78(2). · Boothby E. et al. The liking gap in conversations. <em>Psychological Science,</em> 2018. · Bruk A., Scholl S., Bless H. Beautiful mess effect. <em>JPSP,</em> 2018, 115(2); You and I both: Self-compassion reduces self–other differences. <em>PSPB,</em> 2022. · Radomsky A. et al. You can run but you can't hide: Intrusive thoughts on six continents. <em>Journal of Obsessive-Compulsive and Related Disorders,</em> 2014. · Lebowitz M., Ahn W. Testing positive for a genetic predisposition to depression magnifies retrospective memory for depressive symptoms. <em>Journal of Consulting and Clinical Psychology,</em> 2017. · Foulkes L., Andrews J. Are mental health awareness efforts contributing to the rise in reported mental health problems? A call to test the prevalence inflation hypothesis. <em>New Ideas in Psychology,</em> 2023. · Yeung A., Ng E., Abi-Jaoude E. TikTok and attention-deficit/hyperactivity disorder: A cross-sectional study of social media content quality. <em>Canadian Journal of Psychiatry,</em> 2022. · University of Birmingham. New study uncovers TikTok mental health advice risks for young people, 2026. · Brown B. <em>Rising Strong.</em> 2015.</p>
+<p><strong>Часть 3.</strong> Young J., Klosko J., Weishaar M. <em>Schema Therapy: A Practitioner's Guide.</em> Guilford, 2003. · Winfrey O., Perry B. <em>What Happened to You?</em> Flatiron, 2021. · Stuewig J., Tangney J. et al. Children's proneness to shame and guilt predict risky and illegal behaviors in young adulthood. <em>Child Psychiatry &amp; Human Development,</em> 2015. · Tangney J., Stuewig J., Martinez A. Two faces of shame. <em>Psychological Science,</em> 2014. · Padesky C. Schema change processes in cognitive therapy. <em>Clinical Psychology &amp; Psychotherapy,</em> 1994. · Global Wellness Summit. The Over-Optimization Backlash, 2026.</p>
+<p><strong>Часть 4.</strong> Longe O., Maratos F., Gilbert P. et al. Having a word with yourself: Neural correlates of self-criticism and self-reassurance. <em>NeuroImage,</em> 2010. · Gilbert P. <em>The Compassionate Mind.</em> 2009. · Schwartz R. <em>No Bad Parts.</em> 2021. · White M., Epston D. <em>Narrative Means to Therapeutic Ends.</em> 1990. · Bell T. et al. Multiple emotions, multiple selves: compassion focused therapy chairwork. <em>The Cognitive Behaviour Therapist,</em> 2021. · Hayes S., Strosahl K., Wilson K. <em>Acceptance and Commitment Therapy.</em> 1999. · Harris R. <em>The Happiness Trap.</em> 2007. · Kross E. et al. Self-talk as a regulatory mechanism: How you do it matters. <em>JPSP,</em> 2014. · Moser J. et al. Third-person self-talk facilitates emotion regulation without engaging cognitive control. <em>Scientific Reports,</em> 2017.</p>
+<p><strong>Часть 5.</strong> Greenberger D., Padesky C. <em>Mind Over Mood.</em> 2nd ed., 2015. · Padesky C. 1994 (континуум, позитивный журнал данных, исторический тест). · Beck J. <em>Cognitive Behavior Therapy: Basics and Beyond.</em> · Bennett-Levy J. et al. <em>Oxford Guide to Behavioural Experiments in Cognitive Therapy.</em> 2004. · Ellis A. Shame-attacking exercises (REBT). · Rogers C. <em>On Becoming a Person.</em> 1961.</p>
+<p><strong>Часть 6.</strong> Breines J., Chen S. Self-compassion increases self-improvement motivation. <em>PSPB,</em> 2012. · Neff K. <em>Self-Compassion.</em> 2011; <em>Fierce Self-Compassion.</em> 2021; The Five Myths of Self-Compassion; self-compassion.org. · Lundgren T. et al. The Bull's-Eye Values Survey. <em>Journal of Contextual Behavioral Science,</em> 2012. · Le Cunff A.-L. <em>Tiny Experiments.</em> 2025. · Wallace J. B. <em>Mattering.</em> 2026. · Brown B. <em>The Gifts of Imperfection.</em> 2010.</p>
+<p><strong>Приложения.</strong> Neff K. Self-Compassion Break; Gilbert P. Compassionate Self; Hayes S. et al. Leaves on a Stream; Lieberman M. et al. Putting feelings into words. <em>Psychological Science,</em> 2007.</p>
+</div>
+<p class="small" style="margin-top:8mm">Эта тетрадь — материал для самопомощи. Она не является медицинской или психотерапевтической услугой, не ставит диагнозов и не заменяет консультацию специалиста.</p></body></html>
