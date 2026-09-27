@@ -133,10 +133,17 @@ def build(src, dst):
                 buf.append(lines[i][1:].strip())
                 i += 1
             for chunk in "\n".join(buf).split("\n\n"):
+                rows = chunk.split("\n")
+                if all(r.startswith("- ") for r in rows):
+                    for r in rows:
+                        p = doc.add_paragraph(style="List Bullet")
+                        shade(p, "F7EEF2")
+                        add_inline(p, r[2:])
+                    continue
                 p = doc.add_paragraph()
                 shade(p, "F7EEF2")
                 p.paragraph_format.left_indent = Cm(0.3)
-                add_inline(p, " ".join(chunk.split("\n")))
+                add_inline(p, " ".join(rows))
             continue
         elif line.startswith("|"):
             rows = []
