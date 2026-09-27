@@ -47,7 +47,7 @@ def add_inline(par, text, base_bold=False, base_italic=False):
             add_inline(par, piece[2:-2], True, base_italic)
         elif piece.startswith("*") and piece.endswith("*") and len(piece) > 2:
             add_inline(par, piece[1:-1], base_bold, True)
-        elif piece.startswith("["):
+        elif piece.startswith("[") and re.match(r"\[([^\]]+)\]\(([^)]+)\)", piece):
             m = re.match(r"\[([^\]]+)\]\(([^)]+)\)", piece)
             add_hyperlink(par, m.group(2), m.group(1))
         elif piece.startswith("http"):
@@ -71,6 +71,19 @@ def shade(par, fill):
         left.set(qn(k), v)
     bdr.append(left)
     ppr.append(bdr)
+
+
+def restart_numbering(doc, par):
+    """Каждый нумерованный список начинается с 1: новый w:num с startOverride."""
+    numbering = doc.part.numbering_part.element
+    style_num = doc.styles["List Number"].element.pPr.numPr.numId.val
+    abstract = numbering.num_having_numId(style_num).abstractNumId.val
+    num = numbering.add_num(abstract)
+    ov = num.add_lvlOverride(ilvl=0)
+    ov.add_startOverride(1)
+    numPr = par._p.get_or_add_pPr().get_or_add_numPr()
+    numPr.get_or_add_ilvl().val = 0
+    numPr.get_or_add_numId().val = num.numId
 
 
 def build(src, dst):
@@ -97,6 +110,7 @@ def build(src, dst):
 
     lines = open(src, encoding="utf-8").read().splitlines()
     i = 0
+    cur_num = None
     while i < len(lines):
         line = lines[i].rstrip()
         if not line.strip():
@@ -145,6 +159,13 @@ def build(src, dst):
             add_inline(p, re.sub(r"^\s*[-*] ", "", line))
         elif re.match(r"^\s*\d+[.)] ", line):
             p = doc.add_paragraph(style="List Number")
+            if cur_num is None or not re.match(r"^\s*\d+[.)] ", lines[i - 1] if i else ""):
+                restart_numbering(doc, p)
+                cur_num = p._p.pPr.numPr.numId.val
+            else:
+                numPr = p._p.get_or_add_pPr().get_or_add_numPr()
+                numPr.get_or_add_ilvl().val = 0
+                numPr.get_or_add_numId().val = cur_num
             add_inline(p, re.sub(r"^\s*\d+[.)] ", "", line))
         else:
             p = doc.add_paragraph()
